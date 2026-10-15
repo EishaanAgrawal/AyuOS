@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Healthcare Finance - AyuOS</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              deep: '#0F5C5E',
+              dark: '#0B4547',
+              primary: '#0F5C5E',
+              blue: '#2F6F8F',
+            },
+            mint: {
+              soft: '#EBF6F5',
+              subtle: '#DCEFEB',
+            },
+            navy: {
+              deep: '#173042',
+            },
+            slate: {
+              muted: '#60717A',
+            },
+            app: {
+              bg: '#F7FAF9',
+              border: '#E2E8F0',
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles for Layout & Visuals -->
+<style data-purpose="layout-styles">
+    /* iOS friendly scrolling and sizing */
+    body {
+      background-color: #E5E7EB;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style data-purpose="chart-styles">
+    /* Donut chart stroke segments using SVG circle stroke-dasharray */
+    .donut-segment {
+      transition: stroke-dasharray 0.3s ease;
+    }
+  </style>
+<!-- END: Custom Styles for Layout & Visuals -->
+</head>
+<body class="flex justify-center items-center min-h-screen p-0 sm:py-6">
+<!-- BEGIN: Mobile Frame Container -->
+<main class="w-full max-w-[412px] bg-[#F7FAF9] min-h-screen flex flex-col relative shadow-2xl sm:rounded-[36px] overflow-hidden border border-[#DCE5E7]">
+<!-- BEGIN: Top Bar & Screen Header -->
+<header class="pt-5 pb-3 px-5 bg-[#F7FAF9] flex-shrink-0" data-purpose="screen-header">
+<!-- Top Bar / Back Navigation -->
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="p-1 -ml-1 text-[#173042] active:opacity-60 transition" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h1 class="text-[22px] font-bold tracking-tight text-[#173042]">Healthcare Finance</h1>
+</div>
+<!-- Subtitle -->
+<p class="text-[13px] text-[#60717A] mt-1.5 font-normal ml-8">Understand your healthcare spending in one place.</p>
+</header>
+<!-- END: Top Bar & Screen Header -->
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar px-4 pb-24 space-y-3.5">
+<!-- BEGIN: Section 1 - This Month Overview Card -->
+<section class="bg-white rounded-[22px] p-4 border border-[#E2E8F0] shadow-[0_2px_8px_rgba(23,48,66,0.04)]" data-purpose="monthly-expense-summary">
+<!-- Card Header -->
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-[17px] font-bold text-[#173042]">This Month</h2>
+<!-- Month Dropdown Pill -->
+<button class="inline-flex items-center gap-1.5 bg-[#EBF6F5] text-[#0F5C5E] text-xs font-semibold px-2.5 py-1 rounded-lg border border-[#DCEFEB]" type="button">
+<span>Oct 2026</span>
+<svg class="w-3.5 h-3.5 text-[#0F5C5E]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Donut & Breakdown Grid -->
+<div class="flex items-center gap-4">
+<!-- Donut Chart Left (Circumference ~ 314 for r=50) -->
+<div class="relative w-36 h-36 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Circle / Track -->
+<circle cx="60" cy="60" fill="none" r="48" stroke="#EBF6F5" stroke-width="12"></circle>
+<!-- Segment 1: Medical Expenses 47% (Color: #0F5C5E Deep Teal) -->
+<!-- 47% of 301.6 = 141.7 -->
+<circle class="donut-segment" cx="60" cy="60" fill="none" r="48" stroke="#0F5C5E" stroke-dasharray="141.7 301.6" stroke-dashoffset="0" stroke-width="12"></circle>
+<!-- Segment 2: Doctor Visits 17% (Color: #258184 Medium Teal) -->
+<!-- 17% of 301.6 = 51.3 -->
+<circle class="donut-segment" cx="60" cy="60" fill="none" r="48" stroke="#258184" stroke-dasharray="51.3 301.6" stroke-dashoffset="-143.7" stroke-width="12"></circle>
+<!-- Segment 3: Pharmacy 13% (Color: #3BA0A0 Cyan Teal) -->
+<!-- 13% of 301.6 = 39.2 -->
+<circle class="donut-segment" cx="60" cy="60" fill="none" r="48" stroke="#48B2AF" stroke-dasharray="39.2 301.6" stroke-dashoffset="-197" stroke-width="12"></circle>
+<!-- Segment 4: Lab Tests 10% (Color: #7BC6C1 Soft Aqua) -->
+<!-- 10% of 301.6 = 30.1 -->
+<circle class="donut-segment" cx="60" cy="60" fill="none" r="48" stroke="#7BC6C1" stroke-dasharray="30.1 301.6" stroke-dashoffset="-238.2" stroke-width="12"></circle>
+<!-- Segment 5: Other 7% (Color: #A9DCD7 Pale Teal) -->
+<!-- 7% of 301.6 = 21.1 -->
+<circle class="donut-segment" cx="60" cy="60" fill="none" r="48" stroke="#A9DCD7" stroke-dasharray="21.1 301.6" stroke-dashoffset="-270.3" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<!-- Center Metric Label -->
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+<span class="text-[17px] font-bold text-[#173042] tracking-tight leading-tight">₹17,900</span>
+<span class="text-[10px] text-[#60717A] font-medium leading-tight mt-0.5">Total Expenses</span>
+</div>
+</div>
+<!-- Breakdown List Right -->
+<div class="flex-1 space-y-2 text-[12px]">
+<!-- Item 1: Medical Expenses -->
+<div class="flex items-center justify-between text-[#173042]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#0F5C5E]"></span>
+<span class="w-4 h-4 flex items-center justify-center text-[#0F5C5E]">
+<!-- Stethoscope mini -->
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5a4 4 0 0 0 8 0V4M8 13v3a4 4 0 0 0 8 0v-1M16 11h.01M16 15a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"></path>
+</svg>
+</span>
+<span class="font-normal text-[12px] text-[#173042]">Medical Expenses</span>
+</div>
+<div class="text-right whitespace-nowrap">
+<span class="font-bold text-[12px] text-[#173042]">₹8,450</span>
+<span class="text-[11px] text-[#60717A] ml-1">47%</span>
+</div>
+</div>
+<!-- Item 2: Pharmacy -->
+<div class="flex items-center justify-between text-[#173042]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#48B2AF]"></span>
+<span class="w-4 h-4 flex items-center justify-center text-[#0F5C5E]">
+<!-- Pill capsule mini -->
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="m10.5 10.5 3 3m1.414-6.414a4 4 0 0 1 5.657 5.657l-6.364 6.364a4 4 0 1 1-5.657-5.657l6.364-6.364z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-normal text-[12px] text-[#173042]">Pharmacy</span>
+</div>
+<div class="text-right whitespace-nowrap">
+<span class="font-bold text-[12px] text-[#173042]">₹2,350</span>
+<span class="text-[11px] text-[#60717A] ml-1">13%</span>
+</div>
+</div>
+<!-- Item 3: Lab Tests -->
+<div class="flex items-center justify-between text-[#173042]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#7BC6C1]"></span>
+<span class="w-4 h-4 flex items-center justify-center text-[#0F5C5E]">
+<!-- Flask mini -->
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2M8.5 2h7M7 15h10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-normal text-[12px] text-[#173042]">Lab Tests</span>
+</div>
+<div class="text-right whitespace-nowrap">
+<span class="font-bold text-[12px] text-[#173042]">₹1,800</span>
+<span class="text-[11px] text-[#60717A] ml-1">10%</span>
+</div>
+</div>
+<!-- Item 4: Doctor Visits -->
+<div class="flex items-center justify-between text-[#173042]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#258184]"></span>
+<span class="w-4 h-4 flex items-center justify-center text-[#0F5C5E]">
+<!-- User mini -->
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="7" r="4"></circle>
+<path d="M5.5 21a6.5 6.5 0 0 1 13 0"></path>
+</svg>
+</span>
+<span class="font-normal text-[12px] text-[#173042]">Doctor Visits</span>
+</div>
+<div class="text-right whitespace-nowrap">
+<span class="font-bold text-[12px] text-[#173042]">₹3,000</span>
+<span class="text-[11px] text-[#60717A] ml-1">17%</span>
+</div>
+</div>
+<!-- Item 5: Other -->
+<div class="flex items-center justify-between text-[#173042]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#A9DCD7]"></span>
+<span class="w-4 h-4 flex items-center justify-center text-[#0F5C5E]">
+<!-- More horizontal dots -->
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<circle cx="6" cy="12" r="1.5"></circle>
+<circle cx="12" cy="12" r="1.5"></circle>
+<circle cx="18" cy="12" r="1.5"></circle>
+</svg>
+</span>
+<span class="font-normal text-[12px] text-[#173042]">Other</span>
+</div>
+<div class="text-right whitespace-nowrap">
+<span class="font-bold text-[12px] text-[#173042]">₹1,300</span>
+<span class="text-[11px] text-[#60717A] ml-1">7%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Section 1 - This Month Overview Card -->
+<!-- BEGIN: Section 2 - Recent Expenses Card -->
+<section class="bg-white rounded-[22px] p-4 border border-[#E2E8F0] shadow-[0_2px_8px_rgba(23,48,66,0.04)]" data-purpose="recent-expenses-list">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-3.5">
+<h2 class="text-[17px] font-bold text-[#173042]">Recent Expenses</h2>
+<button class="inline-flex items-center gap-1 bg-[#EBF6F5] text-[#0F5C5E] text-xs font-semibold px-2.5 py-1 rounded-lg border border-[#DCEFEB]" type="button">
+<span>View All</span>
+<svg class="w-3.5 h-3.5 text-[#0F5C5E]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Expense Rows -->
+<div class="divide-y divide-[#F1F5F7]">
+<!-- Item 1: Metformin -->
+<div class="py-2.5 first:pt-1 last:pb-1 flex items-center justify-between cursor-pointer active:bg-slate-50 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<svg class="w-5 h-5 -rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="m10.5 10.5 3 3m1.414-6.414a4 4 0 0 1 5.657 5.657l-6.364 6.364a4 4 0 1 1-5.657-5.657l6.364-6.364z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Metformin 500 mg</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Pharmacy · 30 tablets</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-bold text-[13.5px] text-[#173042] block">₹450</span>
+<span class="text-[10.5px] text-[#60717A] block font-normal">12 Oct 2026</span>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Item 2: Blood Test -->
+<div class="py-2.5 first:pt-1 last:pb-1 flex items-center justify-between cursor-pointer active:bg-slate-50 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2M8.5 2h7M7 15h10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Blood Test</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Lab · HbA1c, CBC</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-bold text-[13.5px] text-[#173042] block">₹800</span>
+<span class="text-[10.5px] text-[#60717A] block font-normal">10 Oct 2026</span>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Item 3: Doctor Consultation -->
+<div class="py-2.5 first:pt-1 last:pb-1 flex items-center justify-between cursor-pointer active:bg-slate-50 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<circle cx="12" cy="7" r="4"></circle>
+<path d="M5.5 21a6.5 6.5 0 0 1 13 0"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Doctor Consultation</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">General Medicine · Dr. Sharma</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-bold text-[13.5px] text-[#173042] block">₹1,500</span>
+<span class="text-[10.5px] text-[#60717A] block font-normal">8 Oct 2026</span>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Section 2 - Recent Expenses Card -->
+<!-- BEGIN: Section 3 - Expense Categories Card -->
+<section class="bg-white rounded-[22px] p-4 border border-[#E2E8F0] shadow-[0_2px_8px_rgba(23,48,66,0.04)]" data-purpose="expense-categories">
+<!-- Section Header -->
+<h2 class="text-[17px] font-bold text-[#173042] mb-3">Expense Categories</h2>
+<!-- Category Items List -->
+<div class="space-y-3.5">
+<!-- Item 1: Medical Bills -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Document icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Medical Bills</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">View and manage your medical bills.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Item 2: Pharmacy Expenses -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Pill icon -->
+<svg class="w-5 h-5 -rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="m10.5 10.5 3 3m1.414-6.414a4 4 0 0 1 5.657 5.657l-6.364 6.364a4 4 0 1 1-5.657-5.657l6.364-6.364z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Pharmacy Expenses</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Track medicine purchases and pharmacy bills.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Item 3: Lab Expenses -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Flask icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2M8.5 2h7M7 15h10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Lab Expenses</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Track lab tests and diagnostics.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Item 4: Doctor / Hospital Expenses -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Doctor User icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<circle cx="12" cy="7" r="4"></circle>
+<path d="M5.5 21a6.5 6.5 0 0 1 13 0"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Doctor / Hospital Expenses</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Consultation and hospital visit expenses.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Item 5: Treatment Costs -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Medical first aid kit -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="14" rx="2.5" width="18" x="3" y="7"></rect>
+<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 11v6M9 14h6"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Treatment Costs</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">Procedures, treatments and other medical costs.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Item 6: Insurance -->
+<div class="flex items-center justify-between py-1 cursor-pointer active:opacity-75 transition">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#EBF6F5] flex items-center justify-center text-[#0F5C5E] flex-shrink-0">
+<!-- Shield icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 3s8 3.5 8 9.5c0 5-4.5 8-8 9.5-3.5-1.5-8-4.5-8-9.5C4 6.5 12 3 12 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-[13.5px] text-[#173042] leading-tight">Insurance</p>
+<p class="text-[11.5px] text-[#60717A] mt-0.5 font-normal">View your insurance details and claims.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-[#A0AEC0]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Primary CTA Button inside card -->
+<div class="mt-5">
+<button class="w-full bg-[#0F5C5E] active:bg-[#0B4547] text-white py-3.5 px-4 rounded-xl flex items-center justify-between text-sm font-semibold tracking-wide transition shadow-sm" type="button">
+<span class="w-4"></span>
+<span class="text-center font-bold text-[14.5px]">View All Expenses</span>
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: Section 3 - Expense Categories Card -->
+</div>
+<!-- BEGIN: Bottom Tab Navigation Bar -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0] px-4 pt-2 pb-5 z-20" data-purpose="bottom-navigation">
+<div class="flex items-center justify-around">
+<!-- Home -->
+<a class="flex flex-col items-center gap-1 text-[#60717A] hover:text-[#0F5C5E] transition group" href="#home">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium leading-none">Home</span>
+</a>
+<!-- Records -->
+<a class="flex flex-col items-center gap-1 text-[#60717A] hover:text-[#0F5C5E] transition group" href="#records">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium leading-none">Records</span>
+</a>
+<!-- Medicines -->
+<a class="flex flex-col items-center gap-1 text-[#60717A] hover:text-[#0F5C5E] transition group" href="#medicines">
+<svg class="w-5 h-5 stroke-current -rotate-45" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="m10.5 10.5 3 3m1.414-6.414a4 4 0 0 1 5.657 5.657l-6.364 6.364a4 4 0 1 1-5.657-5.657l6.364-6.364z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium leading-none">Medicines</span>
+</a>
+<!-- Care -->
+<a class="flex flex-col items-center gap-1 text-[#60717A] hover:text-[#0F5C5E] transition group" href="#care">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium leading-none">Care</span>
+</a>
+<!-- More (Active Tab) -->
+<a class="flex flex-col items-center gap-1 text-[#0F5C5E] transition group font-semibold" href="#more">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2.2"></circle>
+<circle cx="12" cy="12" r="2.2"></circle>
+<circle cx="19" cy="12" r="2.2"></circle>
+</svg>
+<span class="text-[11px] font-bold leading-none text-[#0F5C5E]">More</span>
+</a>
+</div>
+</nav>
+<!-- END: Bottom Tab Navigation Bar -->
+</main>
+<!-- END: Mobile Frame Container -->
+</body></html>

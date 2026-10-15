@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AyuOS - My Health</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e0e3e2",
+            "secondary": "#226584",
+            "surface-dim": "#d7dbda",
+            "primary-fixed": "#aceef0",
+            "outline": "#6f7979",
+            "surface-container-high": "#e6e9e8",
+            "on-background": "#181c1c",
+            "surface-container": "#ebeeed",
+            "surface": "#f7faf9",
+            "surface-variant": "#e0e3e2",
+            "background": "#f7faf9",
+            "primary": "#004345",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-bright": "#f7faf9",
+            "surface-container-low": "#f1f4f3",
+            "on-surface-variant": "#3f4949",
+            "outline-variant": "#bfc8c8",
+            "primary-container": "#0f5c5e",
+            "on-surface": "#181c1c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "mono-data": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+    body {
+      min-height: max(884px, 100dvh);
+      background-color: #f7faf9;
+    }
+</style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen flex justify-center">
+<!-- Mobile Canvas (matches 853x1843 reference aspect ratio at 420px max width) -->
+<div class="w-full max-w-[420px] bg-[#f7faf9] min-h-screen relative flex flex-col pb-24">
+<!-- Status Bar Simulation -->
+
+<!-- 1. HEADER FORMAT -->
+<header class="w-full px-4 pt-2 pb-3">
+<div class="flex items-center justify-between">
+<!-- Left side: User Avatar + Stacked Greeting + Pill Switcher -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-full overflow-hidden ring-1 ring-outline-variant flex-shrink-0 bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFNT3psX7utoZEQrQGvK8EuVCt-ldBmqtjj3pIt_Qtt29ZapvFYbVtfSNiUNfX_lrdJFPNv3YYZf1dVsjHPs5rgpTt5kgDzXCAOvhv1aWjeHzi-Vss9vJUnoiZL0LRiryWa0MtMJtYNgSQ-WPZaw2UvJz7FruZHQL1fISUG2OisT8E9s3cdjNJtJbR0RRwgN7CWwHav8phfjZqWl2JxPh6RPMdCZrlRVxyWQF436ccQKygEkXRVZOP">
+</div>
+<div class="flex flex-col">
+
+<h1 class="text-lg font-bold text-on-surface flex items-center gap-1 leading-tight">
+            Eishaan <span class="text-base">👋</span>
+</h1>
+<!-- Pill selector -->
+<div class="relative mt-1">
+<button class="inline-flex items-center gap-1 bg-surface-container-high/80 hover:bg-surface-container-highest px-2.5 py-0.5 rounded-full text-xs font-medium text-primary transition-colors" id="person-pill-btn" onclick="const d = document.getElementById('person-popover'); d.classList.toggle('hidden');" type="button">
+<span id="current-name" class="">My Health</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<!-- Switcher menu dropdown -->
+<div class="hidden absolute left-0 top-7 w-56 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-xl z-50 p-1.5 space-y-1" id="person-popover">
+<button class="w-full flex items-center justify-between p-2 rounded-lg bg-surface-container-low text-left" onclick="document.getElementById('current-name').textContent='My Health'; document.getElementById('person-popover').classList.add('hidden');">
+<span class="text-xs font-semibold text-on-surface">Eishaan (My Health)</span>
+<span class="material-symbols-outlined text-primary text-sm">check</span>
+</button>
+<button class="w-full flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-left" onclick="document.getElementById('current-name').textContent='Mummy\'s Health'; document.getElementById('person-popover').classList.add('hidden');">
+<span class="text-xs font-medium text-on-surface">Sheela (Mummy)</span>
+</button>
+<button class="w-full flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-left" onclick="document.getElementById('current-name').textContent='Daddy\'s Health'; document.getElementById('person-popover').classList.add('hidden');">
+<span class="text-xs font-medium text-on-surface">Rajesh (Daddy)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right side: Notification bell button + Emergency Red Cross button -->
+<div class="flex items-center gap-2">
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/60 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#ba1a1a]"></span>
+</button>
+<button aria-label="Emergency" class="w-10 h-10 rounded-full bg-[#fde8e8] border border-[#f8b4b4]/60 flex items-center justify-center text-[#ba1a1a] hover:bg-[#fad2d2] transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px] font-bold" style="font-variation-settings: &quot;FILL&quot; 1;">add_box</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Body Content -->
+<main class="flex-1 px-4 space-y-4">
+<!-- 2. SEARCH / AI FORMAT -->
+<section>
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2.5 shadow-sm transition-all focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="w-full bg-transparent border-none p-0 text-xs text-on-surface placeholder:text-outline focus:ring-0 focus:outline-none" placeholder="Ask AyuOS anything..." type="text">
+<button aria-label="Voice input" class="text-outline hover:text-primary transition-colors ml-2" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+</section>
+<!-- 3. UPLOAD ANYTHING CARD FORMAT -->
+<section>
+<div class="relative bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-4 shadow-sm flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all active:scale-[0.99] overflow-hidden" onclick="document.getElementById('upload-input').click();">
+<input class="hidden" id="upload-input" onchange="alert('Document uploaded for analysis.')" type="file">
+<!-- Left: Upload Icon Box -->
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">upload</span>
+</div>
+<!-- Middle: Title and Subtitle -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center gap-1">
+<h2 class="text-sm font-bold text-on-surface">Upload Anything</h2>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-snug mt-0.5">
+            Reports, prescriptions, bills, scans and more.
+          </p>
+</div>
+<div class="text-outline flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+<!-- Right: Restrained Clinical Graphic Graphic -->
+<div class="relative w-16 h-12 flex-shrink-0 flex items-center justify-center">
+<div class="w-9 h-11 bg-surface-container-low border border-outline-variant/80 rounded shadow-sm rotate-6 flex flex-col p-1 gap-1">
+<div class="w-4 h-1 bg-primary/40 rounded-full"></div>
+<div class="w-6 h-0.5 bg-outline-variant rounded-full"></div>
+<div class="w-5 h-0.5 bg-outline-variant rounded-full"></div>
+<div class="w-4 h-0.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="absolute -left-1 bottom-0 w-6 h-8 bg-surface-container-lowest border border-outline-variant rounded flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]">science</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. THINGS NEEDING ATTENTION FORMAT -->
+<section class="space-y-2.5">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-[#fde8e8] text-[#ba1a1a] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[14px] font-bold">priority_high</span>
+</div>
+<h2 class="text-sm font-bold text-on-surface">Things needing attention</h2>
+</div>
+<button class="text-xs text-on-surface-variant hover:text-primary flex items-center gap-0.5 font-medium transition-colors" type="button">
+<span class="">View all (3)</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+<!-- 3 Clean White Stacked Card Rows -->
+<div class="space-y-2">
+<!-- Row 1: Metformin Refill -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3 px-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="w-10 h-10 rounded-full bg-[#fde8e8]/60 text-[#ba1a1a] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">pill</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-xs font-bold text-on-surface truncate">Metformin 500 mg</h3>
+<p class="text-[11px] text-on-surface-variant truncate">May run out in <span class="text-[#ba1a1a] font-semibold">10 days</span></p>
+</div>
+<button class="flex-shrink-0 bg-primary hover:bg-[#0f5c5e] text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition-all shadow-sm active:scale-95" id="order-refill-btn" onclick="const b = this; if(!b.dataset.ordered){ b.innerHTML='✓ Ordered'; b.classList.remove('bg-primary'); b.classList.add('bg-[#1f5e5b]'); b.dataset.ordered='true'; } else { b.innerHTML='Order Refill'; b.classList.remove('bg-[#1f5e5b]'); b.classList.add('bg-primary'); delete b.dataset.ordered; }" type="button">
+            Order Refill
+          </button>
+</div>
+<!-- Row 2: Upcoming Appointment -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3 px-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-xs font-bold text-on-surface truncate">Upcoming appointment</h3>
+<p class="text-[11px] text-on-surface-variant truncate">Dr. Sharma • 12 Oct, 10:30 AM</p>
+</div>
+
+</div>
+<!-- Row 3: Lab Report -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3 px-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="w-10 h-10 rounded-full bg-[#e3eae8] text-[#21686a] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-xs font-bold text-on-surface truncate">New lab report available</h3>
+<p class="text-[11px] text-on-surface-variant truncate">HbA1c • 6.7% • 2 Oct</p>
+</div>
+<button class="flex-shrink-0 bg-surface-container-low hover:bg-surface-container border border-outline-variant/60 text-on-surface text-xs font-medium px-3 py-1.5 rounded-xl transition-all active:scale-95" onclick="alert('Opening HbA1c Lab Report: 6.7% (Controlled)');" type="button">
+            View report
+          </button>
+</div>
+</div>
+</section>
+<!-- 5. HEALTH AREAS FORMAT (2x4 Grid, Calm/Restrained Colors) -->
+<section class="space-y-2.5">
+<div class="flex items-center justify-between px-0.5">
+<h2 class="text-sm font-bold text-on-surface">Health Areas</h2>
+<button class="text-xs text-on-surface-variant hover:text-primary flex items-center gap-0.5 font-medium transition-colors" type="button">
+<span class="">View all</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+<!-- 2x4 Grid of Rounded Square Cards (NO record counts, subtle clinical tints) -->
+<div class="grid grid-cols-4 gap-2.5">
+<!-- 1. Heart -->
+<div class="bg-[#fcf5f5] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#b91c1c] text-[26px]">favorite</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Heart</span>
+</div>
+<!-- 2. Lungs -->
+<div class="bg-[#f2f7fa] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#226584] text-[26px]">air</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Lungs</span>
+</div>
+<!-- 3. Kidneys -->
+<div class="bg-[#f0f7f6] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#21686a] text-[26px]">water_drop</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Kidneys</span>
+</div>
+<!-- 4. Brain -->
+<div class="bg-[#f7f5fa] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#524566] text-[26px]">psychology</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Brain</span>
+</div>
+<!-- 5. Eyes -->
+<div class="bg-[#f0f6f8] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#226584] text-[26px]">visibility</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Eyes</span>
+</div>
+<!-- 6. Dental -->
+<div class="bg-[#fcf9f2] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#7a6435] text-[26px]">dentistry</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Dental</span>
+</div>
+<!-- 7. Bones -->
+<div class="bg-[#f2f7f5] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#2d5c56] text-[26px]">orthopedics</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Bones</span>
+</div>
+<!-- 8. Skin -->
+<div class="bg-[#faf4f2] border border-outline-variant/40 rounded-2xl p-3 flex flex-col items-center justify-center text-center hover:border-outline transition-all cursor-pointer active:scale-95 aspect-square">
+<span class="material-symbols-outlined text-[#875549] text-[26px]">dermatology</span>
+<span class="text-xs font-medium text-on-surface mt-1.5">Skin</span>
+</div>
+</div>
+</section>
+<!-- 6. MEDICINES & FAMILY CARE FORMAT (Side-by-side cards) -->
+<section class="grid grid-cols-2 gap-2.5 pb-2">
+<!-- Left Card: Medicines -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between hover:border-outline transition-all cursor-pointer">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">pill</span>
+<h3 class="text-xs font-bold text-on-surface">Medicines</h3>
+</div>
+<span class="text-[11px] text-outline flex items-center hover:text-primary">
+              View all <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+</span>
+</div>
+<div class="mt-2.5 space-y-0.5">
+<p class="text-xs text-on-surface-variant font-medium">2 active medicines</p>
+<p class="text-xs text-[#ba1a1a] font-semibold">1 needs attention</p>
+</div>
+</div>
+<!-- Medicine Graphic Illustration -->
+<div class="mt-3 flex justify-end items-end pr-1">
+<div class="relative flex items-center justify-center">
+<!-- Pill bottle representation -->
+<div class="w-8 h-10 bg-[#e3eae8] border border-outline-variant rounded-md flex flex-col items-center justify-center">
+<div class="w-6 h-2 bg-primary/70 rounded-t-sm"></div>
+<div class="w-4 h-0.5 bg-outline-variant my-1"></div>
+<span class="material-symbols-outlined text-primary text-[14px]">medication</span>
+</div>
+<!-- Pill beside it -->
+<div class="w-3.5 h-1.5 bg-[#fde8e8] border border-[#ba1a1a]/40 rounded-full -ml-1 mt-3 rotate-45"></div>
+</div>
+</div>
+</div>
+<!-- Right Card: Family Care -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between hover:border-outline transition-all cursor-pointer">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<h3 class="text-xs font-bold text-on-surface">Family Care</h3>
+</div>
+<span class="text-[11px] text-outline flex items-center hover:text-primary">
+              View all <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-center justify-between gap-1.5">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-full bg-[#fde8e8] text-[#ba1a1a] font-bold text-xs flex items-center justify-center flex-shrink-0">
+                M
+              </div>
+<div class="min-w-0">
+<p class="text-xs font-bold text-on-surface truncate">Mummy</p>
+<p class="text-[10px] text-[#ba1a1a] font-medium leading-tight">Medicine refill needed</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] flex-shrink-0">chevron_right</span>
+</div>
+</div>
+<div class="mt-3 text-[10px] text-on-surface-variant font-mono-data">
+          Next sync: Today 8 PM
+        </div>
+</div>
+</section>
+</main>
+<!-- 7. BOTTOM NAVIGATION BAR (5 items: Home, Records, Medicines, Care, More) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[420px] mx-auto z-50 flex justify-around items-center px-2 py-2 pb-safe bg-surface-container-lowest border-t border-outline-variant/40 shadow-lg">
+<button class="nav-btn flex flex-col items-center justify-center text-primary px-3 py-1 cursor-pointer transition-colors" onclick="switchNav(this)" type="button">
+<span class="material-symbols-outlined text-[22px] fill-1">home</span>
+<span class="text-[11px] font-semibold mt-0.5">Home</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 cursor-pointer transition-colors" onclick="switchNav(this)" type="button">
+<span class="material-symbols-outlined text-[22px]">description</span>
+<span class="text-[11px] font-medium mt-0.5">Records</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 cursor-pointer transition-colors" onclick="switchNav(this)" type="button">
+<span class="material-symbols-outlined text-[22px]">pill</span>
+<span class="text-[11px] font-medium mt-0.5">Medicines</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 cursor-pointer transition-colors" onclick="switchNav(this)" type="button">
+<span class="material-symbols-outlined text-[22px]">favorite_border</span>
+<span class="text-[11px] font-medium mt-0.5">Care</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 cursor-pointer transition-colors" onclick="switchNav(this)" type="button">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="text-[11px] font-medium mt-0.5">More</span>
+</button>
+</nav>
+</div>
+<script>
+  function switchNav(btn) {
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.className = 'nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 cursor-pointer transition-colors';
+      const icon = b.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.remove('fill-1');
+    });
+    btn.className = 'nav-btn flex flex-col items-center justify-center text-primary px-3 py-1 cursor-pointer transition-colors';
+    const activeIcon = btn.querySelector('.material-symbols-outlined');
+    if (activeIcon) activeIcon.classList.add('fill-1');
+  }
+</script>
+
+
+</body></html>

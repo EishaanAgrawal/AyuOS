@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Appearance - AyuOS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e0e3e2",
+            "tertiary": "#2e3f3c",
+            "on-background": "#181c1c",
+            "on-tertiary-fixed-variant": "#394a47",
+            "inverse-on-surface": "#eef1f0",
+            "outline-variant": "#bfc8c8",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#1b607f",
+            "error-container": "#ffdad6",
+            "primary-container": "#0f5c5e",
+            "on-primary-container": "#90d2d4",
+            "primary-fixed-dim": "#90d2d4",
+            "surface": "#f7faf9",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#b8cac7",
+            "surface-container-low": "#f1f4f3",
+            "surface-dim": "#d7dbda",
+            "on-secondary-fixed-variant": "#004c69",
+            "on-surface-variant": "#3f4949",
+            "primary": "#004345",
+            "surface-bright": "#f7faf9",
+            "secondary": "#226584",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#002021",
+            "inverse-primary": "#90d2d4",
+            "on-error": "#ffffff",
+            "tertiary-container": "#455653",
+            "on-primary-fixed-variant": "#004f51",
+            "primary-fixed": "#aceef0",
+            "on-secondary-fixed": "#001e2c",
+            "secondary-fixed": "#c4e7ff",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e6e9e8",
+            "surface-tint": "#21686a",
+            "background": "#f7faf9",
+            "surface-variant": "#e0e3e2",
+            "secondary-container": "#9dd9fd",
+            "inverse-surface": "#2d3131",
+            "tertiary-fixed": "#d4e6e3",
+            "outline": "#6f7979",
+            "on-tertiary-fixed": "#0e1e1c",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#ebeeed",
+            "on-error-container": "#93000a",
+            "on-surface": "#181c1c",
+            "on-tertiary-container": "#b8cac7",
+            "secondary-fixed-dim": "#92cef2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-sm": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "2.5rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "mono-data": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #bfc8c8;
+      border-radius: 4px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-full font-body-md antialiased select-none pb-24">
+<!-- Mobile Canvas Max Container -->
+<div class="w-full max-w-md mx-auto min-h-screen flex flex-col bg-surface shadow-sm relative">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin-sm pt-4 pb-3 flex items-center gap-3">
+<button aria-label="Go Back" class="w-9 h-9 -ml-1 rounded-full flex items-center justify-center text-primary active:scale-95 transition-transform duration-150 hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div>
+<h1 class="text-headline-sm font-headline-sm text-primary tracking-tight font-bold">Appearance</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Choose how AyuOS looks and feels.</p>
+</div>
+</header>
+<!-- Main Settings Form Canvas -->
+<main class="flex-1 px-margin-sm pt-2 space-y-5">
+<!-- SECTION 1: Theme -->
+<section class="space-y-2.5">
+<div>
+<h2 class="text-body-md font-label-md text-on-surface font-semibold">Theme</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Choose the appearance that is most comfortable for you.</p>
+</div>
+<!-- 3-Column Theme Picker -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Light Card -->
+<div class="cursor-pointer border-2 border-primary-container bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-200 relative shadow-sm" id="theme-light-card" onclick="selectTheme('light')">
+<div class="flex justify-end mb-1">
+<span class="w-4 h-4 rounded-full border-2 border-primary-container flex items-center justify-center" id="theme-light-radio">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</span>
+</div>
+<!-- Mock Visual -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-1.5 mb-2.5 flex flex-col gap-1 aspect-[4/3] justify-center overflow-hidden">
+<div class="w-3/4 h-2 rounded bg-primary-container"></div>
+<div class="w-1/2 h-1.5 rounded bg-surface-container-highest"></div>
+<div class="w-full h-1.5 rounded bg-surface-container-high"></div>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">Light</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Bright and clear interface.</p>
+</div>
+</div>
+<!-- Dark Card -->
+<div class="cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-200 relative hover:border-outline-variant" id="theme-dark-card" onclick="selectTheme('dark')">
+<div class="flex justify-end mb-1">
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center" id="theme-dark-radio">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</div>
+<!-- Mock Visual Dark -->
+<div class="bg-[#17232B] border border-[#2A3B46] rounded-lg p-1.5 mb-2.5 flex flex-col gap-1 aspect-[4/3] justify-center overflow-hidden">
+<div class="w-3/4 h-2 rounded bg-[#358E91]"></div>
+<div class="w-1/2 h-1.5 rounded bg-[#2A3D48]"></div>
+<div class="w-full h-1.5 rounded bg-[#23313B]"></div>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">Dark</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Comfortable in low-light conditions.</p>
+</div>
+</div>
+<!-- System Card -->
+<div class="cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-200 relative hover:border-outline-variant" id="theme-system-card" onclick="selectTheme('system')">
+<div class="flex justify-end mb-1">
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center" id="theme-system-radio">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</div>
+<!-- Mock Visual Split -->
+<div class="rounded-lg mb-2.5 flex aspect-[4/3] overflow-hidden border border-outline-variant/40">
+<div class="w-1/2 bg-surface-container-low p-1.5 flex flex-col gap-1 justify-center">
+<div class="w-full h-2 rounded bg-primary-container"></div>
+<div class="w-3/4 h-1.5 rounded bg-surface-container-highest"></div>
+</div>
+<div class="w-1/2 bg-[#17232B] p-1.5 flex flex-col gap-1 justify-center border-l border-outline-variant/30">
+<div class="w-full h-2 rounded bg-[#358E91]"></div>
+<div class="w-3/4 h-1.5 rounded bg-[#2A3D48]"></div>
+</div>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">System</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Follow your device appearance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Interface -->
+<section class="space-y-2">
+<div>
+<h2 class="text-body-md font-label-md text-on-surface font-semibold">Interface</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Adjust how the app looks across your device.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-3.5 space-y-3.5 divide-y divide-surface-container">
+<!-- Compact Layout Toggle -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">view_compact</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold">Compact Layout</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Fit more information on the screen.</p>
+</div>
+</div>
+<button aria-pressed="false" class="w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center" id="toggle-compact-btn" onclick="toggleSwitch('compact')" type="button">
+<span class="w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-0 transition-transform duration-200 ease-in-out" id="toggle-compact-knob"></span>
+</button>
+</div>
+<!-- Reduce Motion Toggle -->
+<div class="flex items-center justify-between pt-3.5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">slow_motion_video</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold">Reduce Motion</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Use simpler transitions and animations.</p>
+</div>
+</div>
+<button aria-pressed="false" class="w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center" id="toggle-motion-btn" onclick="toggleSwitch('motion')" type="button">
+<span class="w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-0 transition-transform duration-200 ease-in-out" id="toggle-motion-knob"></span>
+</button>
+</div>
+<!-- Show Animations Toggle (Default ON) -->
+<div class="flex items-center justify-between pt-3.5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold">Show Animations</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Use subtle animations throughout AyuOS.</p>
+</div>
+</div>
+<button aria-pressed="true" class="w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center" id="toggle-animations-btn" onclick="toggleSwitch('animations')" type="button">
+<span class="w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-5 transition-transform duration-200 ease-in-out" id="toggle-animations-knob"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: AyuOS Accent -->
+<section class="space-y-2">
+<div>
+<h2 class="text-body-md font-label-md text-on-surface font-semibold">AyuOS Accent</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">Choose the accent style used for buttons and active states.</p>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- Accent 1: AyuOS Teal (Active default) -->
+<div class="cursor-pointer border-2 border-primary-container bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-150" id="accent-teal-card" onclick="selectAccent('teal')">
+<div class="flex items-center justify-between mb-2">
+<span class="w-5 h-5 rounded-full bg-[#0F5C5E] ring-2 ring-white shadow-sm"></span>
+<span class="w-4 h-4 rounded-full border-2 border-primary-container flex items-center justify-center" id="accent-teal-radio">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">AyuOS Teal</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Calm and trusted.</p>
+</div>
+</div>
+<!-- Accent 2: Healthcare Blue -->
+<div class="cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-150 hover:border-outline-variant" id="accent-blue-card" onclick="selectAccent('blue')">
+<div class="flex items-center justify-between mb-2">
+<span class="w-5 h-5 rounded-full bg-[#226584] ring-2 ring-white shadow-sm"></span>
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center" id="accent-blue-radio">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">Healthcare Blue</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Clean and modern.</p>
+</div>
+</div>
+<!-- Accent 3: Soft Mint -->
+<div class="cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-150 hover:border-outline-variant" id="accent-mint-card" onclick="selectAccent('mint')">
+<div class="flex items-center justify-between mb-2">
+<span class="w-5 h-5 rounded-full bg-[#52A388] ring-2 ring-white shadow-sm"></span>
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center" id="accent-mint-radio">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm font-bold text-on-surface">Soft Mint</p>
+<p class="text-[11px] leading-3.5 text-on-surface-variant font-body-sm mt-0.5">Fresh and gentle.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Preview Live Container -->
+<section class="space-y-2">
+<div>
+<h2 class="text-body-md font-label-md text-on-surface font-semibold">Preview</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">See how your appearance settings will look.</p>
+</div>
+<!-- The Live Preview Canvas Frame -->
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-2xl p-4 transition-all duration-300" id="preview-container">
+<!-- Preview Header Banner -->
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight" id="preview-heading">Good morning!</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant" id="preview-subheading">How are you feeling today?</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-primary-container transition-colors duration-200 shadow-sm" id="preview-heart-badge">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<!-- Preview Items Grid -->
+<div class="grid grid-cols-2 gap-2.5" id="preview-grid">
+<!-- Health Summary (Span 2) -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3 flex items-center justify-between shadow-2xs hover:border-outline-variant transition-all" id="preview-item-1">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed/60 flex items-center justify-center text-primary-container shrink-0" id="preview-icon-bg-1">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md font-semibold text-on-surface leading-tight">Health Summary</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant text-[11px] leading-tight font-normal">All your health information in one place.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</div>
+<!-- Medicines -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-2.5 flex items-center justify-between shadow-2xs" id="preview-item-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed/60 flex items-center justify-center text-primary-container shrink-0" id="preview-icon-bg-2">
+<span class="material-symbols-outlined text-[16px]">pill</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface text-xs leading-tight truncate">Medicines</h4>
+<p class="text-[10px] text-on-surface-variant leading-tight truncate">View and manage</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</div>
+<!-- Appointments -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-2.5 flex items-center justify-between shadow-2xs" id="preview-item-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed/60 flex items-center justify-center text-primary-container shrink-0" id="preview-icon-bg-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface text-xs leading-tight truncate">Appointments</h4>
+<p class="text-[10px] text-on-surface-variant leading-tight truncate">Schedule & view</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</div>
+<!-- Test Results -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-2.5 flex items-center justify-between shadow-2xs" id="preview-item-4">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed/60 flex items-center justify-center text-primary-container shrink-0" id="preview-icon-bg-4">
+<span class="material-symbols-outlined text-[16px]">science</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface text-xs leading-tight truncate">Test Results</h4>
+<p class="text-[10px] text-on-surface-variant leading-tight truncate">View lab reports</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</div>
+<!-- Care Team -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-2.5 flex items-center justify-between shadow-2xs" id="preview-item-5">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed/60 flex items-center justify-center text-primary-container shrink-0" id="preview-icon-bg-5">
+<span class="material-symbols-outlined text-[16px]">diversity_1</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface text-xs leading-tight truncate">Care Team</h4>
+<p class="text-[10px] text-on-surface-variant leading-tight truncate">Stay connected</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: Helpful Information Notice -->
+<section class="bg-tertiary-fixed/30 border border-tertiary-fixed-dim/40 rounded-2xl p-3 flex items-start gap-2.5 mb-6">
+<div class="w-6 h-6 rounded-full bg-primary text-surface flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">info</span>
+</div>
+<div class="text-label-sm font-label-sm leading-relaxed">
+<p class="text-primary font-semibold">You can change these settings anytime.</p>
+<p class="text-on-surface-variant font-normal">Your appearance preferences apply across the entire AyuOS app.</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component: Destination "More" active) -->
+<!-- Prohibiting top/bottom border line as per mandate, using subtle elevation shadow instead -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md max-w-md mx-auto right-0">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</a>
+<!-- Tab 2: Records -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</a>
+<!-- Tab 3: Medicines -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5">Medicines</span>
+</a>
+<!-- Tab 4: Care -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</a>
+<!-- Tab 5: More (Active State strictly applied from JSON style_active_navigation) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5">More</span>
+</a>
+</nav>
+</div>
+<!-- Interactive State Engine -->
+<script>
+    let currentTheme = 'light';
+    let currentAccent = 'teal';
+    let isCompact = false;
+    let isReduceMotion = false;
+    let isShowAnimations = true;
+
+    const accentConfigs = {
+      teal: {
+        activeClass: '#0F5C5E',
+        badgeBg: '#DCEFEA',
+        iconBg: '#E6F4F0',
+        textColor: '#0F5C5E',
+        toggleBg: 'bg-primary-container'
+      },
+      blue: {
+        activeClass: '#226584',
+        badgeBg: '#D8ECF8',
+        iconBg: '#E2F2FC',
+        textColor: '#226584',
+        toggleBg: 'bg-secondary'
+      },
+      mint: {
+        activeClass: '#3E8068',
+        badgeBg: '#E1F5ED',
+        iconBg: '#EBF8F2',
+        textColor: '#2C6E56',
+        toggleBg: 'bg-[#3E8068]'
+      }
+    };
+
+    function selectTheme(theme) {
+      currentTheme = theme;
+      
+      const themes = ['light', 'dark', 'system'];
+      themes.forEach(t => {
+        const card = document.getElementById(`theme-${t}-card`);
+        const radio = document.getElementById(`theme-${t}-radio`);
+        const isSelected = (t === theme);
+
+        if (isSelected) {
+          card.className = "cursor-pointer border-2 border-primary-container bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-200 relative shadow-sm";
+          radio.className = "w-4 h-4 rounded-full border-2 border-primary-container flex items-center justify-center";
+          radio.innerHTML = '<span class="w-2 h-2 rounded-full bg-primary-container"></span>';
+        } else {
+          card.className = "cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-200 relative hover:border-outline-variant";
+          radio.className = "w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center";
+          radio.innerHTML = '<span class="w-2 h-2 rounded-full bg-transparent"></span>';
+        }
+      });
+
+      // Update Preview Box Styling
+      const preview = document.getElementById('preview-container');
+      const heading = document.getElementById('preview-heading');
+      const subheading = document.getElementById('preview-subheading');
+      const items = [1, 2, 3, 4, 5].map(id => document.getElementById(`preview-item-${id}`));
+
+      if (theme === 'dark') {
+        preview.style.backgroundColor = '#16222A';
+        preview.style.borderColor = '#2B3D49';
+        heading.style.color = '#FFFFFF';
+        subheading.style.color = '#94A3B8';
+        items.forEach(el => {
+          el.style.backgroundColor = '#1E2D38';
+          el.style.borderColor = '#2A3C47';
+        });
+      } else {
+        preview.style.backgroundColor = '';
+        preview.style.borderColor = '';
+        heading.style.color = '';
+        subheading.style.color = '';
+        items.forEach(el => {
+          el.style.backgroundColor = '';
+          el.style.borderColor = '';
+        });
+      }
+    }
+
+    function selectAccent(accent) {
+      currentAccent = accent;
+      const accents = ['teal', 'blue', 'mint'];
+
+      accents.forEach(a => {
+        const card = document.getElementById(`accent-${a}-card`);
+        const radio = document.getElementById(`accent-${a}-radio`);
+        const isSelected = (a === accent);
+
+        if (isSelected) {
+          card.className = "cursor-pointer border-2 border-primary-container bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-150 shadow-sm";
+          radio.className = "w-4 h-4 rounded-full border-2 border-primary-container flex items-center justify-center";
+          radio.innerHTML = '<span class="w-2 h-2 rounded-full bg-primary-container"></span>';
+        } else {
+          card.className = "cursor-pointer border border-outline-variant/60 bg-surface-container-lowest rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-150 hover:border-outline-variant";
+          radio.className = "w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center";
+          radio.innerHTML = '<span class="w-2 h-2 rounded-full bg-transparent"></span>';
+        }
+      });
+
+      // Update Preview elements with selected accent
+      const cfg = accentConfigs[accent];
+      const heartBadge = document.getElementById('preview-heart-badge');
+      heartBadge.style.backgroundColor = cfg.badgeBg;
+      heartBadge.style.color = cfg.activeClass;
+
+      for (let i = 1; i <= 5; i++) {
+        const iconBg = document.getElementById(`preview-icon-bg-${i}`);
+        if (iconBg) {
+          iconBg.style.backgroundColor = cfg.iconBg;
+          iconBg.style.color = cfg.activeClass;
+        }
+      }
+    }
+
+    function toggleSwitch(type) {
+      if (type === 'compact') {
+        isCompact = !isCompact;
+        const btn = document.getElementById('toggle-compact-btn');
+        const knob = document.getElementById('toggle-compact-knob');
+        if (isCompact) {
+          btn.className = "w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-5 transition-transform duration-200 ease-in-out";
+          // Visually compress preview
+          document.getElementById('preview-grid').className = "grid grid-cols-2 gap-1.5";
+          document.getElementById('preview-container').classList.add('p-2.5');
+          document.getElementById('preview-container').classList.remove('p-4');
+        } else {
+          btn.className = "w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-0 transition-transform duration-200 ease-in-out";
+          // Revert standard preview padding
+          document.getElementById('preview-grid').className = "grid grid-cols-2 gap-2.5";
+          document.getElementById('preview-container').classList.add('p-4');
+          document.getElementById('preview-container').classList.remove('p-2.5');
+        }
+      }
+
+      if (type === 'motion') {
+        isReduceMotion = !isReduceMotion;
+        const btn = document.getElementById('toggle-motion-btn');
+        const knob = document.getElementById('toggle-motion-knob');
+        if (isReduceMotion) {
+          btn.className = "w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-5 transition-transform duration-200 ease-in-out";
+        } else {
+          btn.className = "w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-0 transition-transform duration-200 ease-in-out";
+        }
+      }
+
+      if (type === 'animations') {
+        isShowAnimations = !isShowAnimations;
+        const btn = document.getElementById('toggle-animations-btn');
+        const knob = document.getElementById('toggle-animations-knob');
+        if (isShowAnimations) {
+          btn.className = "w-11 h-6 bg-primary-container rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-5 transition-transform duration-200 ease-in-out";
+        } else {
+          btn.className = "w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none flex items-center";
+          knob.className = "w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-0 transition-transform duration-200 ease-in-out";
+        }
+      }
+    }
+  </script>
+</body></html>

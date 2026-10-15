@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>AyuOS - Profile &amp; Settings</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ayu: {
+              teal: '#0F5C5E',
+              tealDark: '#0B4547',
+              blue: '#2F6F8F',
+              mint: '#DCEFEB',
+              mintLight: '#E8F5F2',
+              bg: '#F6F9F8',
+              navy: '#173042',
+              muted: '#60717A',
+              border: '#DCE5E7',
+              red: '#C65D5D',
+              redLight: '#FDF1F1'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="custom-scroll-and-tap">
+    /* Remove default tap highlight and customize scrollbar behavior */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #ECEFEF;
+    }
+    /* Hide scrollbars while preserving full scrollability */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-ayu-navy flex justify-center min-h-screen">
+<!-- Main Mobile Container -->
+<div class="w-full max-w-md bg-[#F6F9F8] min-h-screen flex flex-col relative pb-24 shadow-xl">
+<!-- BEGIN: HeaderSection -->
+<header class="pt-6 pb-2 px-5 sticky top-0 bg-[#F6F9F8]/95 backdrop-blur-sm z-30 transition-all">
+<div class="flex items-start gap-3">
+<!-- Back Arrow Button -->
+<button aria-label="Go back to More" class="mt-1 p-1 -ml-1 text-ayu-navy hover:text-ayu-teal active:scale-95 transition-transform" type="button">
+<svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Header Title & Subtitle -->
+<div class="flex-1">
+<h1 class="text-2xl font-bold tracking-tight text-ayu-navy">Profile &amp; Settings</h1>
+<p class="text-xs text-ayu-muted font-normal mt-0.5 leading-snug">
+            Manage your account, security, preferences and accessibility.
+          </p>
+</div>
+</div>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-4 py-2 space-y-5">
+<!-- BEGIN: ProfileSummaryCard -->
+<section data-purpose="user-profile-summary">
+<div class="bg-white rounded-2xl p-4 border border-ayu-border shadow-[0_2px_4px_rgba(0,0,0,0.02)] flex items-center gap-4">
+<!-- User Avatar with initials -->
+<div aria-label="User Avatar: ES" class="w-14 h-14 rounded-full bg-ayu-mint flex items-center justify-center shrink-0">
+<span class="text-ayu-teal font-bold text-lg tracking-wide">ES</span>
+</div>
+<!-- User Details and Action -->
+<div class="flex-1 min-w-0">
+<h2 class="text-base font-semibold text-ayu-navy truncate leading-tight">Eishaan Shah</h2>
+<p class="text-xs text-ayu-muted truncate mt-0.5">eishaan.shah@vitapstudent.ac.in</p>
+<div class="mt-2">
+<a class="inline-flex items-center gap-1 px-3 py-1 bg-ayu-mint/70 hover:bg-ayu-mint text-ayu-teal text-xs font-medium rounded-full transition-colors active:scale-95" href="#edit-profile">
+<span class="">Edit Profile</span>
+<svg class="w-3.5 h-3.5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProfileSummaryCard -->
+<!-- BEGIN: AccountSection -->
+<section data-purpose="settings-group-account">
+<h3 class="text-sm font-bold text-ayu-navy px-1 mb-2">Account</h3>
+<div class="bg-white rounded-2xl border border-ayu-border divide-y divide-ayu-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Personal Information Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#personal-info">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Personal Information</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">View and update your personal details.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Connected Accounts Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#connected-accounts">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l-3-3m3 3l-3 3M4.5 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Connected Accounts</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Manage connected devices and accounts.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Health Data Preferences Row -->
+
+</div>
+</section>
+<!-- END: AccountSection -->
+<!-- BEGIN: SecurityAndPrivacySection -->
+<section data-purpose="settings-group-security">
+<h3 class="text-sm font-bold text-ayu-navy px-1 mb-2">Security &amp; Privacy</h3>
+<div class="bg-white rounded-2xl border border-ayu-border divide-y divide-ayu-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Password & Security Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#password-security">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Password &amp; Security</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Manage your password and account security.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Privacy & Permissions Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#privacy-permissions">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Privacy &amp; Permissions</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Control your data and app permissions.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Data & Sharing Row -->
+
+</div>
+</section>
+<!-- END: SecurityAndPrivacySection -->
+<!-- BEGIN: AccessibilitySection -->
+<section data-purpose="settings-group-accessibility">
+<h3 class="text-sm font-bold text-ayu-navy px-1 mb-2">Accessibility</h3>
+<div class="bg-white rounded-2xl border border-ayu-border divide-y divide-ayu-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Senior Mode Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#senior-mode">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Senior Mode</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Simpler interface with larger text and easier navigation.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Text Size Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#text-size">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0 font-bold text-sm tracking-tighter">
+              Aa
+            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Text Size</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Adjust text size for better readability.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Voice Assistance Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#voice-assistance">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15a3 3 0 003-3V6.75a3 3 0 00-6 0V12a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Voice Assistance</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Enable voice commands and voice navigation.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</section>
+<!-- END: AccessibilitySection -->
+<!-- BEGIN: AppPreferencesSection -->
+<section data-purpose="settings-group-preferences">
+<h3 class="text-sm font-bold text-ayu-navy px-1 mb-2">App Preferences</h3>
+<div class="bg-white rounded-2xl border border-ayu-border divide-y divide-ayu-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Notifications Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#notifications">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Notifications</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Manage your notification preferences.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Appearance Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#appearance">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l9.75 9.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Appearance</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Choose your theme and display settings.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Language Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#language">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Language</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Select your preferred language.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</section>
+<!-- END: AppPreferencesSection -->
+<!-- BEGIN: SupportAndAboutSection -->
+<section data-purpose="settings-group-support">
+<h3 class="text-sm font-bold text-ayu-navy px-1 mb-2">Support &amp; About</h3>
+<div class="bg-white rounded-2xl border border-ayu-border divide-y divide-ayu-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Help & Support Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#help-support">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">Help &amp; Support</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Get help, contact support or view FAQs.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- About AyuOS Row -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50/75 transition-colors group" href="#about-os">
+<div class="w-9 h-9 rounded-full bg-ayu-mintLight flex items-center justify-center text-ayu-teal shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-navy leading-snug group-hover:text-ayu-teal transition-colors">About AyuOS</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">App version, terms and privacy policy.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Sign Out Row (Critical Color Highlight) -->
+<a class="flex items-center gap-3.5 px-4 py-3 hover:bg-red-50/40 transition-colors group" href="#signout">
+<div class="w-9 h-9 rounded-full bg-ayu-redLight flex items-center justify-center text-ayu-red shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-ayu-red leading-snug">Sign Out</p>
+<p class="text-xs text-ayu-muted leading-tight mt-0.5">Sign out from your account.</p>
+</div>
+<svg class="w-4 h-4 text-ayu-muted/80 stroke-[2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</section>
+<!-- END: SupportAndAboutSection -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-ayu-border/80">
+<div class="max-w-md mx-auto px-3 pt-2 pb-5 flex items-center justify-between">
+<!-- Home Tab -->
+<a class="flex flex-col items-center flex-1 text-ayu-muted hover:text-ayu-teal transition-colors py-1 group" href="#home">
+<svg class="w-6 h-6 stroke-[1.8] group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1 text-slate-500 group-hover:text-ayu-teal">Home</span>
+</a>
+<!-- Records Tab -->
+<a class="flex flex-col items-center flex-1 text-ayu-muted hover:text-ayu-teal transition-colors py-1 group" href="#records">
+<svg class="w-6 h-6 stroke-[1.8] group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1 text-slate-500 group-hover:text-ayu-teal">Records</span>
+</a>
+<!-- Medicines Tab -->
+<a class="flex flex-col items-center flex-1 text-ayu-muted hover:text-ayu-teal transition-colors py-1 group" href="#medicines">
+<svg class="w-6 h-6 stroke-[1.8] group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1 text-slate-500 group-hover:text-ayu-teal">Medicines</span>
+</a>
+<!-- Care Tab -->
+<a class="flex flex-col items-center flex-1 text-ayu-muted hover:text-ayu-teal transition-colors py-1 group" href="#care">
+<svg class="w-6 h-6 stroke-[1.8] group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1 text-slate-500 group-hover:text-ayu-teal">Care</span>
+</a>
+<!-- More Tab (Active) -->
+<a class="flex flex-col items-center flex-1 text-ayu-teal py-1 group" href="#more">
+<div class="relative">
+<svg class="w-6 h-6 stroke-[2]" fill="currentColor" stroke="none" viewBox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</div>
+<span class="text-[11px] font-bold tracking-tight mt-1 text-ayu-teal">More</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNavigation -->
+</div>
+
+
+</body></html>

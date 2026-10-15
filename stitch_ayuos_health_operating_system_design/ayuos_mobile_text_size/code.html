@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Text Size - AyuOS Settings</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#ebeeed",
+            "tertiary-fixed": "#d4e6e3",
+            "on-primary-fixed-variant": "#004f51",
+            "tertiary-container": "#455653",
+            "outline": "#6f7979",
+            "secondary-fixed-dim": "#92cef2",
+            "surface-bright": "#f7faf9",
+            "on-tertiary-fixed-variant": "#394a47",
+            "on-tertiary-fixed": "#0e1e1c",
+            "on-primary-fixed": "#002021",
+            "on-secondary-fixed-variant": "#004c69",
+            "inverse-surface": "#2d3131",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4949",
+            "secondary-fixed": "#c4e7ff",
+            "surface-variant": "#e0e3e2",
+            "on-error-container": "#93000a",
+            "surface-container-highest": "#e0e3e2",
+            "on-primary": "#ffffff",
+            "surface-container-low": "#f1f4f3",
+            "on-secondary-fixed": "#001e2c",
+            "on-tertiary-container": "#b8cac7",
+            "outline-variant": "#bfc8c8",
+            "primary-container": "#0f5c5e",
+            "primary": "#004345",
+            "primary-fixed-dim": "#90d2d4",
+            "on-surface": "#181c1c",
+            "tertiary": "#2e3f3c",
+            "surface-dim": "#d7dbda",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#181c1c",
+            "surface": "#f7faf9",
+            "on-secondary-container": "#1b607f",
+            "surface-tint": "#21686a",
+            "background": "#f7faf9",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#eef1f0",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e6e9e8",
+            "primary-fixed": "#aceef0",
+            "on-tertiary": "#ffffff",
+            "secondary": "#226584",
+            "secondary-container": "#9dd9fd",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#90d2d4",
+            "on-primary-container": "#90d2d4",
+            "tertiary-fixed-dim": "#b8cac7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "2.5rem",
+            "margin-sm": "1.25rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Inter"],
+            "display-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.25rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em", fontWeight: "500" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "display-lg-mobile": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-md": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-lg": ["2rem", { lineHeight: "2.5rem", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "mono-data": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "-0.01em", fontWeight: "500" }],
+            "headline-lg-mobile": ["1.625rem", { lineHeight: "2.125rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-lg": ["3rem", { lineHeight: "3.5rem", letterSpacing: "-0.025em", fontWeight: "600" }],
+            "label-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.01em", fontWeight: "500" }],
+            "label-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "600" }],
+            "body-sm": ["0.875rem", { lineHeight: "1.375rem", letterSpacing: "0.005em", fontWeight: "400" }],
+            "body-md": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    body {
+      background-color: #f7faf9;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Smooth scaling transitions */
+    .preview-scalable {
+      transition: font-size 0.2s ease, line-height 0.2s ease;
+    }
+  </style>
+</head>
+<body class="bg-[#f7faf9] min-h-screen text-on-surface m-0 p-0 flex flex-col relative w-full antialiased">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 px-margin-sm pt-3 pb-3 flex items-start gap-3 bg-surface-bright/95 backdrop-blur-sm border-b border-surface-container select-none z-20">
+<button aria-label="Go back" class="mt-1 w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div class="flex-1">
+<h1 class="text-headline-sm font-headline-sm text-primary font-bold tracking-tight">Text Size</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Adjust the text size to make AyuOS easier to read.</p>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-sm py-4 space-y-4 pb-28">
+<!-- Section: Choose Text Size -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 shadow-sm">
+<div class="mb-3">
+<h2 class="text-label-md font-label-md text-on-surface font-semibold">Choose Text Size</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Select the text size that is comfortable for you.</p>
+</div>
+<div aria-label="Text Size Options" class="space-y-2.5" role="radiogroup">
+<!-- Small Option -->
+<div class="size-card cursor-pointer flex items-center justify-between p-3 rounded-xl border border-outline-variant hover:border-primary-container transition-all duration-150 active:scale-[0.99] bg-surface-container-lowest" data-size="small">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-semibold text-xs shrink-0">
+Aa
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold leading-snug">Small</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[12px] leading-tight">Smaller text size for a more compact view.</p>
+</div>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 ml-2">
+<div class="radio-dot w-3 h-3 rounded-full bg-primary hidden"></div>
+</div>
+</div>
+<!-- Medium Option -->
+<div class="size-card cursor-pointer flex items-center justify-between p-3 rounded-xl border border-outline-variant hover:border-primary-container transition-all duration-150 active:scale-[0.99] bg-surface-container-lowest" data-size="medium">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-semibold text-sm shrink-0">
+Aa
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold leading-snug">Medium</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[12px] leading-tight">Standard text size (default).</p>
+</div>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 ml-2">
+<div class="radio-dot w-3 h-3 rounded-full bg-primary hidden"></div>
+</div>
+</div>
+<!-- Large Option (Default Selected) -->
+<div class="size-card cursor-pointer flex items-center justify-between p-3 rounded-xl border-2 border-primary-container bg-tertiary-fixed/30 transition-all duration-150 active:scale-[0.99]" data-size="large">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-base shrink-0">
+Aa
+</div>
+<div>
+<p class="text-label-md font-label-md text-primary font-bold leading-snug">Large</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[12px] leading-tight">Larger text size for easier reading.</p>
+</div>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center shrink-0 ml-2">
+<div class="radio-dot w-3 h-3 rounded-full bg-primary-container"></div>
+</div>
+</div>
+<!-- Extra Large Option -->
+<div class="size-card cursor-pointer flex items-center justify-between p-3 rounded-xl border border-outline-variant hover:border-primary-container transition-all duration-150 active:scale-[0.99] bg-surface-container-lowest" data-size="xlarge">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-lg shrink-0">
+Aa
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold leading-snug">Extra Large</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[12px] leading-tight">Extra large text size for maximum readability.</p>
+</div>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 ml-2">
+<div class="radio-dot w-3 h-3 rounded-full bg-primary hidden"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Preview -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 shadow-sm">
+<div class="mb-3">
+<h2 class="text-label-md font-label-md text-on-surface font-semibold">Preview</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">See how the text will look in the app.</p>
+</div>
+<!-- Miniature AyuOS Home View Container -->
+<div class="bg-surface-container-low/70 rounded-2xl p-4 border border-outline-variant/60 shadow-inner" id="previewCard">
+<!-- Greeting Card Banner -->
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="preview-scalable font-headline-md text-headline-md text-primary font-bold leading-tight" id="previewGreeting" style="font-size: 1.45rem;">Good morning!</h3>
+<p class="preview-scalable font-body-md text-body-md text-on-surface-variant mt-0.5" id="previewSubtitle" style="font-size: 0.95rem;">How are you feeling today?</p>
+</div>
+<div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-xs shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-weight="fill">favorite</span>
+</div>
+</div>
+<!-- 2x2 Grid of Primary Health Actions -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Tile 1: Health Records -->
+<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/60 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">description</span>
+<span class="preview-scalable text-label-md font-label-md text-primary font-semibold truncate leading-tight" id="labelRecords" style="font-size: 0.925rem;">Health Records</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">chevron_right</span>
+</div>
+<!-- Tile 2: Medicines -->
+<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/60 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">medication</span>
+<span class="preview-scalable text-label-md font-label-md text-primary font-semibold truncate leading-tight" id="labelMedicines" style="font-size: 0.925rem;">Medicines</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">chevron_right</span>
+</div>
+<!-- Tile 3: Care -->
+<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/60 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">group</span>
+<span class="preview-scalable text-label-md font-label-md text-primary font-semibold truncate leading-tight" id="labelCare" style="font-size: 0.925rem;">Care</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">chevron_right</span>
+</div>
+<!-- Tile 4: Appointments -->
+<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/60 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">event</span>
+<span class="preview-scalable text-label-md font-label-md text-primary font-semibold truncate leading-tight" id="labelAppts" style="font-size: 0.925rem;">Appointments</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Information Card -->
+<section class="bg-surface-container-low rounded-xl p-3.5 border border-outline-variant flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">info</span>
+</div>
+<div class="text-on-surface text-[13px] leading-snug">
+<p class="font-semibold text-primary">You can change the text size anytime.</p>
+<p class="text-on-surface-variant text-[12px] mt-0.5">This setting will update the text size across the entire app.</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Fixed docked at bottom, 100% full bleed) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md select-none border-t border-surface-container">
+<!-- Tab 1: Home -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs cursor-pointer hover:bg-surface-container-low transition-colors duration-150 active:scale-95 ease-out">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</div>
+<!-- Tab 2: Records -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs cursor-pointer hover:bg-surface-container-low transition-colors duration-150 active:scale-95 ease-out">
+<span class="material-symbols-outlined text-[24px]">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</div>
+<!-- Tab 3: Medicines -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs cursor-pointer hover:bg-surface-container-low transition-colors duration-150 active:scale-95 ease-out">
+<span class="material-symbols-outlined text-[24px]">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5">Medicines</span>
+</div>
+<!-- Tab 4: Care -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs cursor-pointer hover:bg-surface-container-low transition-colors duration-150 active:scale-95 ease-out">
+<span class="material-symbols-outlined text-[24px]">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</div>
+<!-- Tab 5: More (Active) -->
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs cursor-pointer active:scale-95 transition-transform duration-150 ease-out">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5">More</span>
+</div>
+</nav>
+<!-- Interactive Logic for dynamic radio switching & preview scaling -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.size-card');
+      const greeting = document.getElementById('previewGreeting');
+      const subtitle = document.getElementById('previewSubtitle');
+      const tileLabels = [
+        document.getElementById('labelRecords'),
+        document.getElementById('labelMedicines'),
+        document.getElementById('labelCare'),
+        document.getElementById('labelAppts')
+      ];
+
+      const scaleMap = {
+        small: {
+          greeting: '1.125rem',
+          subtitle: '0.8125rem',
+          tiles: '0.75rem'
+        },
+        medium: {
+          greeting: '1.25rem',
+          subtitle: '0.875rem',
+          tiles: '0.875rem'
+        },
+        large: {
+          greeting: '1.45rem',
+          subtitle: '0.95rem',
+          tiles: '0.925rem'
+        },
+        xlarge: {
+          greeting: '1.65rem',
+          subtitle: '1.05rem',
+          tiles: '1rem'
+        }
+      };
+
+      function applyScale(sizeKey) {
+        const conf = scaleMap[sizeKey];
+        if (!conf) return;
+
+        greeting.style.fontSize = conf.greeting;
+        subtitle.style.fontSize = conf.subtitle;
+        tileLabels.forEach(label => {
+          if (label) label.style.fontSize = conf.tiles;
+        });
+      }
+
+      // Initial application (Large)
+      applyScale('large');
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const selectedSize = card.getAttribute('data-size');
+
+          // Reset all cards to unselected state
+          cards.forEach(c => {
+            c.classList.remove('border-2', 'border-primary-container', 'bg-tertiary-fixed/30');
+            c.classList.add('border', 'border-outline-variant', 'bg-surface-container-lowest');
+
+            const avatar = c.querySelector('.w-10');
+            if (avatar) {
+              avatar.classList.remove('bg-primary-container', 'text-on-primary-container');
+              avatar.classList.add('bg-surface-container', 'text-primary');
+            }
+
+            const title = c.querySelector('p:first-child');
+            if (title) {
+              title.classList.remove('text-primary', 'font-bold');
+              title.classList.add('text-on-surface', 'font-semibold');
+            }
+
+            const indicator = c.querySelector('.radio-indicator');
+            if (indicator) {
+              indicator.classList.remove('border-primary-container');
+              indicator.classList.add('border-outline-variant');
+            }
+
+            const dot = c.querySelector('.radio-dot');
+            if (dot) {
+              dot.classList.add('hidden');
+              dot.classList.remove('bg-primary-container');
+            }
+          });
+
+          // Set active state on clicked card
+          card.classList.remove('border', 'border-outline-variant', 'bg-surface-container-lowest');
+          card.classList.add('border-2', 'border-primary-container', 'bg-tertiary-fixed/30');
+
+          const activeAvatar = card.querySelector('.w-10');
+          if (activeAvatar) {
+            activeAvatar.classList.remove('bg-surface-container', 'text-primary');
+            activeAvatar.classList.add('bg-primary-container', 'text-on-primary-container');
+          }
+
+          const activeTitle = card.querySelector('p:first-child');
+          if (activeTitle) {
+            activeTitle.classList.remove('text-on-surface', 'font-semibold');
+            activeTitle.classList.add('text-primary', 'font-bold');
+          }
+
+          const activeIndicator = card.querySelector('.radio-indicator');
+          if (activeIndicator) {
+            activeIndicator.classList.remove('border-outline-variant');
+            activeIndicator.classList.add('border-primary-container');
+          }
+
+          const activeDot = card.querySelector('.radio-dot');
+          if (activeDot) {
+            activeDot.classList.remove('hidden');
+            activeDot.classList.add('bg-primary-container');
+          }
+
+          // Dynamically scale preview text
+          applyScale(selectedSize);
+        });
+      });
+    });
+  </script>
+</body></html>

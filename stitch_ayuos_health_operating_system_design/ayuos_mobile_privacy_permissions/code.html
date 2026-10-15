@@ -1,0 +1,339 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Privacy &amp; Permissions - AyuOS</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<!-- Google Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#0e1e1c",
+            "surface-variant": "#e0e3e2",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#0f5c5e",
+            "surface-bright": "#f7faf9",
+            "on-surface": "#181c1c",
+            "surface-container": "#ebeeed",
+            "on-tertiary-fixed-variant": "#394a47",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-background": "#181c1c",
+            "on-primary-container": "#90d2d4",
+            "primary": "#004345",
+            "on-primary-fixed": "#002021",
+            "primary-fixed": "#aceef0",
+            "surface": "#f7faf9",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f1f4f3",
+            "surface-dim": "#d7dbda",
+            "tertiary-fixed-dim": "#b8cac7",
+            "on-surface-variant": "#3f4949",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#001e2c",
+            "on-secondary-container": "#1b607f",
+            "primary-fixed-dim": "#90d2d4",
+            "secondary-container": "#9dd9fd",
+            "secondary-fixed-dim": "#92cef2",
+            "error": "#ba1a1a",
+            "outline": "#6f7979",
+            "on-primary-fixed-variant": "#004f51",
+            "tertiary-container": "#455653",
+            "on-tertiary-container": "#b8cac7",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#c4e7ff",
+            "surface-container-high": "#e6e9e8",
+            "tertiary-fixed": "#d4e6e3",
+            "surface-tint": "#21686a",
+            "inverse-surface": "#2d3131",
+            "on-secondary-fixed-variant": "#004c69",
+            "background": "#f7faf9",
+            "outline-variant": "#bfc8c8",
+            "surface-container-highest": "#e0e3e2",
+            "inverse-on-surface": "#eef1f0",
+            "secondary": "#226584",
+            "tertiary": "#2e3f3c",
+            "inverse-primary": "#90d2d4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "margin-sm": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "margin": "2.5rem",
+            "gutter-sm": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "mono-data": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Smooth iOS momentum scroll */
+    .smooth-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Screen Container -->
+<main class="w-full max-w-[430px] min-h-screen bg-surface flex flex-col relative pb-28 shadow-2xl">
+<!-- iOS Status Bar -->
+<header class="w-full px-7 pt-3.5 pb-2 flex justify-between items-center text-on-surface select-none z-30">
+<time class="font-label-md text-label-md font-semibold text-on-surface">9:41</time>
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-lg leading-none" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-lg leading-none" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-xl leading-none rotate-90" data-icon="battery_full">battery_full</span>
+</div>
+</header>
+<!-- Navigation Header & Title -->
+<div class="px-5 pt-2 pb-4">
+<a aria-label="Go back to More" class="inline-flex items-center justify-center -ml-2 p-2 rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150" href="#more">
+<span class="material-symbols-outlined text-2xl font-medium" data-icon="arrow_back_ios_new">arrow_back_ios_new</span>
+</a>
+<div class="mt-2">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface tracking-tight font-bold">
+          Privacy &amp; Permissions
+        </h1>
+<p class="mt-1 text-body-sm font-body-sm text-on-surface-variant leading-snug">
+          Manage whose health you can access and who can access your health.
+        </p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 px-4 space-y-4">
+<!-- SECTION 1: WHOSE ACCESS I HAVE -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-surface-variant/70 shadow-sm transition-all">
+<!-- Section Header -->
+<div class="flex items-start justify-between pb-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary mt-0.5 shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="group" data-weight="fill" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div>
+<h2 class="text-body-lg font-headline-sm font-semibold text-on-surface">Whose Access I Have</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">People whose health information you can access.</p>
+</div>
+</div>
+<button aria-label="Add person to access" class="w-8 h-8 rounded-full border border-surface-variant flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary active:scale-90 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-xl font-medium" data-icon="add">add</span>
+</button>
+</div>
+<!-- People List -->
+<div class="divide-y divide-surface-container-high/60">
+<!-- Mummy -->
+<article class="py-3.5 first:pt-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover shrink-0 ring-1 ring-surface-container-high" data-alt="Close up warm portrait photo of a smiling middle-aged Indian mother with gentle eyes and soft lighting, wearing an elegant neutral pastel outfit, set against a calm minimalist interior with light green tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNUCHBmk9fJr_APc4SiVYqSDWbX1kXK0PjVZcjpYR5B8GaebrPhhyOxw9ln2GzOFD8vPUWB26qrSzKBk1-3Xaq5hZhKsOEKqROv76sEwtrN-49Mxfp_uRiwIkV6qYceKPWDNxxcpmqDFQS-xMydbpNwnx7xdxw4sp94_gwqGsoP5mmClCmM4MLNyZhNxYizbGEPjjG7nf0IHZcu5jYeE-bkFghZwSxOXwLDpWDKmc">
+<div>
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface leading-tight">Mummy</h3>
+<span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-medium bg-tertiary-fixed text-primary">
+                    Full Access
+                  </span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container active:scale-95 transition-all shrink-0" href="#view-health-mummy">
+<span>View Health</span>
+<span class="material-symbols-outlined text-base font-semibold" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<p class="mt-2 text-label-sm font-body-sm text-on-surface-variant leading-relaxed">
+              You can view and add data for Mummy. You can also manage what Mummy can see.
+            </p>
+</article>
+<!-- Daddy -->
+<article class="py-3.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover shrink-0 ring-1 ring-surface-container-high" data-alt="Warm documentary portrait of a smiling senior Indian gentleman with silver hair and wire-rim glasses, wearing a light blue collared shirt, softly lit in a tranquil contemporary health-clinic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPyG2bPfmY7mNULPqigwWx2id5G8_PdSt8ppAQQN3aMiuhzFrL8hZz5ieE6uBSJ7F1hhy7lcMg_J3SHPkYduRgyEfbX9E4JVDH7PjS8TcIvcaFsN8BqWqfYhAM1ZrOelAuADLrv-cGjZi_Qj4iWKNwGGO-qDnQ77BJLLeAwNbKWXjb8yFfU_bW2CQ2Dk-27nSbxQGcMKJnjczdH0z5CD1QgNMe7zMCrPOnJNDmaSw">
+<div>
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface leading-tight">Daddy</h3>
+<span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-medium bg-secondary-fixed/50 text-secondary">
+                    Limited Access
+                  </span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container active:scale-95 transition-all shrink-0" href="#view-health-daddy">
+<span>View Health</span>
+<span class="material-symbols-outlined text-base font-semibold" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<p class="mt-2 text-label-sm font-body-sm text-on-surface-variant leading-relaxed">
+              You can view and add data for Daddy. You cannot manage Daddy's visibility.
+            </p>
+</article>
+</div>
+<!-- Section 1 Note Container -->
+<aside class="mt-2.5 rounded-xl bg-surface-container-low p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5 shrink-0" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-label-sm font-body-sm text-on-surface-variant leading-normal">
+            You can always add lab reports, prescriptions and other health information for people whose health you can access. The updates will be reflected in their AyuOS account.
+          </p>
+</aside>
+</section>
+<!-- SECTION 2: WHO CAN ACCESS MY HEALTH -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-surface-variant/70 shadow-sm transition-all">
+<!-- Section Header -->
+<div class="flex items-start justify-between pb-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary mt-0.5 shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="verified_user" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h2 class="text-body-lg font-headline-sm font-semibold text-on-surface">Who Can Access My Health</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-normal">People you have given access to your health information.</p>
+</div>
+</div>
+<button aria-label="Grant access to another person" class="w-8 h-8 rounded-full border border-surface-variant flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary active:scale-90 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-xl font-medium" data-icon="add">add</span>
+</button>
+</div>
+<!-- People List -->
+<div class="divide-y divide-surface-container-high/60">
+<!-- Mummy -->
+<article class="py-3.5 first:pt-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover shrink-0 ring-1 ring-surface-container-high" data-alt="Gentle portrait of a middle-aged South Asian mother with hair tied back and warm approachable smile, framed in natural soft ambient light against a tranquil clean neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcI0tknpmp70CXdXuffm40hA8Sw3KFbdfwfzYJpy-uxBfyY0APXduW49eSqZBbFJHB3T39mvD_aRjqgkE5TDBKlW1Q7o3R0zWn3hO16mG-Rg5iVP--ekzwSEI4dvInwRoYylr0Dn9opPcUT402TGO7ejNseMpItIwwfFyfsLOz_Jbh5qk6-HBR4r783enc-9QujU13702Asu3DexWDBKeKWbINORW32WauFTct7nU">
+<div>
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface leading-tight">Mummy</h3>
+<span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-medium bg-tertiary-fixed text-primary">
+                    Full Access
+                  </span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container active:scale-95 transition-all shrink-0" href="#manage-access-mummy">
+<span>Manage Access</span>
+<span class="material-symbols-outlined text-base font-semibold" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<p class="mt-2 text-label-sm font-body-sm text-on-surface-variant leading-relaxed">
+              Can view and add data to your health record. Can also manage what you can see.
+            </p>
+</article>
+<!-- Daddy -->
+<article class="py-3.5">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover shrink-0 ring-1 ring-surface-container-high" data-alt="Elderly Indian man in his late 60s with silver rimmed glasses smiling kindly at camera, dressed in casual clean attire, illuminated with soft diffused warm light in a minimal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUOJPAmq2DwMWew_53ns8V0f1VVkxbKZV-4vNiqNIcWns5RpeHddfUYkR1CErotPFYn5eisEG5LSshSQlxFUd4ytDilRAlNHVMjUbYw9FvyqK0SAENn9t9_WV6U8yWbGH_nKF_4Rh59gWWr4HOLKoCp9AmqH4I7u29M5nN9T4_r9aPmMxBLtdfzWYQHe2ld4ZMB-P--MXRCjn-7S8N261o1IPQMKL-Yn8hGDOBoxU">
+<div>
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface leading-tight">Daddy</h3>
+<span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-medium bg-secondary-fixed/50 text-secondary">
+                    Limited Access
+                  </span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container active:scale-95 transition-all shrink-0" href="#manage-access-daddy">
+<span>Manage Access</span>
+<span class="material-symbols-outlined text-base font-semibold" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<p class="mt-2 text-label-sm font-body-sm text-on-surface-variant leading-relaxed">
+              Can view and add data to your health record. Cannot manage what you can see.
+            </p>
+</article>
+</div>
+<!-- Section 2 Note Container -->
+<aside class="mt-2.5 rounded-xl bg-surface-container-low p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5 shrink-0" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-label-sm font-body-sm text-on-surface-variant leading-normal">
+            People with access can add lab reports, prescriptions and other health information for you. Any information they add will be reflected in your AyuOS account.
+          </p>
+</aside>
+</section>
+</div>
+<!-- GLOBAL BOTTOM NAVIGATION (Shared Component faithfully mapped) -->
+<!-- Destination matches: Privacy & Permissions is inside "More", so "More" is the active tab -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md max-w-[430px] left-1/2 -translate-x-1/2 border-t-0">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</a>
+<!-- Records -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#records">
+<span class="material-symbols-outlined text-2xl" data-icon="folder_shared">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</a>
+<!-- Medicines -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#medicines">
+<span class="material-symbols-outlined text-2xl" data-icon="pill">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5">Medicines</span>
+</a>
+<!-- Care -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#care">
+<span class="material-symbols-outlined text-2xl" data-icon="handshake">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</a>
+<!-- More (Active Destination) -->
+<a aria-current="page" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-2xl" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5">More</span>
+</a>
+</nav>
+<!-- iOS Home Indicator -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-on-surface/20 rounded-full pointer-events-none z-50"></div>
+</main>
+</body></html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AyuOS - Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0F5C5E',
+              tealHover: '#0b4749',
+              tealLight: '#E8F5F3',
+              navy: '#173042',
+              slate: '#60717A',
+              border: '#E2E8F0',
+              canvas: '#F7FAF9',
+              mint: '#90D2D4',
+              softGreen: '#D7EDE7'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom organic foliage styling */
+    .botanical-bg {
+      background-color: #F7FAF9;
+      background-image: 
+        radial-gradient(circle at 10% 8%, rgba(144, 210, 212, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 92% 14%, rgba(15, 92, 94, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 15% 95%, rgba(144, 210, 212, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 85% 92%, rgba(15, 92, 94, 0.15) 0%, transparent 40%);
+    }
+  </style>
+</head>
+<body class="bg-brand-canvas botanical-bg text-brand-navy font-sans min-h-screen relative antialiased selection:bg-brand-tealLight selection:text-brand-teal flex justify-center">
+
+  <!-- Background Botanical Vector Silhouette Illustrations -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10 opacity-70">
+    <!-- Top-left organic leaf -->
+    <svg class="absolute -top-12 -left-12 w-64 h-64 text-brand-softGreen transform -rotate-12" viewBox="0 0 200 200" fill="currentColor">
+      <path d="M20,100 C20,30 90,10 170,20 C180,90 140,170 80,180 C30,190 20,160 20,100 Z" opacity="0.6"/>
+      <path d="M40,110 C50,60 100,40 150,50 C160,110 120,160 70,160 C40,160 35,140 40,110 Z" opacity="0.4"/>
+    </svg>
+
+    <!-- Top-right organic leaf branch -->
+    <svg class="absolute top-4 -right-16 w-72 h-72 text-brand-teal transform rotate-45" viewBox="0 0 200 200" fill="currentColor">
+      <path d="M100,20 C140,20 180,60 180,110 C180,160 130,190 80,170 C40,150 30,100 50,60 C70,30 90,20 100,20 Z" opacity="0.08"/>
+    </svg>
+
+    <!-- Bottom-left soft flora -->
+    <svg class="absolute -bottom-16 -left-16 w-80 h-80 text-brand-teal transform rotate-12" viewBox="0 0 200 200" fill="currentColor">
+      <path d="M30,80 C30,20 110,10 170,40 C190,110 150,180 90,180 C40,180 30,140 30,80 Z" opacity="0.07"/>
+    </svg>
+
+    <!-- Bottom-right soft leaf -->
+    <svg class="absolute -bottom-10 -right-12 w-64 h-64 text-brand-softGreen" viewBox="0 0 200 200" fill="currentColor">
+      <path d="M100,10 C160,20 190,80 180,140 C160,190 100,190 50,160 C10,130 20,70 60,30 C80,15 90,10 100,10 Z" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- Mobile Screen Container -->
+  <main class="w-full max-w-[420px] min-h-screen px-5 pt-4 pb-8 flex flex-col justify-between relative z-10">
+
+    <!-- Header Navigation (Back button) -->
+    <div>
+      <header class="flex items-center justify-between mb-2">
+        <button 
+          id="btn-back" 
+          type="button"
+          onclick="navigateBack()" 
+          class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-brand-navy hover:bg-black/5 active:scale-95 transition"
+          aria-label="Back to login">
+          <svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <span class="text-xs font-semibold tracking-wider text-brand-slate uppercase bg-white/70 px-2.5 py-1 rounded-full border border-black/5">Security Guaranteed</span>
+      </header>
+
+      <!-- App Branding Header -->
+      <section class="flex flex-col items-center text-center mt-1 mb-5">
+        <!-- AyuOS Leaf Emblem Logo -->
+        <div class="w-14 h-14 mb-2 flex items-center justify-center">
+          <svg viewBox="0 0 54 54" fill="none" class="w-full h-full drop-shadow-sm">
+            <!-- Left light mint leaf -->
+            <path d="M26.5 49C26.5 49 10 43.5 10 26.5C10 9.5 24 5 24 5C24 5 28 17.5 26.5 28.5C25.2 38.3 26.5 49 26.5 49Z" fill="#90D2D4" fill-opacity="0.95" />
+            <!-- Right deep forest teal leaf -->
+            <path d="M25 48.5C25 48.5 41 42 41 24.5C41 7 26 4 26 4C26 4 23 18 25 29C26.8 38.9 25 48.5 25 48.5Z" fill="#0F5C5E" />
+          </svg>
+        </div>
+
+        <h1 class="text-3xl font-bold tracking-tight text-brand-navy">
+          AyuOS
+        </h1>
+        <p class="text-[17px] font-semibold text-brand-navy mt-1 tracking-tight">
+          Your lifelong health, organized together.
+        </p>
+        <p class="text-xs text-brand-slate mt-1 max-w-[290px] leading-relaxed">
+          Create your account to manage medicines, records, health reminders and more.
+        </p>
+      </section>
+
+      <!-- Registration Form White Card -->
+      <div class="bg-white rounded-[28px] p-6 shadow-[0_10px_30px_-8px_rgba(15,92,94,0.08)] border border-slate-100/90 relative">
+        <div class="mb-5">
+          <h2 class="text-[22px] font-bold text-brand-navy tracking-tight">
+            Create your account
+          </h2>
+          <p class="text-xs text-brand-slate mt-0.5">
+            Get started with AyuOS in a few simple steps.
+          </p>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="create-account-form" onsubmit="handleRegistration(event)" class="space-y-4" novalidate>
+          
+          <!-- Field 1: Full name -->
+          <div>
+            <label for="fullname" class="block text-xs font-semibold text-brand-navy mb-1.5">
+              Full name
+            </label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3.5 text-brand-slate pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="fullname" 
+                name="fullname" 
+                placeholder="Enter your full name" 
+                class="w-full pl-11 pr-4 py-3 bg-white text-sm text-brand-navy placeholder:text-slate-400 rounded-xl border border-brand-border focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition"
+              />
+            </div>
+            <p id="err-fullname" class="hidden text-[11px] text-red-600 font-medium mt-1 pl-1">
+              Please enter your full name.
+            </p>
+          </div>
+
+          <!-- Field 2: Email address -->
+          <div>
+            <label for="email" class="block text-xs font-semibold text-brand-navy mb-1.5">
+              Email address
+            </label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3.5 text-brand-slate pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </span>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Enter your email address" 
+                class="w-full pl-11 pr-4 py-3 bg-white text-sm text-brand-navy placeholder:text-slate-400 rounded-xl border border-brand-border focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition"
+              />
+            </div>
+            <p id="err-email" class="hidden text-[11px] text-red-600 font-medium mt-1 pl-1">
+              Please enter a valid email address.
+            </p>
+          </div>
+
+          <!-- Field 3: Create password -->
+          <div>
+            <label for="password" class="block text-xs font-semibold text-brand-navy mb-1.5">
+              Create password
+            </label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3.5 text-brand-slate pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Enter a password" 
+                class="w-full pl-11 pr-11 py-3 bg-white text-sm text-brand-navy placeholder:text-slate-400 rounded-xl border border-brand-border focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition"
+              />
+              <button 
+                type="button" 
+                onclick="toggleVisibility('password', 'icon-pw-1')" 
+                class="absolute right-3.5 text-slate-400 hover:text-brand-navy p-1 transition"
+                aria-label="Toggle password view">
+                <svg id="icon-pw-1" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                </svg>
+              </button>
+            </div>
+            <p class="text-[11px] text-brand-slate mt-1 leading-normal">
+              Use at least 8 characters with a mix of letters, numbers and a symbol.
+            </p>
+            <p id="err-password" class="hidden text-[11px] text-red-600 font-medium mt-0.5 pl-1">
+              Must be at least 8 characters with letters, numbers, and a symbol.
+            </p>
+          </div>
+
+          <!-- Field 4: Confirm password -->
+          <div>
+            <label for="confirm-password" class="block text-xs font-semibold text-brand-navy mb-1.5">
+              Confirm password
+            </label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3.5 text-brand-slate pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="confirm-password" 
+                name="confirm-password" 
+                placeholder="Re-enter your password" 
+                class="w-full pl-11 pr-11 py-3 bg-white text-sm text-brand-navy placeholder:text-slate-400 rounded-xl border border-brand-border focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition"
+              />
+              <button 
+                type="button" 
+                onclick="toggleVisibility('confirm-password', 'icon-pw-2')" 
+                class="absolute right-3.5 text-slate-400 hover:text-brand-navy p-1 transition"
+                aria-label="Toggle confirm password view">
+                <svg id="icon-pw-2" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                </svg>
+              </button>
+            </div>
+            <p id="err-confirm-password" class="hidden text-[11px] text-red-600 font-medium mt-1 pl-1">
+              Passwords do not match.
+            </p>
+          </div>
+
+          <!-- Terms & Privacy Agreement -->
+          <div class="pt-1">
+            <label class="flex items-start gap-2.5 cursor-pointer">
+              <input 
+                type="checkbox" 
+                id="agree-terms" 
+                name="agree-terms" 
+                class="mt-0.5 w-4 h-4 rounded text-brand-teal focus:ring-brand-teal border-slate-300 transition"
+              />
+              <span class="text-xs text-brand-slate leading-snug select-none">
+                I agree to the <a href="javascript:void(0)" onclick="openLegalModal('Terms of Service')" class="text-brand-teal font-medium hover:underline">Terms of Service</a> and <a href="javascript:void(0)" onclick="openLegalModal('Privacy Policy')" class="text-brand-teal font-medium hover:underline">Privacy Policy</a>.
+              </span>
+            </label>
+            <p id="err-terms" class="hidden text-[11px] text-red-600 font-medium mt-1 pl-6">
+              You must agree to the Terms of Service and Privacy Policy.
+            </p>
+          </div>
+
+          <!-- Primary CTA Button: Create Account -->
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              id="btn-submit" 
+              class="w-full h-12 bg-brand-teal hover:bg-brand-tealHover text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition duration-150">
+              <span id="btn-text" class="flex items-center gap-2">
+                Create Account 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+              <span id="btn-spinner" class="hidden items-center gap-2">
+                <svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Creating account...</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Divider: OR -->
+          <div class="relative flex items-center justify-center pt-2 pb-1">
+            <div class="border-t border-slate-200 w-full"></div>
+            <span class="bg-white px-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest absolute">
+              OR
+            </span>
+          </div>
+
+          <!-- Secondary Social CTA: Continue with Google -->
+          <div>
+            <button 
+              type="button" 
+              onclick="handleGoogleSignIn()" 
+              class="w-full h-12 bg-white hover:bg-slate-50 text-brand-navy font-semibold text-sm rounded-xl border border-slate-200 flex items-center justify-center gap-3 transition shadow-xs active:scale-[0.99]">
+              <svg class="w-4 h-4" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+              </svg>
+              <span>Continue with Google</span>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Existing Account Footer Link -->
+        <div class="mt-5 text-center">
+          <p class="text-xs text-brand-slate">
+            Already have an account? 
+            <a href="javascript:void(0)" onclick="navigateToLogin()" class="text-brand-teal font-semibold hover:underline ml-0.5">
+              Sign in
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Status / Reassurance Indicator -->
+    <footer class="mt-6 text-center">
+      <p class="text-[11px] text-brand-slate/70">
+        End-to-End Encrypted Health Vault • HIPAA & ABDM Compliant
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Legal Modal Dialog (Terms & Privacy) -->
+  <div id="legal-modal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-100">
+      <div class="flex items-center justify-between mb-3">
+        <h3 id="modal-title" class="text-base font-bold text-brand-navy">Terms of Service</h3>
+        <button onclick="closeLegalModal()" class="text-slate-400 hover:text-slate-600 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <p id="modal-content" class="text-xs text-brand-slate leading-relaxed mb-4">
+        AyuOS guarantees that your health records, prescriptions, and lab tests remain your private property. We never sell your personal or family healthcare information to third parties or advertisers.
+      </p>
+      <button onclick="closeLegalModal()" class="w-full py-2.5 bg-brand-teal text-white rounded-xl text-xs font-semibold hover:bg-brand-tealHover">
+        I Understand
+      </button>
+    </div>
+  </div>
+
+  <!-- Success / Onboarding Toast / Transition Screen -->
+  <div id="success-screen" class="hidden fixed inset-0 z-50 bg-brand-canvas/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center animate-fade-in">
+    <div class="w-16 h-16 rounded-full bg-brand-tealLight flex items-center justify-center mb-4 text-brand-teal">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+    </div>
+    <h3 class="text-xl font-bold text-brand-navy mb-1">Account Created!</h3>
+    <p class="text-xs text-brand-slate max-w-xs mb-6">
+      Welcome to AyuOS. Setting up your encrypted personal health workspace...
+    </p>
+    <div class="flex items-center gap-2 text-xs font-semibold text-brand-teal">
+      <svg class="animate-spin h-4 w-4 text-brand-teal" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Continuing to Onboarding</span>
+    </div>
+  </div>
+
+  <!-- Client-Side Form Logic & Validation Script -->
+  <script>
+    function toggleVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />`;
+      }
+    }
+
+    function navigateBack() {
+      // In a multi-screen prototype environment or browser history
+      window.history.back();
+    }
+
+    function navigateToLogin() {
+      // In a prototype, user returns to Login
+      window.location.hash = '#login';
+    }
+
+    function handleGoogleSignIn() {
+      alert("Opening Google Authentication for AyuOS...");
+    }
+
+    function openLegalModal(type) {
+      const modal = document.getElementById('legal-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+      title.innerText = type;
+      if (type === 'Terms of Service') {
+        content.innerText = 'By creating an account on AyuOS, you agree to our terms of service regarding secure health record organization, automated medicine reminders, and caregiver access delegation under applicable medical privacy standards.';
+      } else {
+        content.innerText = 'AyuOS upholds strict privacy standards. Your personal vitals, uploaded lab prescriptions, and connected clinical data are end-to-end encrypted and exclusively accessible by you and individuals you explicitly authorize.';
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeLegalModal() {
+      document.getElementById('legal-modal').classList.add('hidden');
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const agreeTerms = document.getElementById('agree-terms').checked;
+
+      let hasError = false;
+
+      // Full name validation
+      if (!fullname) {
+        document.getElementById('err-fullname').classList.remove('hidden');
+        document.getElementById('fullname').classList.add('border-red-400');
+        hasError = true;
+      } else {
+        document.getElementById('err-fullname').classList.add('hidden');
+        document.getElementById('fullname').classList.remove('border-red-400');
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        document.getElementById('err-email').classList.remove('hidden');
+        document.getElementById('email').classList.add('border-red-400');
+        hasError = true;
+      } else {
+        document.getElementById('err-email').classList.add('hidden');
+        document.getElementById('email').classList.remove('border-red-400');
+      }
+
+      // Password requirement (8+ chars, letters, numbers, symbol)
+      const hasLength = password.length >= 8;
+      const hasLetter = /[a-zA-Z]/.test(password);
+      const hasNumber = /[0-9]/.test(password);
+      const hasSymbol = /[^a-zA-Z0-9]/.test(password);
+
+      if (!hasLength || !hasLetter || !hasNumber || !hasSymbol) {
+        document.getElementById('err-password').classList.remove('hidden');
+        document.getElementById('password').classList.add('border-red-400');
+        hasError = true;
+      } else {
+        document.getElementById('err-password').classList.add('hidden');
+        document.getElementById('password').classList.remove('border-red-400');
+      }
+
+      // Confirm password check
+      if (password !== confirmPassword || !confirmPassword) {
+        document.getElementById('err-confirm-password').classList.remove('hidden');
+        document.getElementById('confirm-password').classList.add('border-red-400');
+        hasError = true;
+      } else {
+        document.getElementById('err-confirm-password').classList.add('hidden');
+        document.getElementById('confirm-password').classList.remove('border-red-400');
+      }
+
+      // Terms agreement check
+      if (!agreeTerms) {
+        document.getElementById('err-terms').classList.remove('hidden');
+        hasError = true;
+      } else {
+        document.getElementById('err-terms').classList.add('hidden');
+      }
+
+      if (hasError) return;
+
+      // Submission state
+      const btnText = document.getElementById('btn-text');
+      const btnSpinner = document.getElementById('btn-spinner');
+      const btnSubmit = document.getElementById('btn-submit');
+
+      btnText.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
+      btnSpinner.classList.add('flex');
+      btnSubmit.disabled = true;
+
+      // Simulate registration network call & transition
+      setTimeout(() => {
+        document.getElementById('success-screen').classList.remove('hidden');
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Language &amp; Region - AyuOS</title>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#002021",
+            "on-primary-fixed-variant": "#004f51",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "tertiary": "#2e3f3c",
+            "on-surface": "#181c1c",
+            "on-tertiary-fixed": "#0e1e1c",
+            "secondary-fixed-dim": "#92cef2",
+            "background": "#f7faf9",
+            "on-secondary-container": "#1b607f",
+            "primary-fixed-dim": "#90d2d4",
+            "inverse-primary": "#90d2d4",
+            "surface-container-high": "#e6e9e8",
+            "surface-variant": "#e0e3e2",
+            "primary-fixed": "#aceef0",
+            "primary-container": "#0f5c5e",
+            "inverse-on-surface": "#eef1f0",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#2d3131",
+            "surface-container-low": "#f1f4f3",
+            "surface-dim": "#d7dbda",
+            "surface-tint": "#21686a",
+            "surface-container": "#ebeeed",
+            "secondary-fixed": "#c4e7ff",
+            "outline-variant": "#bfc8c8",
+            "on-secondary-fixed-variant": "#004c69",
+            "on-surface-variant": "#3f4949",
+            "surface-container-highest": "#e0e3e2",
+            "tertiary-container": "#455653",
+            "on-tertiary-fixed-variant": "#394a47",
+            "on-primary": "#ffffff",
+            "surface": "#f7faf9",
+            "on-tertiary-container": "#b8cac7",
+            "primary": "#004345",
+            "secondary": "#226584",
+            "on-secondary-fixed": "#001e2c",
+            "on-background": "#181c1c",
+            "surface-bright": "#f7faf9",
+            "on-primary-container": "#90d2d4",
+            "tertiary-fixed": "#d4e6e3",
+            "on-error": "#ffffff",
+            "outline": "#6f7979",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#b8cac7",
+            "secondary-container": "#9dd9fd",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "2.5rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin-sm": "1.25rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Safe padding for modern devices */
+    .pb-safe {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+    .pt-safe {
+      padding-top: max(0.75rem, env(safe-area-inset-top));
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary selection:text-on-primary">
+<!-- Top App Bar & Navigation Anchor -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-bright shadow-sm pt-safe">
+<div class="flex items-center gap-space-sm px-margin-sm py-space-sm max-w-2xl mx-auto w-full">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="text-headline-md font-headline-md text-primary font-bold tracking-tight">Language &amp; Region</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Choose your preferred language and regional settings.</p>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 w-full max-w-2xl mx-auto px-margin-sm pt-space-md pb-32 flex flex-col gap-space-lg">
+<!-- Section 1: App Language -->
+<section class="flex flex-col gap-space-xs">
+<div class="px-space-xs">
+<h2 class="text-headline-sm font-headline-sm text-primary font-semibold">App Language</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Select the language you want to use in AyuOS.</p>
+</div>
+<!-- Language Radio Options Container -->
+<div aria-label="App Language Selection" class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm divide-y divide-outline-variant/30 mt-space-xs" role="radiogroup">
+<!-- English (Selected default) -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 bg-tertiary-fixed/30 hover:bg-surface-container-low" data-lang="en">
+<input checked="" class="sr-only" name="app_language" type="radio" value="en"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-primary flex items-center justify-center font-headline-sm font-bold shadow-xs">
+              A
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-primary font-semibold">English</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Use AyuOS in English.</span>
+</div>
+</div>
+<!-- Custom Radio Indicator -->
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+</div>
+</label>
+<!-- Hindi -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low" data-lang="hi">
+<input class="sr-only" name="app_language" type="radio" value="hi"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center font-headline-sm font-semibold">
+              अ
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">हिंदी</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">AyuOS को हिंदी में उपयोग करें।</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+<!-- Telugu -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low" data-lang="te">
+<input class="sr-only" name="app_language" type="radio" value="te"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center font-headline-sm font-semibold">
+              తె
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">తెలుగు</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">AyuOS ను తెలుగు లో ఉపయోగించండి।</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+<!-- Tamil -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low" data-lang="ta">
+<input class="sr-only" name="app_language" type="radio" value="ta"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center font-headline-sm font-semibold">
+              அ
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">தமிழ்</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">AyuOS-ஐ தமிழில் பயன்படுத்தவும்.</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+<!-- Kannada -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low" data-lang="kn">
+<input class="sr-only" name="app_language" type="radio" value="kn"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center font-headline-sm font-semibold">
+              ಕ
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">ಕನ್ನಡ</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">AyuOS ಅನ್ನು ಕನ್ನಡದಲ್ಲಿ ಬಳಸಿ.</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+<!-- Malayalam -->
+<label class="language-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low" data-lang="ml">
+<input class="sr-only" name="app_language" type="radio" value="ml"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center font-headline-sm font-semibold">
+              മ
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">മലയാളം</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">AyuOS നെ മലയാളത്തിൽ ഉപയോഗിക്കുക.</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+</div>
+</section>
+<!-- Section 2: Region -->
+<section class="flex flex-col gap-space-xs">
+<div class="px-space-xs">
+<h2 class="text-headline-sm font-headline-sm text-primary font-semibold">Region</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Set your region to get relevant information and date/time formats.</p>
+</div>
+<button class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 text-left shadow-sm active:scale-[0.99]" type="button">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">location_on</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">India</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Get location-specific information and services.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[22px]">chevron_right</span>
+</button>
+</section>
+<!-- Section 3: Date & Time Format -->
+<section class="flex flex-col gap-space-xs">
+<div class="px-space-xs">
+<h2 class="text-headline-sm font-headline-sm text-primary font-semibold">Date &amp; Time Format</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Choose how dates and times are displayed in the app.</p>
+</div>
+<div aria-label="Date &amp; Time Format" class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm divide-y divide-outline-variant/30 mt-space-xs" role="radiogroup">
+<!-- DD/MM/YYYY (24-hour) - Selected -->
+<label class="datetime-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 bg-tertiary-fixed/30 hover:bg-surface-container-low">
+<input checked="" class="sr-only" name="datetime_format" type="radio" value="24h"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-primary font-semibold">DD/MM/YYYY (24-hour)</span>
+<span class="text-body-sm font-body-sm font-mono-data text-on-surface-variant">e.g. 12/10/2026, 14:30</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+</div>
+</label>
+<!-- MM/DD/YYYY (12-hour) -->
+<label class="datetime-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low">
+<input class="sr-only" name="datetime_format" type="radio" value="12h"/>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/60 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">MM/DD/YYYY (12-hour)</span>
+<span class="text-body-sm font-body-sm font-mono-data text-on-surface-variant">e.g. 10/12/2026, 02:30 PM</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+</div>
+</section>
+<!-- Section 4: Number Format -->
+<section class="flex flex-col gap-space-xs">
+<div class="px-space-xs">
+<h2 class="text-headline-sm font-headline-sm text-primary font-semibold">Number Format</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Choose how numbers are displayed in the app.</p>
+</div>
+<div aria-label="Number Format" class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm divide-y divide-outline-variant/30 mt-space-xs" role="radiogroup">
+<!-- Indian Format - Selected -->
+<label class="number-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 bg-tertiary-fixed/30 hover:bg-surface-container-low">
+<input checked="" class="sr-only" name="number_format" type="radio" value="indian"/>
+<div class="flex items-center gap-space-md">
+<div class="px-2.5 py-1.5 rounded-lg bg-tertiary-fixed text-primary font-mono-data text-label-sm font-bold tracking-tight">
+              1,234.56
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-primary font-semibold">Indian Format</span>
+<span class="text-body-sm font-body-sm font-mono-data text-on-surface-variant">e.g. 123,456.78</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+</div>
+</label>
+<!-- International Format -->
+<label class="number-option relative flex items-center justify-between p-space-md cursor-pointer transition-colors duration-150 hover:bg-surface-container-low">
+<input class="sr-only" name="number_format" type="radio" value="international"/>
+<div class="flex items-center gap-space-md">
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-mono-data text-label-sm font-semibold tracking-tight">
+              1,234.56
+            </div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md text-on-surface font-semibold">International Format</span>
+<span class="text-body-sm font-body-sm font-mono-data text-on-surface-variant">e.g. 123,456.78</span>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent block"></span>
+</div>
+</label>
+</div>
+</section>
+<!-- Information Card -->
+<div class="bg-tertiary-fixed/40 border border-tertiary-fixed-dim/40 rounded-xl p-space-md flex items-start gap-space-md shadow-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<div class="flex flex-col">
+<p class="text-body-md font-body-md font-semibold text-primary leading-tight">You can change these settings anytime.</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">This will update the language, dates, times and numbers across the entire app.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shell Anchor Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low active:scale-95 transition-transform duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</button>
+<!-- Records -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low active:scale-95 transition-transform duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[24px]">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</button>
+<!-- Medicines -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low active:scale-95 transition-transform duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[24px]">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5">Medicines</span>
+</button>
+<!-- Care -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low active:scale-95 transition-transform duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[24px]">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</button>
+<!-- More (Active State - JSON Exact Match / Semantic Anchor for Language & Region) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5">More</span>
+</button>
+</nav>
+<!-- Interactive Radio Behavior JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Helper function to handle radio group state styling
+      function bindRadioGroup(groupSelector, optionClass) {
+        const options = document.querySelectorAll(groupSelector);
+        options.forEach(opt => {
+          opt.addEventListener('click', () => {
+            options.forEach(o => {
+              o.classList.remove('bg-tertiary-fixed/30');
+              const indicator = o.querySelector('.radio-indicator');
+              const innerDot = indicator.querySelector('span');
+              const title = o.querySelector('.text-body-md');
+              
+              indicator.classList.remove('border-primary');
+              indicator.classList.add('border-outline-variant');
+              innerDot.classList.remove('bg-primary');
+              innerDot.classList.add('bg-transparent');
+              
+              if (title) {
+                title.classList.remove('text-primary');
+                title.classList.add('text-on-surface');
+              }
+            });
+
+            // Activate clicked item
+            opt.classList.add('bg-tertiary-fixed/30');
+            const radio = opt.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+
+            const activeIndicator = opt.querySelector('.radio-indicator');
+            const activeDot = activeIndicator.querySelector('span');
+            const activeTitle = opt.querySelector('.text-body-md');
+
+            activeIndicator.classList.add('border-primary');
+            activeIndicator.classList.remove('border-outline-variant');
+            activeDot.classList.add('bg-primary');
+            activeDot.classList.remove('bg-transparent');
+
+            if (activeTitle) {
+              activeTitle.classList.add('text-primary');
+              activeTitle.classList.remove('text-on-surface');
+            }
+          });
+        });
+      }
+
+      bindRadioGroup('.language-option');
+      bindRadioGroup('.datetime-option');
+      bindRadioGroup('.number-option');
+    });
+  </script>
+</body></html>

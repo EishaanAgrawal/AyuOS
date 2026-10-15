@@ -1,0 +1,715 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>AyuOS - Records</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ayu: {
+              bg: '#F6F9F8',
+              surface: '#FFFFFF',
+              border: '#DCE5E7',
+              itemBorder: '#E5ECEB',
+              primary: '#0F5C5E',
+              primaryDark: '#0B4547',
+              navy: '#173042',
+              slate: '#60717A',
+              mint: '#DCEFEB',
+              cardBg: '#F7FAF9'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Typography & Global App Styles -->
+<style data-purpose="typography">
+    body {
+      background-color: #F6F9F8;
+      color: #173042;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+  </style>
+<!-- Component & Layout Styles -->
+<style data-purpose="layout">
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .safe-bottom {
+      padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+    }
+    .safe-top {
+      padding-top: max(0.75rem, env(safe-area-inset-top));
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-ayu-bg text-ayu-navy flex justify-center selection:bg-ayu-mint selection:text-ayu-primary">
+<!-- Mobile Viewport Shell (iPhone Form Factor Constraint) -->
+<div class="w-full max-w-[430px] min-h-screen bg-ayu-bg flex flex-col relative pb-28 shadow-xl">
+<!-- BEGIN: TopStatusBar -->
+<!-- Native-like iOS Status Bar -->
+<header class="safe-top px-7 pt-3 pb-1 flex justify-between items-center text-xs font-semibold text-ayu-navy tracking-tight">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal -->
+<svg class="w-4 h-3 fill-current" viewBox="0 0 17 12">
+<rect height="3" rx="0.5" width="2.5" x="0" y="9"></rect>
+<rect height="6" rx="0.5" width="2.5" x="4" y="6"></rect>
+<rect height="9" rx="0.5" width="2.5" x="8" y="3"></rect>
+<rect height="12" rx="0.5" width="2.5" x="12" y="0"></rect>
+</svg>
+<!-- Wifi -->
+<svg class="w-3.5 h-3 fill-current" viewBox="0 0 16 12">
+<path d="M8 2.5C10.8 2.5 13.3 3.6 15.1 5.4L16 4.5C13.9 2.4 11.1 1 8 1C4.9 1 2.1 2.4 0 4.5L0.9 5.4C2.7 3.6 5.2 2.5 8 2.5ZM8 6.5C9.7 6.5 11.2 7.2 12.3 8.3L13.2 7.4C11.8 6.1 10 5.2 8 5.2C6 5.2 4.2 6.1 2.8 7.4L3.7 8.3C4.8 7.2 6.3 6.5 8 6.5ZM8 10.5C8.8 10.5 9.5 11.2 9.5 12C9.5 12.8 8.8 13.5 8 13.5C7.2 13.5 6.5 12.8 6.5 12C6.5 11.2 7.2 10.5 8 10.5Z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-ayu-navy rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-full bg-ayu-navy rounded-[1.5px]"></div>
+</div>
+</div>
+</header>
+<!-- END: TopStatusBar -->
+<!-- BEGIN: MainHeader -->
+<section class="px-5 pt-3 pb-3">
+<div class="flex items-center justify-between">
+<!-- Left: Profile Avatar + Title & Health Switcher -->
+<div class="flex items-center space-x-3.5">
+<!-- Profile Avatar from reference -->
+<div class="relative w-12 h-12 rounded-full overflow-hidden border border-ayu-border shrink-0 shadow-sm">
+<img alt="Eishaan Shah" class="w-full h-full object-cover object-top scale-[3] -translate-y-1 translate-x-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChCnkml4U30wARJCyVY5II8snKzuZAyHySnUcxoodJiPZ5SmokYHuPHhGN7IK420YGCLXlgUmJhX3LZVcV5Iy35ZvjnY6NG_Lp-MaGuwmjxWtB5tztLLE7CWwRJi2L-kgQRoGfdKk6qKqCGk2KHjFOW60pvImIAv1qaL-SHC01nB3Z6TCFqdK99Ie2hlSVGz3Rv9ME1CPZKFHMpDBZNaeuQk2_boxRm2YH6FroeeR7Ebsn-Vq9Bhxv">
+</div>
+<!-- Titles -->
+<div class="flex flex-col">
+<h1 class="text-2xl font-bold tracking-tight text-ayu-navy leading-none mb-1">Records</h1>
+<!-- Global Health Switcher Dropdown Pill -->
+<button class="inline-flex items-center space-x-1.5 bg-ayu-mint/70 border border-ayu-primary/15 rounded-full px-2.5 py-0.5 text-ayu-primary text-xs font-medium hover:bg-ayu-mint transition active:scale-95 text-left w-fit" data-purpose="health-switcher-toggle" id="health-switcher-btn" onclick="toggleSwitcherModal()">
+<span id="current-health-profile">My Health</span>
+<svg class="w-3 h-3 text-ayu-primary shrink-0 transition-transform duration-200" fill="none" id="switcher-caret" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Right: Action Buttons (Search & Filter) -->
+<div class="flex items-center space-x-2">
+<!-- Search Button -->
+<button aria-label="Search records" class="w-10 h-10 rounded-full bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-navy shadow-sm hover:border-ayu-primary transition active:scale-95" data-purpose="open-search-modal" onclick="toggleSearchModal(true)">
+<svg class="w-5 h-5 text-ayu-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Filter Button -->
+<button aria-label="Filter documents" class="w-10 h-10 rounded-full bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-navy shadow-sm hover:border-ayu-primary transition active:scale-95" data-purpose="open-filter-toast" onclick="triggerToast('Filter options applied for My Health')">
+<svg class="w-5 h-5 text-ayu-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: MainHeader -->
+<!-- BEGIN: HorizontalCategoryTabs -->
+<!-- Horizontal Navigation Chips -->
+<nav aria-label="Records Navigation" class="px-5 pt-1 pb-3 overflow-x-auto no-scrollbar flex space-x-2">
+<button class="category-chip bg-ayu-primary text-white border border-ayu-primary text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm transition active:scale-95" onclick="setActiveTab(this)">Overview</button>
+<button class="category-chip bg-ayu-surface text-ayu-slate border border-ayu-border text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap hover:text-ayu-navy transition active:scale-95" onclick="setActiveTab(this)">Documents</button>
+<button class="category-chip bg-ayu-surface text-ayu-slate border border-ayu-border text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap hover:text-ayu-navy transition active:scale-95" onclick="setActiveTab(this)">Lab Results</button>
+<button class="category-chip bg-ayu-surface text-ayu-slate border border-ayu-border text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap hover:text-ayu-navy transition active:scale-95" onclick="setActiveTab(this)">Imaging</button>
+<button class="category-chip bg-ayu-surface text-ayu-slate border border-ayu-border text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap hover:text-ayu-navy transition active:scale-95" onclick="setActiveTab(this)">Timeline</button>
+</nav>
+<!-- END: HorizontalCategoryTabs -->
+<!-- MAIN SCROLLABLE CONTENT -->
+<main class="px-4 space-y-4 flex-1">
+<!-- BEGIN: HealthSummarySection -->
+<section class="bg-ayu-surface border border-ayu-border rounded-2xl p-4 shadow-sm" data-purpose="health-summary">
+<!-- Section Title Header -->
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center space-x-2">
+<span class="w-6 h-6 rounded-lg bg-ayu-mint/70 border border-ayu-primary/10 flex items-center justify-center text-ayu-primary">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h2 class="text-sm font-bold text-ayu-navy tracking-tight">Health Summary</h2>
+</div>
+<button class="text-xs font-semibold text-ayu-primary flex items-center space-x-0.5 hover:underline" onclick="triggerToast('Opening detailed health record summary')">
+<span>View all</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- 3x2 Restrained Medical Grid -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Blood Group -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Blood Group</p>
+<p class="text-sm font-bold text-ayu-navy leading-tight mt-0.5">B+</p>
+</div>
+</div>
+<!-- Allergies -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Allergies</p>
+<p class="text-xs font-semibold text-ayu-navy leading-tight mt-0.5">None added</p>
+</div>
+</div>
+<!-- Conditions -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Conditions</p>
+<p class="text-xs font-semibold text-ayu-navy leading-tight mt-0.5">None added</p>
+</div>
+</div>
+<!-- Surgeries -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10m0 0L7.879 7.121a3 3 0 114.242-4.242L15 5.758" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Surgeries</p>
+<p class="text-xs font-semibold text-ayu-navy leading-tight mt-0.5">None added</p>
+</div>
+</div>
+<!-- Immunizations -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Immunizations</p>
+<p class="text-xs font-semibold text-ayu-navy leading-tight mt-0.5">None added</p>
+</div>
+</div>
+<!-- Family History -->
+<div class="bg-ayu-cardBg border border-ayu-itemBorder rounded-xl p-2.5 flex flex-col justify-between hover:border-ayu-primary/30 transition">
+<div class="w-7 h-7 rounded-lg bg-ayu-surface border border-ayu-itemBorder flex items-center justify-center text-ayu-primary mb-2 shadow-2xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[10px] uppercase font-medium text-ayu-slate tracking-wider">Family History</p>
+<p class="text-xs font-semibold text-ayu-navy leading-tight mt-0.5">None added</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HealthSummarySection -->
+<!-- BEGIN: MedicalDocumentsSection -->
+<section class="bg-ayu-surface border border-ayu-border rounded-2xl p-4 shadow-sm" data-purpose="medical-documents">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center space-x-2">
+<span class="w-6 h-6 rounded-lg bg-ayu-mint/70 border border-ayu-primary/10 flex items-center justify-center text-ayu-primary">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h2 class="text-sm font-bold text-ayu-navy tracking-tight">Medical Documents</h2>
+</div>
+<button class="text-xs font-semibold text-ayu-primary flex items-center space-x-0.5 hover:underline" onclick="triggerToast('Viewing all document folders')">
+<span>View all</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- 6 Item Grid (Strict restrained white cards with deep teal icons) -->
+<div class="grid grid-cols-6 gap-2">
+<!-- Lab Reports -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Lab Reports')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Lab Reports</span>
+</button>
+<!-- Prescriptions -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Prescriptions')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<span class="text-sm font-black tracking-tighter">℞</span>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Prescriptions</span>
+</button>
+<!-- Doctor Notes -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Doctor Notes')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Doctor Notes</span>
+</button>
+<!-- Hospital Docs -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Hospital Docs')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Hospital Docs</span>
+</button>
+<!-- Bills -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Bills')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<span class="text-sm font-bold">₹</span>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Bills</span>
+</button>
+<!-- Other -->
+<button class="col-span-1 flex flex-col items-center group active:scale-95 transition" onclick="triggerToast('Opened Other Categories')">
+<div class="w-12 h-12 rounded-xl bg-ayu-surface border border-ayu-border flex items-center justify-center text-ayu-primary shadow-2xs group-hover:border-ayu-primary transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium text-ayu-navy text-center mt-1.5 leading-tight">Other</span>
+</button>
+</div>
+</section>
+<!-- END: MedicalDocumentsSection -->
+<!-- BEGIN: RecentDocumentsSection -->
+<section class="bg-ayu-surface border border-ayu-border rounded-2xl p-4 shadow-sm" data-purpose="recent-documents">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center space-x-2">
+<span class="w-6 h-6 rounded-lg bg-ayu-mint/70 border border-ayu-primary/10 flex items-center justify-center text-ayu-primary">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h2 class="text-sm font-bold text-ayu-navy tracking-tight">Recent Documents</h2>
+</div>
+<button class="text-xs font-semibold text-ayu-primary flex items-center space-x-0.5 hover:underline" onclick="triggerToast('Viewing complete document registry')">
+<span>View all</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Vertical Document List with Clean Borders -->
+<div class="divide-y divide-ayu-border/60">
+<!-- Document 1: HbA1c -->
+<div class="py-3 flex items-center justify-between cursor-pointer active:bg-ayu-bg/60 transition -mx-2 px-2 rounded-xl" onclick="triggerToast('Opening HbA1c Report PDF')">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-ayu-mint/40 border border-ayu-primary/15 flex items-center justify-center text-ayu-primary shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-xs font-bold text-ayu-navy leading-snug">HbA1c Report</h3>
+<p class="text-[11px] text-ayu-slate">Lab Report · Health Checkup</p>
+</div>
+</div>
+<div class="flex items-center space-x-2 shrink-0">
+<span class="text-[11px] text-ayu-slate font-medium">2 Oct 2026</span>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Document 2: Metformin -->
+<div class="py-3 flex items-center justify-between cursor-pointer active:bg-ayu-bg/60 transition -mx-2 px-2 rounded-xl" onclick="triggerToast('Opening Metformin Prescription')">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-ayu-mint/40 border border-ayu-primary/15 flex items-center justify-center text-ayu-primary shrink-0">
+<span class="text-base font-black">℞</span>
+</div>
+<div>
+<h3 class="text-xs font-bold text-ayu-navy leading-snug">Prescription - Metformin</h3>
+<p class="text-[11px] text-ayu-slate">Prescription · Dr. Sharma</p>
+</div>
+</div>
+<div class="flex items-center space-x-2 shrink-0">
+<span class="text-[11px] text-ayu-slate font-medium">28 Sep 2026</span>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Document 3: Blood Test -->
+<div class="py-3 flex items-center justify-between cursor-pointer active:bg-ayu-bg/60 transition -mx-2 px-2 rounded-xl" onclick="triggerToast('Opening Blood Test Report')">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-ayu-mint/40 border border-ayu-primary/15 flex items-center justify-center text-ayu-primary shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-xs font-bold text-ayu-navy leading-snug">Blood Test Report</h3>
+<p class="text-[11px] text-ayu-slate">Lab Report · Routine Test</p>
+</div>
+</div>
+<div class="flex items-center space-x-2 shrink-0">
+<span class="text-[11px] text-ayu-slate font-medium">15 Sep 2026</span>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: RecentDocumentsSection -->
+<!-- BEGIN: HealthAreasSection -->
+<section class="bg-ayu-surface border border-ayu-border rounded-2xl p-4 shadow-sm" data-purpose="health-areas">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center space-x-2">
+<span class="w-6 h-6 rounded-lg bg-ayu-mint/70 border border-ayu-primary/10 flex items-center justify-center text-ayu-primary">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h2 class="text-sm font-bold text-ayu-navy tracking-tight">Health Areas</h2>
+</div>
+<button class="text-xs font-semibold text-ayu-primary flex items-center space-x-0.5 hover:underline" onclick="triggerToast('Viewing all organ systems')">
+<span>View all</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Horizontal Scroll of Organ Cards: STRICTLY NO RECORD COUNTS -->
+<div class="flex space-x-2.5 overflow-x-auto no-scrollbar pb-1 pt-0.5 -mx-1 px-1">
+<!-- Heart -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Cardiology profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Heart</span>
+</div>
+<!-- Lungs -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Pulmonology profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M7 4v16M17 4v16M7 10a4 4 0 00-4 4v2a4 4 0 004 4h1V10H7zm10 0a4 4 0 014 4v2a4 4 0 01-4 4h-1V10h1z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Lungs</span>
+</div>
+<!-- Kidneys -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Nephrology profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M9 12a3 3 0 013-3 3 3 0 013 3c0 2-1 3-3 4-2-1-3-2-3-4zM6 8a4 4 0 018-2 4 4 0 016 4c0 4-3 7-7 9-4-2-7-5-7-11z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Kidneys</span>
+</div>
+<!-- Brain -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Neurology profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Brain</span>
+</div>
+<!-- Eyes -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Ophthalmology profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Eyes</span>
+</div>
+<!-- Dental -->
+<div class="w-20 shrink-0 bg-ayu-surface border border-ayu-border rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-ayu-primary transition active:scale-95 shadow-2xs" onclick="triggerToast('Navigating to Dental profile')">
+<svg class="w-6 h-6 text-ayu-primary stroke-current" fill="none" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M7 10h10M8 14h8M9 4c-3 0-5 2-5 6 0 6 3 10 5 10 1 0 1-2 3-2s2 2 3 2c2 0 5-4 5-10 0-4-2-6-5-6H9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold text-ayu-navy mt-2">Dental</span>
+</div>
+</div>
+</section>
+<!-- END: HealthAreasSection -->
+<!-- BEGIN: HealthTimelineSection -->
+<section class="bg-ayu-surface border border-ayu-border rounded-2xl p-4 shadow-sm" data-purpose="health-timeline">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center space-x-2">
+<span class="w-6 h-6 rounded-lg bg-ayu-mint/70 border border-ayu-primary/10 flex items-center justify-center text-ayu-primary">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h2 class="text-sm font-bold text-ayu-navy tracking-tight">Health Timeline</h2>
+</div>
+<button class="text-xs font-semibold text-ayu-primary flex items-center space-x-0.5 hover:underline" onclick="triggerToast('Viewing complete medical history timeline')">
+<span>View all</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Vertical Connected Timeline with Thin Teal Track -->
+<div class="relative pl-6 space-y-5 my-1">
+<!-- Timeline Vertical Spine Track -->
+<div class="absolute left-2 top-2 bottom-3 w-[2px] bg-ayu-mint"></div>
+<!-- Timeline Event 1 -->
+<div class="relative flex items-center justify-between group cursor-pointer" onclick="triggerToast('Opening Timeline Event: 2 Oct 2026')">
+<!-- Timeline Pin Dot -->
+<div class="absolute -left-6 top-1.5 w-4 h-4 rounded-full bg-ayu-surface border-2 border-ayu-primary flex items-center justify-center shadow-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-ayu-primary"></div>
+</div>
+<!-- Left Info & Subtitle -->
+<div class="pr-2">
+<span class="text-[11px] font-semibold text-ayu-slate">2 Oct 2026</span>
+<h3 class="text-xs font-bold text-ayu-navy leading-tight mt-0.5">HbA1c Report added</h3>
+<p class="text-[11px] text-ayu-slate mt-0.5">Lab Report · Health Checkup</p>
+</div>
+<!-- Right Icon & Chevron -->
+<div class="flex items-center space-x-2 shrink-0">
+<div class="w-8 h-8 rounded-lg bg-ayu-mint/30 border border-ayu-border flex items-center justify-center text-ayu-primary">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Timeline Event 2 -->
+<div class="relative flex items-center justify-between group cursor-pointer" onclick="triggerToast('Opening Timeline Event: 28 Sep 2026')">
+<!-- Timeline Pin Dot -->
+<div class="absolute -left-6 top-1.5 w-4 h-4 rounded-full bg-ayu-surface border-2 border-ayu-primary flex items-center justify-center shadow-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-ayu-primary"></div>
+</div>
+<!-- Left Info & Subtitle -->
+<div class="pr-2">
+<span class="text-[11px] font-semibold text-ayu-slate">28 Sep 2026</span>
+<h3 class="text-xs font-bold text-ayu-navy leading-tight mt-0.5">Prescription added</h3>
+<p class="text-[11px] text-ayu-slate mt-0.5">Metformin 500 mg · Dr. Sharma</p>
+</div>
+<!-- Right Icon & Chevron -->
+<div class="flex items-center space-x-2 shrink-0">
+<div class="w-8 h-8 rounded-lg bg-ayu-mint/30 border border-ayu-border flex items-center justify-center text-ayu-primary">
+<span class="text-xs font-black">℞</span>
+</div>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Timeline Event 3 -->
+<div class="relative flex items-center justify-between group cursor-pointer" onclick="triggerToast('Opening Timeline Event: 15 Sep 2026')">
+<!-- Timeline Pin Dot -->
+<div class="absolute -left-6 top-1.5 w-4 h-4 rounded-full bg-ayu-surface border-2 border-ayu-primary flex items-center justify-center shadow-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-ayu-primary"></div>
+</div>
+<!-- Left Info & Subtitle -->
+<div class="pr-2">
+<span class="text-[11px] font-semibold text-ayu-slate">15 Sep 2026</span>
+<h3 class="text-xs font-bold text-ayu-navy leading-tight mt-0.5">Blood Test Report added</h3>
+<p class="text-[11px] text-ayu-slate mt-0.5">Lab Report · Routine Test</p>
+</div>
+<!-- Right Icon & Chevron -->
+<div class="flex items-center space-x-2 shrink-0">
+<div class="w-8 h-8 rounded-lg bg-ayu-mint/30 border border-ayu-border flex items-center justify-center text-ayu-primary">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-3.5 h-3.5 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HealthTimelineSection -->
+</main>
+<!-- BEGIN: FixedBottomNavigation -->
+<!-- Native-styled Floating Navigation Bar -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 z-40 flex justify-center pointer-events-none">
+<div class="w-full max-w-[430px] bg-ayu-surface/95 backdrop-blur-md border-t border-ayu-border safe-bottom pt-2.5 px-4 flex items-center justify-around pointer-events-auto shadow-lg">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-ayu-slate hover:text-ayu-navy transition active:scale-90 group w-14" onclick="triggerToast('Home tab selected')">
+<svg class="w-5 h-5 text-ayu-slate group-hover:text-ayu-navy transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium text-ayu-slate mt-1 group-hover:text-ayu-navy">Home</span>
+</button>
+<!-- Records (Active State) -->
+<button class="flex flex-col items-center justify-center text-ayu-primary transition active:scale-90 w-14">
+<div class="relative">
+<svg class="w-5 h-5 text-ayu-primary fill-ayu-mint/30" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-ayu-primary rounded-full"></span>
+</div>
+<span class="text-[10px] font-bold text-ayu-primary mt-1.5">Records</span>
+</button>
+<!-- Medicines -->
+<button class="flex flex-col items-center justify-center text-ayu-slate hover:text-ayu-navy transition active:scale-90 group w-14" onclick="triggerToast('Medicines tab selected')">
+<svg class="w-5 h-5 text-ayu-slate group-hover:text-ayu-navy transition rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<rect height="18" rx="7" width="14" x="5" y="3"></rect>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span class="text-[10px] font-medium text-ayu-slate mt-1 group-hover:text-ayu-navy">Medicines</span>
+</button>
+<!-- Care -->
+<button class="flex flex-col items-center justify-center text-ayu-slate hover:text-ayu-navy transition active:scale-90 group w-14" onclick="triggerToast('Care tab selected')">
+<svg class="w-5 h-5 text-ayu-slate group-hover:text-ayu-navy transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium text-ayu-slate mt-1 group-hover:text-ayu-navy">Care</span>
+</button>
+<!-- More -->
+<button class="flex flex-col items-center justify-center text-ayu-slate hover:text-ayu-navy transition active:scale-90 group w-14" onclick="triggerToast('More settings menu')">
+<svg class="w-5 h-5 text-ayu-slate group-hover:text-ayu-navy transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium text-ayu-slate mt-1 group-hover:text-ayu-navy">More</span>
+</button>
+</div>
+</nav>
+<!-- END: FixedBottomNavigation -->
+<!-- BEGIN: FamilyHealthSwitcherSheet -->
+<!-- Interactive Bottom Sheet for Switcher -->
+<div class="fixed inset-0 bg-ayu-navy/40 z-50 backdrop-blur-xs hidden transition-opacity duration-200" id="switcher-backdrop" onclick="toggleSwitcherModal()">
+<div class="min-h-full flex items-end justify-center">
+<div class="w-full max-w-[430px] bg-ayu-surface rounded-t-3xl p-5 border-t border-ayu-border shadow-2xl space-y-4" onclick="event.stopPropagation()">
+<!-- Grab handle -->
+<div class="w-10 h-1 bg-ayu-border rounded-full mx-auto mb-2"></div>
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold text-ayu-navy">Switch Health Profile</h3>
+<button class="text-xs text-ayu-slate font-medium" onclick="toggleSwitcherModal()">Done</button>
+</div>
+<div class="space-y-2">
+<!-- Profile 1 -->
+<button class="w-full flex items-center justify-between p-3 rounded-xl border border-ayu-primary/30 bg-ayu-mint/30 text-left" onclick="selectHealthProfile('My Health')">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-ayu-primary text-white flex items-center justify-center font-bold text-xs">ES</div>
+<div>
+<p class="text-xs font-bold text-ayu-navy">My Health</p>
+<p class="text-[11px] text-ayu-slate">Eishaan Shah · Primary Account</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-primary" fill="currentColor" viewBox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+</button>
+<!-- Profile 2 -->
+<button class="w-full flex items-center justify-between p-3 rounded-xl border border-ayu-border hover:bg-ayu-bg text-left" onclick="selectHealthProfile('Sheela Shah (Mummy)')">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-ayu-slate/20 text-ayu-navy flex items-center justify-center font-bold text-xs">SS</div>
+<div>
+<p class="text-xs font-bold text-ayu-navy">Sheela Shah (Mummy)</p>
+<p class="text-[11px] text-ayu-slate">Family Member · 58 yrs</p>
+</div>
+</div>
+</button>
+<!-- Profile 3 -->
+<button class="w-full flex items-center justify-between p-3 rounded-xl border border-ayu-border hover:bg-ayu-bg text-left" onclick="selectHealthProfile('Daddy\'s Health')">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-ayu-slate/20 text-ayu-navy flex items-center justify-center font-bold text-xs">DS</div>
+<div>
+<p class="text-xs font-bold text-ayu-navy">Daddy's Health</p>
+<p class="text-[11px] text-ayu-slate">Family Member · 62 yrs</p>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: FamilyHealthSwitcherSheet -->
+<!-- BEGIN: QuickSearchModal -->
+<!-- Clean Search Overlay -->
+<div class="fixed inset-0 bg-ayu-navy/40 backdrop-blur-xs z-50 hidden flex flex-col justify-start items-center p-4" id="search-modal">
+<div class="w-full max-w-[400px] bg-ayu-surface rounded-2xl border border-ayu-border shadow-2xl p-4 mt-8 space-y-3">
+<div class="flex items-center space-x-2 border-b border-ayu-border pb-3">
+<svg class="w-5 h-5 text-ayu-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<input autofocus="" class="w-full text-xs font-medium text-ayu-navy placeholder-ayu-slate/70 focus:outline-none border-0 p-0 focus:ring-0" placeholder="Search lab tests, medications, doctors, HbA1c..." type="text">
+<button class="text-xs font-semibold text-ayu-slate hover:text-ayu-navy" onclick="toggleSearchModal(false)">Close</button>
+</div>
+<div class="space-y-1 text-xs">
+<p class="text-[10px] uppercase font-semibold text-ayu-slate tracking-wider pt-1">Suggested Searches</p>
+<button class="w-full text-left py-1.5 px-2 rounded-lg hover:bg-ayu-bg text-ayu-navy flex items-center justify-between" onclick="triggerToast('Searching for HbA1c Reports'); toggleSearchModal(false)">
+<span>HbA1c Glycated Hemoglobin</span>
+<span class="text-[10px] text-ayu-slate">Lab Report</span>
+</button>
+<button class="w-full text-left py-1.5 px-2 rounded-lg hover:bg-ayu-bg text-ayu-navy flex items-center justify-between" onclick="triggerToast('Searching for Metformin Prescriptions'); toggleSearchModal(false)">
+<span>Metformin 500mg</span>
+<span class="text-[10px] text-ayu-slate">Medicine</span>
+</button>
+<button class="w-full text-left py-1.5 px-2 rounded-lg hover:bg-ayu-bg text-ayu-navy flex items-center justify-between" onclick="triggerToast('Searching for Dr. Sharma consultations'); toggleSearchModal(false)">
+<span>Dr. Sharma (Cardiology)</span>
+<span class="text-[10px] text-ayu-slate">Doctor</span>
+</button>
+</div>
+</div>
+</div>
+<!-- END: QuickSearchModal -->
+<!-- BEGIN: ToastNotification -->
+<div class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-ayu-primary text-white text-xs font-medium px-4 py-2 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300" id="toast">
+      Notification text
+    </div>
+<!-- END: ToastNotification -->
+</div>
+<!-- Client-side Interactive Logic -->
+<script data-purpose="event-handlers">
+    // Health switcher bottom sheet toggle
+    function toggleSwitcherModal() {
+      const modal = document.getElementById('switcher-backdrop');
+      const caret = document.getElementById('switcher-caret');
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        caret.classList.add('rotate-180');
+      } else {
+        modal.classList.add('hidden');
+        caret.classList.remove('rotate-180');
+      }
+    }
+
+    // Health switcher item selection
+    function selectHealthProfile(profileName) {
+      document.getElementById('current-health-profile').textContent = profileName;
+      toggleSwitcherModal();
+      triggerToast('Switched to ' + profileName);
+    }
+
+    // Search overlay toggle
+    function toggleSearchModal(show) {
+      const modal = document.getElementById('search-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Active Category Chip Handler
+    function setActiveTab(button) {
+      document.querySelectorAll('.category-chip').forEach(btn => {
+        btn.className = 'category-chip bg-ayu-surface text-ayu-slate border border-ayu-border text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap hover:text-ayu-navy transition active:scale-95';
+      });
+      button.className = 'category-chip bg-ayu-primary text-white border border-ayu-primary text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm transition active:scale-95';
+    }
+
+    // Toast notification feedback
+    let toastTimeout;
+    function triggerToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2000);
+    }
+  </script>
+</body></html>

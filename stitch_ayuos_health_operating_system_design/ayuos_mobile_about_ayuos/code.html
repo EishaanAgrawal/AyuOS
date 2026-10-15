@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>About AyuOS</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter & JetBrains Mono Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#21686a",
+            "tertiary-fixed-dim": "#b8cac7",
+            "surface": "#f7faf9",
+            "secondary-fixed": "#c4e7ff",
+            "tertiary-fixed": "#d4e6e3",
+            "secondary-container": "#9dd9fd",
+            "on-tertiary-fixed": "#0e1e1c",
+            "surface-dim": "#d7dbda",
+            "on-secondary-fixed-variant": "#004c69",
+            "primary-fixed-dim": "#90d2d4",
+            "surface-variant": "#e0e3e2",
+            "on-tertiary-container": "#b8cac7",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#455653",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#90d2d4",
+            "secondary-fixed-dim": "#92cef2",
+            "on-primary-fixed-variant": "#004f51",
+            "on-error": "#ffffff",
+            "surface-container": "#ebeeed",
+            "on-primary-fixed": "#002021",
+            "surface-container-high": "#e6e9e8",
+            "background": "#f7faf9",
+            "inverse-on-surface": "#eef1f0",
+            "on-primary": "#ffffff",
+            "on-background": "#181c1c",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#001e2c",
+            "inverse-primary": "#90d2d4",
+            "outline-variant": "#bfc8c8",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#394a47",
+            "inverse-surface": "#2d3131",
+            "outline": "#6f7979",
+            "primary": "#004345",
+            "on-secondary": "#ffffff",
+            "primary-container": "#0f5c5e",
+            "primary-fixed": "#aceef0",
+            "secondary": "#226584",
+            "on-surface-variant": "#3f4949",
+            "surface-container-low": "#f1f4f3",
+            "tertiary": "#2e3f3c",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#1b607f",
+            "on-surface": "#181c1c",
+            "surface-container-highest": "#e0e3e2",
+            "surface-bright": "#f7faf9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "margin": "2.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "margin-sm": "1.25rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Safe padding for modern devices */
+    .pb-safe {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased h-full flex flex-col font-body-md select-none">
+<!-- Mobile Viewport Canvas Container (Max 430px centered, responsive bleed) -->
+<div class="relative w-full max-w-[430px] mx-auto min-h-screen bg-background flex flex-col pb-24 shadow-sm">
+<!-- Top Nav / Header -->
+<header class="pt-4 px-5 pb-3 bg-surface sticky top-0 z-30 flex flex-col transition-all">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-9 h-9 -ml-1.5 flex items-center justify-center rounded-full text-secondary active:scale-95 transition-transform hover:bg-surface-container" onclick="handleBackAction()">
+<span class="material-symbols-outlined text-[26px]">arrow_back_ios_new</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-headline-md font-headline-md text-[#173042] tracking-tight leading-none font-bold">About AyuOS</h1>
+</div>
+</div>
+<p class="text-label-md font-label-md text-secondary mt-1.5 pl-0.5 leading-snug">
+        Learn more about AyuOS and your health operating system.
+      </p>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-4 space-y-5 mt-1">
+<!-- 1. AyuOS Branding Card -->
+<section class="bg-[#eff7f5] rounded-2xl p-5 border border-[#d2e8e3] flex items-center gap-4.5 shadow-sm">
+<!-- Logo Emblem -->
+<div class="w-16 h-16 rounded-xl bg-white shadow-[0_2px_8px_rgba(15,92,94,0.08)] flex items-center justify-center shrink-0 border border-[#dcebe8]">
+<svg class="w-11 h-11 text-primary-container" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- AyuOS Leaf / Clover petals -->
+<path d="M30 30C30 16.7452 19.2548 6 6 6V30H30Z" fill="#0F5C5E"></path>
+<path d="M34 30C34 16.7452 44.7452 6 58 6V30H34Z" fill="#3D8982"></path>
+<path d="M30 34C30 47.2548 19.2548 58 6 58V34H30Z" fill="#3D8982"></path>
+<path d="M34 34C34 47.2548 44.7452 58 58 58V34H34Z" fill="#0F5C5E"></path>
+<circle cx="32" cy="32" fill="#ffffff" r="3"></circle>
+</svg>
+</div>
+<div class="flex flex-col justify-center">
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-bold tracking-tight text-[#0F5C5E]">AyuOS</div>
+<p class="text-body-sm font-body-sm text-[#4f646e] font-medium leading-tight mt-0.5">The Operating System for Your Health</p>
+</div>
+</section>
+<!-- 2. Section: "About" -->
+<section class="space-y-1.5">
+<h2 class="text-label-md font-label-md font-bold text-[#173042] px-1">About</h2>
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-[#DCE5E7] shadow-sm flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div class="flex-1 pr-1">
+<h3 class="text-body-md font-body-md font-bold text-[#173042] leading-tight">What is AyuOS?</h3>
+<p class="text-body-sm font-body-sm text-[#50636d] mt-1.5 leading-relaxed">
+              AyuOS helps you organize your health records, medicines, care, family health information and healthcare spending in one connected system.
+            </p>
+</div>
+</div>
+</section>
+<!-- 3. Section: "App Information" -->
+<section class="space-y-1.5">
+<div class="px-1">
+<h2 class="text-label-md font-label-md font-bold text-[#173042]">App Information</h2>
+<p class="text-label-sm font-label-sm text-[#60717A] font-normal">Details about your AyuOS application.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl border border-[#DCE5E7] shadow-sm divide-y divide-[#edf2f3] overflow-hidden">
+<!-- Row 1: Version -->
+<div class="p-3.5 px-4 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">stay_current_portrait</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-[#173042]">Version</span>
+<span class="text-body-sm font-body-sm text-[#60717A] font-mono-data">1.0.0</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Build -->
+<div class="p-3.5 px-4 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-[#173042]">Build</span>
+<span class="text-body-sm font-body-sm text-[#60717A] font-mono-data">1</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Last updated -->
+<div class="p-3.5 px-4 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">event_available</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-[#173042]">Last updated</span>
+<span class="text-body-sm font-body-sm text-[#60717A]">October 2026</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Section: "Legal & Policies" -->
+<section class="space-y-1.5">
+<div class="px-1">
+<h2 class="text-label-md font-label-md font-bold text-[#173042]">Legal &amp; Policies</h2>
+<p class="text-label-sm font-label-sm text-[#60717A] font-normal">Important information about AyuOS.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl border border-[#DCE5E7] shadow-sm divide-y divide-[#edf2f3] overflow-hidden">
+<!-- Row 1: Privacy Policy -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Privacy Policy', 'Your personal health data is encrypted end-to-end and strictly under your individual ownership. AyuOS never sells personal biometric data or clinical history to third-party insurers or advertisers.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">article</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Privacy Policy</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">Read our privacy policy and data practices.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+<!-- Row 2: Terms of Service -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Terms of Service', 'By accessing AyuOS, you agree to secure account custody rules, authenticated medical proxy delegation guidelines, and our platform terms of trusted healthcare service orchestration.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Terms of Service</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">Read the terms of service for using AyuOS.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+<!-- Row 3: Medical Disclaimer -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Medical Disclaimer', 'AyuOS is an intelligent personal health record manager and organizational aid. It does not provide direct medical diagnoses, replace clinical triage, or formulate emergency treatment regimens. In an emergency, dial local medical emergency services immediately.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Medical Disclaimer</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">Important information about health information.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+<!-- Row 4: Open Source Licenses -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Open Source Licenses', 'AyuOS is built proudly leveraging vetted open standards, including FHIR API tooling, React Native core runtimes, SQLite SQLCipher encryption libraries, and Tailwind CSS tokens.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Open Source Licenses</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">View open source software licenses.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- 5. Section: "Support" -->
+<section class="space-y-1.5">
+<div class="px-1">
+<h2 class="text-label-md font-label-md font-bold text-[#173042]">Support</h2>
+<p class="text-label-sm font-label-sm text-[#60717A] font-normal">Get help or contact our team.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl border border-[#DCE5E7] shadow-sm divide-y divide-[#edf2f3] overflow-hidden">
+<!-- Row 1: Help & Support -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Help &amp; Support', 'Explore frequently asked questions, clinical records sync troubleshooters, and family permission guides in the AyuOS Knowledge Base or chat with our 24/7 concierge team.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Help &amp; Support</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">Find answers to common questions.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+<!-- Row 2: Contact Support -->
+<button class="w-full text-left p-3.5 px-4 flex items-center justify-between hover:bg-surface-container-low active:bg-surface-container transition-colors group" onclick="openModal('Contact Support', 'Need dedicated concierge help? Email us directly at care@ayuos.health or request a callback from a member of our patient support team.')">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#EAF5F2] text-[#0F5C5E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-body-md font-body-md font-semibold text-[#173042] group-hover:text-primary transition-colors">Contact Support</span>
+<span class="text-body-sm font-body-sm text-[#60717A] line-clamp-1">Get in touch with our support team.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] shrink-0">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- 6. Information Card (Health data belongs to you) -->
+<section class="bg-[#eaf6f3] rounded-2xl p-4 border border-[#cbe5df] flex items-start gap-3 shadow-xs">
+<div class="w-7 h-7 rounded-full bg-[#0F5C5E] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[17px]">info</span>
+</div>
+<div class="flex-1">
+<h4 class="text-body-sm font-body-sm font-bold text-[#0F5C5E] leading-snug">Your health data belongs to you.</h4>
+<p class="text-label-md font-label-md text-[#285d56] mt-0.5 leading-snug font-normal">
+            AyuOS is designed to help you understand and organize your health information.
+          </p>
+</div>
+</section>
+<!-- Bottom Spacing for Navigation clearance -->
+<div class="h-6"></div>
+</main>
+<!-- 7. Global Bottom Navigation (Shared Component faithfully executed) -->
+<!-- Matches BottomNavBar spec: 5 items: Home, Records, Medicines, Care, More. 'More' is active. -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</a>
+<!-- Tab 2: Records -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#records">
+<span class="material-symbols-outlined text-[24px]">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</a>
+<!-- Tab 3: Medicines -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#medicines">
+<span class="material-symbols-outlined text-[24px]">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5">Medicines</span>
+</a>
+<!-- Tab 4: Care -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#care">
+<span class="material-symbols-outlined text-[24px]">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</a>
+<!-- Tab 5: More (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#more">
+<span class="material-symbols-outlined fill-icon text-[24px]">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">More</span>
+</a>
+</nav>
+<!-- Interactive Document / Detail Modal Sheet -->
+<div class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center" id="infoModal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-[#173042]/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+<!-- Modal Content Sheet -->
+<div class="relative bg-surface-container-lowest w-full max-w-md mx-auto rounded-t-3xl sm:rounded-2xl p-6 shadow-2xl border border-[#DCE5E7] z-10 space-y-4 max-h-[751px] overflow-y-auto transform transition-transform">
+<div class="w-12 h-1 bg-surface-variant rounded-full mx-auto -mt-2 mb-2 sm:hidden"></div>
+<div class="flex items-center justify-between pb-2 border-b border-[#DCE5E7]">
+<h3 class="text-headline-sm font-headline-sm font-bold text-[#173042]" id="modalTitle">Policy</h3>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container" onclick="closeModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="text-body-md font-body-md text-[#50636d] leading-relaxed py-2" id="modalBody">
+          Content description goes here...
+        </div>
+<div class="pt-3">
+<button class="w-full h-12 bg-primary-container text-white font-label-md font-semibold rounded-xl active:scale-95 transition-all shadow-sm" onclick="closeModal()">
+            Close
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Micro-interactions -->
+<script>
+    function openModal(title, text) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerText = text;
+      const modal = document.getElementById('infoModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('infoModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleBackAction() {
+      // Graceful microinteraction return trigger
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        // Quick visual pulse if standalone
+        const btn = event.currentTarget;
+        btn.classList.add('bg-surface-container');
+        setTimeout(() => btn.classList.remove('bg-surface-container'), 300);
+      }
+    }
+  </script>
+</body></html>

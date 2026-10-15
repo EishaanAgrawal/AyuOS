@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en" style=""><head></head><body class="flex justify-center bg-stone-100 min-h-screen text-slate-800 antialiased select-none sm:py-6"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>AyuOS - Sign In</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0F5B5C',
+              'teal-dark': '#0B4748',
+              'teal-light': '#66C3A7',
+              navy: '#0E2931',
+              sage: '#89B8A4',
+              cream: '#FAF8F3',
+              muted: '#617581',
+              border: '#D9E3EA'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 -4px 30px rgba(15, 91, 92, 0.08), 0 10px 40px rgba(0, 0, 0, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Botanical & Landscape Background Styles -->
+<style data-purpose="background-artwork">
+    body {
+      background-color: #F8FAF7;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Warm Glow in upper region */
+    .ambient-glow {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(254, 243, 226, 0.85) 0%, rgba(240, 249, 245, 0.4) 60%, rgba(255, 255, 255, 0) 100%);
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Side Botanical Leaves */
+    .leaf-tl {
+      position: absolute;
+      top: -30px;
+      left: -50px;
+      width: 220px;
+      height: 340px;
+      opacity: 0.78;
+      pointer-events: none;
+      z-index: 1;
+      transform: rotate(-8deg);
+      filter: drop-shadow(0 6px 12px rgba(110, 160, 140, 0.12));
+    }
+
+    .leaf-tr {
+      position: absolute;
+      top: 100px;
+      right: -42px;
+      width: 140px;
+      height: 260px;
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: 1;
+      transform: rotate(12deg) scaleX(-1);
+    }
+
+    /* Bottom Hill & Landscape Layers */
+    .landscape-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 290px;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+  </style>
+<!-- END: Custom Botanical & Landscape Background Styles -->
+<style data-purpose="interactive-states">
+    .focus-ring:focus-within {
+      border-color: #0F5B5C;
+      box-shadow: 0 0 0 3px rgba(15, 91, 92, 0.15);
+    }
+  </style>
+
+
+<!-- BEGIN: Phone Frame / Viewport Container -->
+<main class="relative w-full max-w-[430px] min-h-[920px] bg-[#FAF8F5] overflow-hidden flex flex-col justify-between sm:rounded-[44px] sm:shadow-2xl sm:border-[8px] sm:border-slate-800" data-purpose="mobile-viewport">
+<!-- Ambient sunlight glow -->
+<div class="ambient-glow"></div>
+<!-- BEGIN: Top Botanical Leaves (SVG Vector Art) -->
+<!-- Top Left Botanical Leaves -->
+<svg class="leaf-tl" fill="none" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
+<path d="M-40 40C20 40 90 95 120 180C145 250 110 310 110 310C110 310 40 290 -10 210C-50 145 -55 70 -40 40Z" fill="url(#paint0_linear)"></path>
+<path d="M-10 110C-10 110 50 160 118 181" stroke="rgba(255,255,255,0.7)" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M25 140C45 130 75 142 75 142" stroke="rgba(255,255,255,0.6)" stroke-linecap="round" stroke-width="1.8"></path>
+<path d="M50 170C72 170 95 186 95 186" stroke="rgba(255,255,255,0.6)" stroke-linecap="round" stroke-width="1.8"></path>
+<path d="M70 205C90 215 105 235 105 235" stroke="rgba(255,255,255,0.6)" stroke-linecap="round" stroke-width="1.8"></path>
+<!-- Smaller secondary leaf -->
+<path d="M-60 180C-10 170 40 220 50 290C20 310 -30 290 -60 250Z" fill="url(#paint1_linear)" opacity="0.6"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear" x1="-30" x2="130" y1="40" y2="280">
+<stop stop-color="#93C8B2"></stop>
+<stop offset="0.6" stop-color="#6DAE96"></stop>
+<stop offset="1" stop-color="#3D8B78"></stop>
+</linearGradient>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear" x1="-50" x2="60" y1="180" y2="290">
+<stop stop-color="#A5D5C1"></stop>
+<stop offset="1" stop-color="#5B9C86"></stop>
+</linearGradient>
+</defs>
+</svg>
+<!-- Top Right Botanical Leaf -->
+<svg class="leaf-tr" fill="none" viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg">
+<path d="M-10 20C40 20 110 80 135 170C155 240 100 275 100 275C100 275 45 250 10 180C-20 120 -20 50 -10 20Z" fill="url(#paint_right_leaf)"></path>
+<path d="M2 100C30 130 90 165 133 172" stroke="rgba(255,255,255,0.65)" stroke-linecap="round" stroke-width="2.2"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint_right_leaf" x1="-10" x2="140" y1="20" y2="260">
+<stop stop-color="#A4D7C3"></stop>
+<stop offset="0.7" stop-color="#69AF97"></stop>
+<stop offset="1" stop-color="#468874"></stop>
+</linearGradient>
+</defs>
+</svg>
+<!-- END: Top Botanical Leaves -->
+<!-- BEGIN: Misty Hill Landscape & Foreground Foliage (Background base) -->
+<div class="landscape-container">
+<svg class="w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 430 290" xmlns="http://www.w3.org/2000/svg">
+<!-- Far pale misty hills -->
+<path d="M-20 180 C80 130, 200 170, 310 140 C370 125, 420 145, 460 160 L460 290 L-20 290 Z" fill="#D3E7DC" opacity="0.6"></path>
+<path d="M-30 200 C60 160, 160 175, 260 150 C360 125, 410 165, 460 170 L460 290 L-30 290 Z" fill="#B2D7C5" opacity="0.5"></path>
+<!-- Mid-range soft green hills -->
+<path d="M-10 215 C100 180, 210 210, 320 180 C390 160, 430 190, 460 200 L460 290 L-10 290 Z" fill="#84B9A1" opacity="0.65"></path>
+<!-- Fore-ground darker teal hills framing bottom -->
+<path d="M-20 250 C70 215, 140 240, 240 215 C330 195, 380 230, 450 235 L450 290 L-20 290 Z" fill="#4B8C7A" opacity="0.8"></path>
+<!-- Bottom left leaf branch -->
+<g opacity="0.95">
+<path d="M-15 290 C-10 240, 25 210, 60 195 C62 205, 55 220, 40 240 C18 268, 5 285, -15 290 Z" fill="#1C5E57"></path>
+<path d="M22 215 C35 190, 65 180, 75 190 C78 202, 60 218, 42 225 Z" fill="#29736A"></path>
+<path d="M5 240 C20 220, 50 215, 58 226 C60 237, 40 250, 22 255 Z" fill="#24675F"></path>
+<path d="M-5 270 C15 255, 35 255, 40 268 C42 278, 25 286, 8 288 Z" fill="#18524C"></path>
+</g>
+<!-- Bottom right leaf branch -->
+<g opacity="0.95" transform="translate(430, 0) scale(-1, 1)">
+<path d="M-15 290 C-10 235, 30 205, 68 188 C70 200, 60 218, 45 238 C20 268, 8 285, -15 290 Z" fill="#1A5852"></path>
+<path d="M26 210 C40 185, 72 178, 82 188 C85 200, 65 215, 48 222 Z" fill="#266D64"></path>
+<path d="M10 238 C25 215, 58 210, 66 222 C68 234, 46 248, 28 252 Z" fill="#216058"></path>
+<path d="M-2 268 C18 252, 40 252, 46 264 C48 275, 30 284, 12 286 Z" fill="#164C46"></path>
+</g>
+</svg>
+</div>
+<!-- END: Misty Hill Landscape -->
+<!-- BEGIN: Top Status Bar & Language Selector -->
+<header class="relative z-10 w-full pt-3 px-7 flex flex-col" data-purpose="top-navigation-area">
+<!-- Simulated iOS Status Bar -->
+
+<!-- Language Dropdown Pill Button -->
+<div class="flex justify-end pt-2">
+
+</div>
+</header>
+<!-- END: Top Status Bar & Language Selector -->
+<!-- BEGIN: Branding & Value Proposition Area -->
+<section class="relative z-10 flex flex-col items-center text-center px-6 pt-2 pb-5" data-purpose="hero-brand-section"><!-- AyuOS Leaf Logo Mark -->
+<div class="w-20 h-20 mb-3 flex items-center justify-center drop-shadow-sm">
+<svg class="w-20 h-20" fill="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- Top Mint Leaf petal -->
+<path d="M52 14C65 14 74 25 74 38C74 53 59 66 48 70C46 54 44 32 52 14Z" fill="#58B896"></path>
+<!-- Bottom Left Light Mint Leaf petal -->
+<path d="M45 42C45 42 47 62 38 74C30 73 24 64 24 53C24 40 34 39 45 42Z" fill="#84D3B8"></path>
+<!-- Right Dark Medical Teal Leaf petal -->
+<path d="M48 68C60 66 76 56 76 42C76 43 78 57 71 69C64 80 52 82 48 68Z" fill="#135D5A"></path>
+</svg>
+</div>
+<!-- Brand Title -->
+<h1 class="text-[34px] font-bold tracking-tight text-[#0F4E4F] mb-1.5">
+  AyuOS
+</h1>
+<!-- Tagline -->
+<p class="text-[#0F4E4F] text-[19px] font-bold tracking-tight max-w-[280px] leading-tight mb-2">
+  Your lifelong health<br>operating system.
+</p>
+<!-- Subtitle Description -->
+<p class="text-[#4E616C] text-[13.5px] leading-snug max-w-[310px] font-normal">
+  Keep your health records, medicines, care<br>and family health connected in one place.
+</p></section>
+<!-- END: Branding & Value Proposition Area -->
+<!-- BEGIN: Elevated Main Login Card -->
+<section class="relative z-10 w-full px-4 pb-6" data-purpose="login-form-wrapper">
+<div class="w-full bg-white rounded-[32px] px-6 pt-7 pb-6 shadow-card border border-stone-100 flex flex-col">
+<!-- Card Titles -->
+<div class="mb-5 text-left">
+<h2 class="text-[26px] font-bold tracking-tight text-[#0D2630]">
+            Welcome back
+          </h2>
+<p class="text-[#64748B] text-[14px] mt-1 font-normal">
+            Sign in to continue to your AyuOS workspace.
+          </p>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col space-y-4" id="loginForm" novalidate="" onsubmit="event.preventDefault(); handleLogin();">
+<!-- Field 1: Email or Phone -->
+<div class="flex flex-col text-left">
+<label class="text-[13.5px] font-medium text-[#1E293B] mb-1.5" for="identifier">
+              Email or phone number
+            </label>
+<div class="relative flex items-center rounded-xl border border-[#CBD5E1] bg-white transition-all focus-ring">
+<!-- Leading Mail Icon -->
+<span class="pl-3.5 pr-2.5 text-[#8598A7]">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- Input -->
+<input class="w-full py-3 pr-4 text-[14.5px] text-[#0F172A] placeholder-[#94A3B8] border-0 bg-transparent focus:ring-0 focus:outline-none" id="identifier" name="identifier" placeholder="Enter your email or phone number" required="" type="text">
+</div>
+<span class="hidden text-xs text-red-500 mt-1 pl-1" id="identifierError">Please enter your email or phone number</span>
+</div>
+<!-- Field 2: Password -->
+<div class="flex flex-col text-left">
+<label class="text-[13.5px] font-medium text-[#1E293B] mb-1.5" for="password">
+              Password
+            </label>
+<div class="relative flex items-center rounded-xl border border-[#CBD5E1] bg-white transition-all focus-ring">
+<!-- Leading Lock Icon -->
+<span class="pl-3.5 pr-2.5 text-[#8598A7]">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="11" rx="2" stroke-linecap="round" stroke-linejoin="round" width="16" x="4" y="11"></rect>
+<path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- Password Input -->
+<input class="w-full py-3 pr-10 text-[14.5px] text-[#0F172A] placeholder-[#94A3B8] border-0 bg-transparent focus:ring-0 focus:outline-none" id="password" name="password" placeholder="Enter your password" required="" type="password">
+<!-- Password Toggle Visibility Button -->
+<button aria-label="Toggle password visibility" class="absolute right-3 text-[#798C9B] hover:text-[#0F5B5C] transition-colors p-1" id="togglePasswordBtn" onclick="togglePasswordVisibility()" type="button">
+<!-- Eye Off Icon (Default: hidden) -->
+<svg class="w-5 h-5" fill="none" id="eyeOffIcon" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<!-- Eye Open Icon -->
+<svg class="w-5 h-5 hidden" fill="none" id="eyeOnIcon" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<span class="hidden text-xs text-red-500 mt-1 pl-1" id="passwordError">Please enter your password</span>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end pt-0.5">
+<a class="text-[13px] font-semibold text-[#0F5C5E] hover:underline focus:outline-none" href="#">
+              Forgot password?
+            </a>
+</div>
+<!-- Primary Sign In Action Button -->
+<button class="w-full mt-2 py-3.5 px-4 bg-[#0F5C5E] hover:bg-[#0B494B] active:scale-[0.99] text-white font-semibold text-[16px] rounded-xl flex items-center justify-center gap-2 shadow-md shadow-[#0F5C5E]/20 transition-all duration-150" type="submit">
+<span class="">Sign In</span>
+<svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</form>
+<!-- Divider OR -->
+<div class="relative flex items-center justify-center my-4">
+<div class="border-t border-[#E2E8F0] w-full"></div>
+<span class="bg-white px-3 text-[12px] uppercase font-semibold text-[#94A3B8] tracking-wider">
+            OR
+          </span>
+<div class="border-t border-[#E2E8F0] w-full"></div>
+</div>
+<!-- Secondary Action: Continue with Google -->
+<button class="w-full py-3 px-4 bg-white border border-[#CBD5E1] hover:bg-slate-50 active:scale-[0.99] rounded-xl flex items-center justify-center gap-3 transition-colors shadow-sm" type="button">
+<!-- Official Google "G" SVG -->
+<svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span class="text-[14.5px] font-semibold text-[#1E293B]">
+            Continue with Google
+          </span>
+</button>
+<!-- Card Footer Link -->
+<p class="mt-4 text-[13px] text-[#64748B] text-center">
+          Don’t have an account? 
+          <a class="font-semibold text-[#0F5C5E] hover:underline" href="#">
+            Create account
+          </a>
+</p>
+</div>
+</section>
+<!-- END: Elevated Main Login Card -->
+<!-- Safe area spacing for iOS home indicator -->
+<div class="h-4 w-full"></div>
+</main>
+<!-- END: Phone Frame / Viewport Container -->
+<!-- BEGIN: Client Interactivity Scripts -->
+<script data-purpose="form-interactivity">
+    // Password visibility toggle handler
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const eyeOffIcon = document.getElementById('eyeOffIcon');
+      const eyeOnIcon = document.getElementById('eyeOnIcon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeOffIcon.classList.add('hidden');
+        eyeOnIcon.classList.remove('hidden');
+      } else {
+        passwordInput.type = 'password';
+        eyeOffIcon.classList.remove('hidden');
+        eyeOnIcon.classList.add('hidden');
+      }
+    }
+
+    // Basic Sign In validation feedback
+    function handleLogin() {
+      const identifier = document.getElementById('identifier');
+      const password = document.getElementById('password');
+      const identifierError = document.getElementById('identifierError');
+      const passwordError = document.getElementById('passwordError');
+
+      let isValid = true;
+
+      if (!identifier.value.trim()) {
+        identifierError.classList.remove('hidden');
+        isValid = false;
+      } else {
+        identifierError.classList.add('hidden');
+      }
+
+      if (!password.value) {
+        passwordError.classList.remove('hidden');
+        isValid = false;
+      } else {
+        passwordError.classList.add('hidden');
+      }
+
+      if (isValid) {
+        // Successful mock submit
+        const submitBtn = document.querySelector('button[type="submit"] span');
+        const origText = submitBtn.textContent;
+        submitBtn.textContent = 'Signing in...';
+        setTimeout(() => {
+          alert('Sign in initiated for AyuOS workspace: ' + identifier.value);
+          submitBtn.textContent = origText;
+        }, 600);
+      }
+    }
+  </script>
+<!-- END: Client Interactivity Scripts -->
+
+
+
+
+</body></html>

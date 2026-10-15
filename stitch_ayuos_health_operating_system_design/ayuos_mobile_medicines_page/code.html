@@ -1,0 +1,555 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>AyuOS - Medicines</title>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#90d2d4",
+            "surface-container-low": "#f1f4f3",
+            "inverse-surface": "#2d3131",
+            "surface-tint": "#21686a",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#181c1c",
+            "on-surface-variant": "#3f4949",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#002021",
+            "secondary-fixed-dim": "#92cef2",
+            "tertiary-fixed-dim": "#b8cac7",
+            "on-tertiary-fixed-variant": "#394a47",
+            "on-secondary-container": "#1b607f",
+            "on-secondary-fixed-variant": "#004c69",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#b8cac7",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e6e9e8",
+            "on-secondary-fixed": "#001e2c",
+            "tertiary": "#2e3f3c",
+            "secondary-container": "#9dd9fd",
+            "surface-container-highest": "#e0e3e2",
+            "inverse-primary": "#90d2d4",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#aceef0",
+            "inverse-on-surface": "#eef1f0",
+            "surface-bright": "#f7faf9",
+            "surface": "#f7faf9",
+            "tertiary-fixed": "#d4e6e3",
+            "surface-variant": "#e0e3e2",
+            "surface-dim": "#d7dbda",
+            "on-tertiary-fixed": "#0e1e1c",
+            "tertiary-container": "#455653",
+            "on-primary-container": "#90d2d4",
+            "primary": "#004345",
+            "outline-variant": "#bfc8c8",
+            "outline": "#6f7979",
+            "on-primary-fixed-variant": "#004f51",
+            "secondary-fixed": "#c4e7ff",
+            "background": "#f7faf9",
+            "primary-container": "#0f5c5e",
+            "surface-container": "#ebeeed",
+            "on-primary": "#ffffff",
+            "secondary": "#226584",
+            "on-background": "#181c1c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "2.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "margin-sm": "1.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "mono-data": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Hide scrollbars for clean horizontal tab experience */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-secondary-fixed selection:text-primary min-h-screen flex justify-center">
+<!-- Mobile Shell Container (Max Width 430px for accurate smartphone framing) -->
+<div class="w-full max-w-md bg-surface min-h-screen flex flex-col relative pb-28">
+<!-- Top Status Bar Mockup for Native Mobile Feel -->
+<div class="pt-2 px-margin-sm flex justify-between items-center text-on-surface text-label-sm font-label-sm select-none">
+<span class="font-semibold text-on-surface">9:41</span>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- Header Section -->
+<header class="px-margin-sm pt-space-sm pb-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Profile Avatar with Status Ring -->
+<div class="relative">
+<img alt="Eishaan Shah profile" class="w-12 h-12 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="Photorealistic close-up portrait of Eishaan Shah, a young South Asian man with warm confident expression, photographed under clinical natural studio lighting with soft teal rim accents. The composition is clean, centered, and minimal with a serene neutral background that complements medical software aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zctFWeZfch1Iyi7c7xRjD-5OzugvdPYc1eCOXDbF1txVjjBjCL7S5eBthhhLLldjXVCNbJaxVKoEw_uj1sjlNthVy2IpQPAOdvttaQW6AowY-DOS8JvQzBoXMRppcKC7i7gFIzj6NvJVkfQcuTBRYhxkL23OqOTx_xyECPJG5K5H5LIxsg6U80uWlqUM4YfPkd6QdjwKHvNazwlGcqTJSBWDlfXfHcV-pL8Q5Ao">
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-primary-container border-2 border-surface-container-lowest rounded-full" title="Active Synchronized State"></span>
+</div>
+<!-- Title & Person Selector -->
+<div class="flex flex-col">
+<h1 class="text-headline-md font-headline-md text-on-surface tracking-tight leading-none mb-1">Medicines</h1>
+<!-- Interactive Person Selector Pill -->
+<button class="inline-flex items-center gap-1 text-primary-container bg-surface-container hover:bg-surface-container-high transition-colors px-2.5 py-0.5 rounded-full text-label-sm font-label-sm border border-outline-variant w-fit active:scale-95" id="person-switcher-btn" type="button">
+<span class="">My Health</span>
+<span class="material-symbols-outlined text-[15px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- Header Actions: Search & Add -->
+<div class="flex items-center gap-2">
+<button aria-label="Search medicines" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button aria-label="Add medicine" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+<!-- Quick Person Switcher Dropdown (Micro Interaction Drawer) -->
+<div class="hidden mt-2 p-2 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-md" id="person-menu">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="text-body-sm font-label-md text-on-surface">Eishaan Shah (Self)</span>
+</div>
+<span class="text-label-sm text-primary-container font-semibold">Current</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-body-sm font-body-sm text-on-surface">Mummy's Health (Ananya)</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">Switch</span>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="px-margin-sm flex flex-col gap-4 mt-1">
+<!-- Category Navigation Pill Bar (Horizontal Scrollable) -->
+<section aria-label="Medicine Categories" class="overflow-x-auto no-scrollbar -mx-margin-sm px-margin-sm flex gap-2">
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-surface-container-lowest text-label-md font-label-md shrink-0 shadow-sm transition-all active:scale-95">
+          Overview
+        </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0 transition-all active:scale-95">
+          Current
+        </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0 transition-all active:scale-95">
+          History
+        </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0 transition-all active:scale-95">
+          Refills
+        </button>
+
+</section>
+<!-- Medicine Summary Metrics (3-column Bento Grid) -->
+<section aria-label="Medicine Metrics" class="grid grid-cols-3 gap-2.5">
+<!-- Metric 1: Active Medicines -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant flex flex-col justify-between shadow-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-2">
+<span class="material-symbols-outlined text-[18px]">pill</span>
+</div>
+<div>
+<div class="text-headline-sm font-mono-data text-on-surface leading-tight font-semibold">2</div>
+<div class="text-[11px] leading-3 text-on-surface-variant font-label-sm mt-0.5">Active medicines</div>
+</div>
+</div>
+<!-- Metric 2: Needs Attention -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant flex flex-col justify-between shadow-sm">
+<div class="w-7 h-7 rounded-lg bg-error-container/30 flex items-center justify-center text-error mb-2">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+<div>
+<div class="text-headline-sm font-mono-data text-on-surface leading-tight font-semibold">1</div>
+<div class="text-[11px] leading-3 text-on-surface-variant font-label-sm mt-0.5">Needs attention</div>
+</div>
+</div>
+<!-- Metric 3: Refills Due Soon -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant flex flex-col justify-between shadow-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<div>
+<div class="text-headline-sm font-mono-data text-on-surface leading-tight font-semibold">0</div>
+<div class="text-[11px] leading-3 text-on-surface-variant font-label-sm mt-0.5">Refills due soon</div>
+</div>
+</div>
+</section>
+<!-- Action Needed Banner -->
+<section class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm font-label-md text-on-surface font-semibold leading-tight">Action needed</span>
+<span class="text-label-sm text-on-surface-variant leading-tight">1 medicine may run out in <strong class="text-error font-medium">10 days</strong></span>
+</div>
+</div>
+<button class="inline-flex items-center gap-0.5 text-label-sm font-label-md text-primary-container hover:text-primary transition-colors shrink-0">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</section>
+<!-- Current Medicines Section -->
+<section aria-label="Current Prescriptions" class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">medication</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Current Medicines</h2>
+</div>
+<button class="inline-flex items-center gap-0.5 text-label-sm font-label-md text-primary-container hover:underline">
+<span class="">View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Medicine Card 1: Metformin 500 mg -->
+<article class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<!-- Pill Icon Badge -->
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-center shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[24px]">circle</span>
+</div>
+<div class="flex flex-col"><h3 class="text-body-md font-semibold text-on-surface leading-tight">Metformin 500 mg</h3><p class="text-body-sm text-on-surface-variant mt-0.5">1 tablet · Twice daily (After meals)</p></div>
+</div>
+<!-- In-place Refill Acknowledgment Button -->
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-surface-container-lowest text-label-sm font-label-md hover:bg-primary transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1 shadow-sm" id="metformin-order-btn" onclick="toggleRefillState(this)" type="button">
+<span class="">Order Refill</span>
+</button>
+</div>
+<!-- Stock Level & Runway Bar -->
+<div class="pt-2 border-t border-outline-variant/60 flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-label-sm">
+<span class="inline-flex items-center gap-1 text-error font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                May run out in 10 days
+              </span>
+<span class="font-mono-data text-on-surface-variant text-[11px]">20 / 30 tablets remaining</span>
+</div>
+<!-- Visual Burn Track -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full transition-all duration-300" style="width: 33%"></div>
+</div>
+</div>
+</article>
+<!-- Medicine Card 2: Vitamin D3 1000 IU -->
+<article class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<!-- Pill Icon Badge -->
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[24px]">pill</span>
+</div>
+<div class="flex flex-col"><div class="flex items-center gap-2"><h3 class="text-body-md font-semibold text-on-surface leading-tight">Vitamin D3 1000 IU</h3><span class="text-[10px] font-mono-data px-1.5 py-0.2 rounded bg-tertiary-fixed text-primary font-medium">On track</span></div><p class="text-body-sm text-on-surface-variant mt-0.5">1 capsule · Once daily (Morning)</p></div>
+</div>
+<!-- In-place Mark Taken Button -->
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant text-on-surface text-label-sm font-label-md hover:bg-surface-container-high transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1" id="vitamind-taken-btn" onclick="toggleTakenState(this)" type="button">
+<span class="">Mark Taken</span>
+</button>
+</div>
+<!-- Stock Level & Runway Bar -->
+<div class="pt-2 border-t border-outline-variant/60 flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-label-sm">
+<span class="text-on-surface-variant text-[12px]">24 days remaining</span>
+<span class="font-mono-data text-on-surface-variant text-[11px]">48 / 60 capsules</span>
+</div>
+<!-- Visual Burn Track -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-300" style="width: 80%"></div>
+</div>
+</div>
+</article>
+</section>
+<!-- Refill & Stock Intelligence Section -->
+<section aria-label="Refill Intelligence" class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">inventory_2</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Refill &amp; Stock</h2>
+</div>
+<button class="inline-flex items-center gap-0.5 text-label-sm font-label-md text-primary-container hover:underline">
+<span class="">View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Twin Info Cards -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Twin Card 1: Upcoming Refills -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="text-label-sm text-on-surface-variant block">Upcoming refills</span>
+<span class="text-headline-md font-mono-data font-semibold text-on-surface">1</span>
+<span class="text-[11px] text-on-surface-variant block mt-0.5">In next 30 days</span>
+</div>
+</div>
+<!-- Twin Card 2: Low on Stock -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-7 h-7 rounded-lg bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">production_quantity_limits</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="text-label-sm text-on-surface-variant block">Low on stock</span>
+<span class="text-headline-md font-mono-data font-semibold text-error">1</span>
+<span class="text-[11px] text-on-surface-variant block mt-0.5">Medicine running low</span>
+</div>
+</div>
+</div>
+<!-- Clinical Intelligence Note Banner -->
+
+</section>
+<!-- Reminders Section -->
+<section aria-label="Reminders" class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">notifications</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Reminders</h2>
+</div>
+<button class="inline-flex items-center gap-0.5 text-label-sm font-label-md text-primary-container hover:underline">
+<span class="">View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">alarm</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold text-on-surface leading-tight">Metformin 500 mg</span>
+<span class="text-label-sm text-on-surface-variant leading-tight mt-0.5">Tomorrow · 8:00 AM (After dinner)</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant text-on-surface text-label-sm font-label-md hover:bg-surface-container-high transition-all active:scale-95 shrink-0" id="snooze-btn" onclick="toggleSnooze(this)" type="button">
+            Snooze
+          </button>
+</div>
+</section>
+<!-- Medicine History Section -->
+<section aria-label="Medicine History" class="flex flex-col gap-2.5 mb-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">history</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Medicine History</h2>
+</div>
+<button class="inline-flex items-center gap-0.5 text-label-sm font-label-md text-primary-container hover:underline">
+<span class="">View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant divide-y divide-outline-variant/60 shadow-sm overflow-hidden">
+<!-- History Entry 1 -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm font-medium text-on-surface leading-tight">Metformin 500 mg refilled</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">30 tablets · Apollo Pharmacy</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-right">
+<span class="text-label-sm font-mono-data text-outline">28 Sep 2026</span>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- History Entry 2 -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm font-medium text-on-surface leading-tight">Vitamin D3 1000 IU refilled</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">60 capsules · Apollo Pharmacy</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-right">
+<span class="text-label-sm font-mono-data text-outline">12 Aug 2026</span>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- History Entry 3 -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm font-medium text-on-surface leading-tight">Metformin 500 mg refilled</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">30 tablets · Apollo Pharmacy</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-right">
+<span class="text-label-sm font-mono-data text-outline">5 Jul 2026</span>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Generated strictly from Shared Components JSON) -->
+<!-- Destination count: 5 | Active item: Medicines -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm py-space-xs pb-safe bg-surface-container-lowest shadow-md max-w-md mx-auto right-0">
+<!-- Nav 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</a>
+<!-- Nav 2: Records -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_shared</span>
+<span class="text-label-sm font-label-sm mt-0.5">Records</span>
+</a>
+<!-- Nav 3: Medicines (ACTIVE TAB - EXACT MATCH) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-space-sm py-space-xs active:scale-95 transition-transform duration-150 ease-out" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &quot;FILL&quot; 1;">pill</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-semibold text-surface-container-lowest">Medicines</span>
+</a>
+<!-- Nav 4: Care -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">handshake</span>
+<span class="text-label-sm font-label-sm mt-0.5">Care</span>
+</a>
+<!-- Nav 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-sm py-space-xs hover:bg-surface-container-low transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="text-label-sm font-label-sm mt-0.5">More</span>
+</a>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    // Global Person Switcher dropdown toggle
+    const switcherBtn = document.getElementById('person-switcher-btn');
+    const personMenu = document.getElementById('person-menu');
+    if (switcherBtn && personMenu) {
+      switcherBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        personMenu.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        if (!personMenu.classList.contains('hidden')) {
+          personMenu.classList.add('hidden');
+        }
+      });
+    }
+
+    // In-place refill confirmation (strictly without e-commerce or page jumps)
+    function toggleRefillState(btn) {
+      if (btn.dataset.ordered === 'true') {
+        btn.dataset.ordered = 'false';
+        btn.className = 'px-3 py-1.5 rounded-lg bg-primary-container text-surface-container-lowest text-label-sm font-label-md hover:bg-primary transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1 shadow-sm';
+        btn.innerHTML = '<span>Order Refill</span>';
+      } else {
+        btn.dataset.ordered = 'true';
+        btn.className = 'px-3 py-1.5 rounded-lg bg-primary text-surface-container-lowest text-label-sm font-label-md transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1 shadow-sm';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span><span>Ordered</span>';
+      }
+    }
+
+    // Mark taken in-place tactile button
+    function toggleTakenState(btn) {
+      if (btn.dataset.taken === 'true') {
+        btn.dataset.taken = 'false';
+        btn.className = 'px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant text-on-surface text-label-sm font-label-md hover:bg-surface-container-high transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1';
+        btn.innerHTML = '<span>Mark Taken</span>';
+      } else {
+        btn.dataset.taken = 'true';
+        btn.className = 'px-3 py-1.5 rounded-lg bg-tertiary-fixed text-primary font-medium text-label-sm font-label-md transition-all duration-150 active:scale-95 shrink-0 flex items-center gap-1';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check_circle</span><span>Taken Today</span>';
+      }
+    }
+
+    // Snooze micro-interaction
+    function toggleSnooze(btn) {
+      if (btn.dataset.snoozed === 'true') {
+        btn.dataset.snoozed = 'false';
+        btn.innerText = 'Snooze';
+        btn.classList.remove('text-primary-container', 'font-semibold');
+      } else {
+        btn.dataset.snoozed = 'true';
+        btn.innerText = 'Snoozed 1h';
+        btn.classList.add('text-primary-container', 'font-semibold');
+      }
+    }
+  </script>
+
+
+</body></html>

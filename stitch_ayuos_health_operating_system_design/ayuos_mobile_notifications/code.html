@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>AyuOS - Mobile Notifications</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0F5C5E',
+              mint: '#DCEFEB',
+              navy: '#173042',
+              slate: '#60717A',
+              border: '#DCE5E7',
+              bg: '#F6F9F8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F6F9F8;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Hide scrollbars while enabling touch scrolling */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-brand-navy min-h-screen flex justify-center selection:bg-brand-mint selection:text-brand-teal">
+<!-- Mobile Viewport Wrapper (iOS standard width container) -->
+<div class="w-full max-w-[430px] min-h-screen bg-brand-bg flex flex-col relative pb-24 shadow-xl border-x border-brand-border/40">
+<!-- BEGIN: MainHeader -->
+<header class="px-5 pt-8 pb-4" data-purpose="screen-header">
+<div class="flex items-center gap-3 mb-1">
+<!-- Back Navigation Button -->
+<button aria-label="Go back" class="p-1 -ml-1 text-brand-navy hover:text-brand-teal active:scale-95 transition-all" type="button">
+<svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h1 class="text-[26px] font-bold text-brand-navy tracking-tight leading-none">Notifications</h1>
+</div>
+<p class="text-[13.5px] text-brand-slate font-normal pl-8">
+        Important updates and reminders for your health.
+      </p>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-4 space-y-4" data-purpose="notifications-container">
+<!-- BEGIN: NeedsAttentionSection -->
+<section class="bg-white rounded-2xl border border-brand-border p-4 shadow-[0_2px_8px_rgba(23,48,66,0.02)]" data-purpose="needs-attention-group">
+<!-- Section Header -->
+<div class="flex items-center justify-between pb-3.5 border-b border-gray-100">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-brand-navy tracking-tight">Needs Attention</h2>
+<span class="inline-flex items-center justify-center w-5 h-5 bg-red-500 text-white rounded-full text-[11px] font-semibold">3</span>
+</div>
+<button class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-teal hover:opacity-80 transition-opacity" type="button">
+<span>See All</span>
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Notification List -->
+<div class="divide-y divide-gray-100">
+<!-- Item 1: Pill refill reminder -->
+<div class="py-3.5 first:pt-3.5 last:pb-1 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-red-500 -rotate-45 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="18" rx="7" width="14" x="5" y="3"></rect>
+<path d="M5 12h14" stroke-linecap="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Metformin may run out in 10 days</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">You have 10 tablets left. Consider refilling soon.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">2 hrs ago</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-brand-mint text-brand-teal text-[12px] font-medium px-3 py-1 rounded-lg hover:bg-teal-100 active:scale-95 transition-all" type="button">
+                  View
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Item 2: Lab report review -->
+<div class="py-3.5 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-red-500 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 3h6m-5 0v5l-4.5 9A2 2 0 007.3 20h9.4a2 2 0 001.8-3L14 8V3m-4 10h4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Lab report needs review</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Your HbA1c report is available. Please review the results.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">5 hrs ago</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-brand-mint text-brand-teal text-[12px] font-medium px-2.5 py-1 rounded-lg hover:bg-teal-100 active:scale-95 transition-all" type="button">
+                  View Report
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Item 3: Doctor appointment -->
+<div class="py-3.5 last:pb-1 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-red-500 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="18" rx="3" width="18" x="3" y="4"></rect>
+<path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Upcoming doctor appointment</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Appointment with Dr. Sharma tomorrow at 10:00 AM.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">1 day ago</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-brand-mint text-brand-teal text-[12px] font-medium px-2.5 py-1 rounded-lg hover:bg-teal-100 active:scale-95 transition-all" type="button">
+                  View Details
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NeedsAttentionSection -->
+<!-- BEGIN: RemindersSection -->
+<section class="bg-white rounded-2xl border border-brand-border p-4 shadow-[0_2px_8px_rgba(23,48,66,0.02)]" data-purpose="reminders-group">
+<!-- Section Header -->
+<div class="flex items-center justify-between pb-3.5 border-b border-gray-100">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-brand-navy tracking-tight">Reminders</h2>
+<span class="inline-flex items-center justify-center w-5 h-5 bg-[#3B82A6] text-white rounded-full text-[11px] font-semibold">3</span>
+</div>
+<button class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-teal hover:opacity-80 transition-opacity" type="button">
+<span>See All</span>
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Reminder List -->
+<div class="divide-y divide-gray-100">
+<!-- Item 1: Appointment Reminder -->
+<div class="py-3.5 first:pt-3.5 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="18" rx="3" width="18" x="3" y="4"></rect>
+<path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Doctor appointment reminder</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Dr. Sharma · General Medicine</p>
+<p class="text-[12px] text-brand-slate leading-tight">Tomorrow at 10:00 AM</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">1 day ago</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-brand-mint text-brand-teal text-[12px] font-medium px-3 py-1 rounded-lg hover:bg-teal-100 active:scale-95 transition-all" type="button">
+                  View
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Item 2: Pill/Medicine intake (Interactive Button) -->
+<div class="py-3.5 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal -rotate-45 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="18" rx="7" width="14" x="5" y="3"></rect>
+<path d="M5 12h14" stroke-linecap="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Take your medicine</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Metformin 500 mg</p>
+<p class="text-[12px] text-brand-slate leading-tight">1 tablet after breakfast</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">Today, 8:00 AM</span>
+<div class="flex items-center gap-1.5">
+<!-- Interactive Action Toggle Button -->
+<button class="bg-[#E6F4F1] hover:bg-brand-mint text-brand-teal text-[12px] font-medium px-2.5 py-1 rounded-lg active:scale-95 transition-all" data-purpose="take-medicine-toggle" id="mark-taken-btn" type="button">
+                  Mark as Taken
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Item 3: Follow-up -->
+<div class="py-3.5 last:pb-1 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Follow-up reminder</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Time for your monthly diabetes checkup.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1.5">2 days ago</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-brand-mint text-brand-teal text-[12px] font-medium px-2.5 py-1 rounded-lg hover:bg-teal-100 active:scale-95 transition-all" type="button">
+                  View Details
+                </button>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: RemindersSection -->
+<!-- BEGIN: RecentSection -->
+<section class="bg-white rounded-2xl border border-brand-border p-4 shadow-[0_2px_8px_rgba(23,48,66,0.02)]" data-purpose="recent-group">
+<!-- Section Header -->
+<div class="flex items-center justify-between pb-3.5 border-b border-gray-100">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-brand-navy tracking-tight">Recent</h2>
+<span class="inline-flex items-center justify-center w-5 h-5 bg-[#8D9CA4] text-white rounded-full text-[11px] font-semibold">3</span>
+</div>
+<button class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-teal hover:opacity-80 transition-opacity" type="button">
+<span>See All</span>
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Recent Records List -->
+<div class="divide-y divide-gray-100">
+<!-- Item 1: Lab Report Added -->
+<div class="py-3.5 first:pt-3.5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Lab report added</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">HbA1c, CBC report has been added to your health records.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1">5 hrs ago</span>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5] mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Item 2: Prescription Updated -->
+<div class="py-3.5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Prescription updated</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">New prescription from Dr. Sharma has been added to your records.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1">1 day ago</span>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5] mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Item 3: Pharmacy Bill Processed -->
+<div class="py-3.5 last:pb-1 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint/60 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-brand-teal stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<h3 class="text-[13.5px] font-semibold text-brand-navy leading-snug">Pharmacy bill processed</h3>
+<p class="text-[12px] text-brand-slate mt-0.5 leading-tight">Your pharmacy bill for ₹450 has been added to Healthcare Finance.</p>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-1">
+<span class="text-[11px] text-brand-slate whitespace-nowrap mb-1">2 days ago</span>
+<svg class="w-4 h-4 text-brand-slate stroke-[2.5] mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: RecentSection -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-brand-border/80 px-2 py-2.5 z-50 flex justify-around items-center" data-purpose="mobile-bottom-tabs">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center gap-1 text-brand-slate hover:text-brand-teal w-14 transition-colors" href="#home">
+<svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">Home</span>
+</a>
+<!-- Tab 2: Records -->
+<a class="flex flex-col items-center gap-1 text-brand-slate hover:text-brand-teal w-14 transition-colors" href="#records">
+<svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">Records</span>
+</a>
+<!-- Tab 3: Medicines -->
+<a class="flex flex-col items-center gap-1 text-brand-slate hover:text-brand-teal w-14 transition-colors" href="#medicines">
+<svg class="w-6 h-6 stroke-[1.8] -rotate-45" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<rect height="18" rx="7" width="14" x="5" y="3"></rect>
+<path d="M5 12h14" stroke-linecap="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">Medicines</span>
+</a>
+<!-- Tab 4: Care -->
+<a class="flex flex-col items-center gap-1 text-brand-slate hover:text-brand-teal w-14 transition-colors" href="#care">
+<svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">Care</span>
+</a>
+<!-- Tab 5: More (Active) -->
+<a class="flex flex-col items-center gap-1 text-brand-teal font-semibold w-14 transition-colors" href="#more">
+<div class="relative flex items-center justify-center">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</div>
+<span class="text-[11px] font-semibold tracking-tight">More</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+</div>
+<!-- BEGIN: InteractiveHandlers -->
+<script data-purpose="event-handlers">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle interaction for 'Mark as Taken' button
+      const markTakenBtn = document.getElementById('mark-taken-btn');
+      if (markTakenBtn) {
+        let isTaken = false;
+        markTakenBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isTaken = !isTaken;
+          if (isTaken) {
+            markTakenBtn.textContent = '✓ Taken';
+            markTakenBtn.className = 'bg-emerald-100 text-emerald-800 text-[12px] font-semibold px-2.5 py-1 rounded-lg transition-all scale-100';
+          } else {
+            markTakenBtn.textContent = 'Mark as Taken';
+            markTakenBtn.className = 'bg-[#E6F4F1] hover:bg-brand-mint text-brand-teal text-[12px] font-medium px-2.5 py-1 rounded-lg active:scale-95 transition-all';
+          }
+        });
+      }
+    });
+  </script>
+<!-- END: InteractiveHandlers -->
+</body></html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>AyuOS - Mobile Privacy &amp; Security</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for AyuOS Theme -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ayu: {
+              teal: '#0F5C5E',
+              darkTeal: '#0B4547',
+              bg: '#F7FAF9',
+              card: '#FFFFFF',
+              navy: '#173042',
+              slate: '#60717A',
+              border: '#E2ECE9',
+              mint: '#EAF6F3',
+              toggleBg: '#D1D5DB'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-enhancements">
+    /* iOS Momentum Scrolling & Tap Highlight Removal */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    input, button {
+      user-select: auto;
+    }
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+    .safe-top {
+      padding-top: env(safe-area-inset-top, 16px);
+    }
+  </style>
+<style data-purpose="custom-transitions">
+    /* Smooth toggle transitions */
+    .toggle-knob {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
+    }
+    .toggle-track {
+      transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Modal Backdrop Fade */
+    .modal-backdrop {
+      transition: opacity 0.2s ease-in-out;
+    }
+    .modal-content {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-ayu-bg text-ayu-navy font-sans antialiased min-h-screen pb-28">
+<!-- BEGIN: NavigationHeader -->
+<header class="safe-top px-4 pt-4 pb-3 bg-ayu-bg sticky top-0 z-30 flex items-start space-x-3.5">
+<!-- Back Button -->
+<button aria-label="Go back" class="mt-0.5 p-1 -ml-1 text-ayu-navy active:opacity-60 transition-opacity" type="button">
+<svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Header Titles -->
+<div class="flex-1">
+<h1 class="text-[22px] font-bold text-ayu-navy tracking-tight leading-tight">Privacy &amp; Security</h1>
+<p class="text-xs text-ayu-slate mt-0.5 font-normal">Manage your privacy and keep your data secure.</p>
+</div>
+</header>
+<!-- END: NavigationHeader -->
+<!-- BEGIN: MainContent -->
+<main class="px-4 space-y-4 mt-1">
+<!-- BEGIN: AccountSecuritySection -->
+<section class="bg-ayu-card rounded-2xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)] border border-ayu-border" data-purpose="account-security-card">
+<!-- Section Title & Subtitle -->
+<div class="mb-3.5">
+<h2 class="text-base font-bold text-ayu-navy">Account Security</h2>
+<p class="text-xs text-ayu-slate mt-0.5">Keep your account safe and protected.</p>
+</div>
+<!-- Rows -->
+<div class="divide-y divide-ayu-border/70">
+<!-- Change Password -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="10" rx="2" stroke-linecap="round" stroke-linejoin="round" width="14" x="5" y="11"></rect>
+<path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="16" fill="currentColor" r="1"></circle>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Change Password</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Update your password regularly.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Two-Factor Authentication -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M12 3L4 6.5V12c0 5 3.5 8.5 8 9.5 4.5-1 8-4.5 8-9.5V6.5L12 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Two-Factor Authentication</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Add an extra layer of security to your account.</p>
+</div>
+</div>
+<div class="flex items-center space-x-1.5 shrink-0">
+<span class="text-[13px] text-ayu-slate font-medium">Off</span>
+<svg class="w-4 h-4 text-ayu-slate/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</button>
+<!-- Manage Devices -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="18" rx="2" stroke-linecap="round" stroke-linejoin="round" width="10" x="7" y="3"></rect>
+<circle cx="12" cy="17" fill="currentColor" r="0.8"></circle>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Manage Devices</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">View and manage devices that are logged in.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Log Out from All Devices (Interactive Trigger) -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" id="logoutTriggerBtn" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Log Out from All Devices</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5" id="logoutDeviceStatus">Sign out from all devices except this one.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: AccountSecuritySection -->
+<!-- BEGIN: PrivacySettingsSection -->
+<section class="bg-ayu-card rounded-2xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)] border border-ayu-border" data-purpose="privacy-settings-card">
+<!-- Section Title & Subtitle -->
+<div class="mb-3.5">
+<h2 class="text-base font-bold text-ayu-navy">Privacy Settings</h2>
+<p class="text-xs text-ayu-slate mt-0.5">Control how your data is used and who can access it.</p>
+</div>
+<!-- Rows -->
+<div class="divide-y divide-ayu-border/70">
+<!-- Share Health Data (Toggle ON default) -->
+<div class="py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3.5 pr-3">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Share Health Data for Better Care</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5 leading-relaxed">Allow AyuOS to use your data to provide personalized insights and recommendations.</p>
+</div>
+</div>
+<!-- Switch Toggle Button -->
+<button aria-checked="true" class="js-toggle shrink-0 w-12 h-7 bg-ayu-teal rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" data-toggle="active" role="switch" type="button">
+<span class="block w-6 h-6 bg-white rounded-full shadow-md transform translate-x-5 transition-transform duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Analytics and App Improvement (Toggle OFF default) -->
+
+<!-- Marketing Communications (Toggle OFF default) -->
+<div class="py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3.5 pr-3">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="14" rx="2" stroke-linecap="round" stroke-linejoin="round" width="18" x="3" y="5"></rect>
+<path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Marketing Communications</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5 leading-relaxed">Receive updates about new features and services.</p>
+</div>
+</div>
+<!-- Switch Toggle Button -->
+<button aria-checked="false" class="js-toggle shrink-0 w-12 h-7 bg-gray-300 rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" data-toggle="inactive" role="switch" type="button">
+<span class="block w-6 h-6 bg-white rounded-full shadow-md transform translate-x-0 transition-transform duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Data Sharing with Care Team -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Data Sharing with Care Team</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Allow your care team to access your health data.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: PrivacySettingsSection -->
+<!-- BEGIN: DataAndStorageSection -->
+<section class="bg-ayu-card rounded-2xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)] border border-ayu-border" data-purpose="data-storage-card">
+<!-- Section Title & Subtitle -->
+<div class="mb-3.5">
+<h2 class="text-base font-bold text-ayu-navy">Data &amp; Storage</h2>
+<p class="text-xs text-ayu-slate mt-0.5">Manage your data and storage preferences.</p>
+</div>
+<!-- Rows -->
+<div class="divide-y divide-ayu-border/70">
+<!-- Download My Data -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Download My Data</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Get a copy of your health data.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Delete My Account (Interactive Trigger) -->
+<button class="w-auto -mx-2 px-2 py-3 flex items-center justify-between w-[calc(100%+1rem)] active:bg-red-50/50 rounded-xl transition-colors group" id="deleteAccountTriggerBtn" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint group-hover:bg-red-50 flex items-center justify-center shrink-0 text-ayu-teal group-hover:text-red-500 transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">Delete My Account</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Permanently delete your account and all data.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: DataAndStorageSection -->
+<!-- BEGIN: PrivacyPolicySection -->
+<section class="bg-ayu-card rounded-2xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)] border border-ayu-border" data-purpose="privacy-policy-card">
+<!-- Section Title & Subtitle -->
+<div class="mb-3.5">
+<h2 class="text-base font-bold text-ayu-navy">Privacy Policy</h2>
+<p class="text-xs text-ayu-slate mt-0.5">Learn more about how we protect your data.</p>
+</div>
+<!-- View Privacy Policy Row -->
+<button class="w-auto -mx-2 px-2 py-1.5 flex items-center justify-between w-[calc(100%+1rem)] active:bg-ayu-mint/30 rounded-xl transition-colors" type="button">
+<div class="flex items-center space-x-3.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-ayu-mint flex items-center justify-center shrink-0 text-ayu-teal">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="text-[14px] font-semibold text-ayu-navy leading-snug">View Privacy Policy</p>
+<p class="text-[11.5px] text-ayu-slate mt-0.5">Read our privacy policy and data practices.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-ayu-slate/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</section>
+<!-- END: PrivacyPolicySection -->
+<!-- BEGIN: InfoBannerSection -->
+<aside class="bg-ayu-mint rounded-2xl p-4 border border-ayu-border/60 flex items-start space-x-3.5" data-purpose="privacy-banner-card">
+<!-- Info Icon Circular Container -->
+<div class="w-8 h-8 rounded-full bg-ayu-teal flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+<span class="text-sm font-serif italic font-bold">i</span>
+</div>
+<div>
+<p class="text-[13px] font-semibold text-ayu-teal leading-snug">Your privacy and security are important to us.</p>
+<p class="text-xs text-ayu-slate mt-0.5 leading-relaxed">We take industry-standard measures to protect your data.</p>
+</div>
+</aside>
+<!-- END: InfoBannerSection -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 inset-x-0 bg-white border-t border-ayu-border safe-bottom z-40 px-3 py-2" data-purpose="docked-bottom-navbar">
+<div class="flex justify-around items-center">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center py-1 px-2.5 text-ayu-slate hover:text-ayu-teal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Home</span>
+</a>
+<!-- Tab 2: Records -->
+<a class="flex flex-col items-center justify-center py-1 px-2.5 text-ayu-slate hover:text-ayu-teal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Records</span>
+</a>
+<!-- Tab 3: Medicines -->
+<a class="flex flex-col items-center justify-center py-1 px-2.5 text-ayu-slate hover:text-ayu-teal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Medicines</span>
+</a>
+<!-- Tab 4: Care -->
+<a class="flex flex-col items-center justify-center py-1 px-2.5 text-ayu-slate hover:text-ayu-teal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight mt-1">Care</span>
+</a>
+<!-- Tab 5: More (Active Tab) -->
+<a class="flex flex-col items-center justify-center py-1 px-2.5 text-ayu-teal transition-colors relative" href="#">
+<div class="flex items-center space-x-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-ayu-teal inline-block"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-ayu-teal inline-block"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-ayu-teal inline-block"></span>
+</div>
+<span class="text-[10px] font-semibold tracking-tight mt-1">More</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNavigation -->
+<!-- BEGIN: InteractiveModals -->
+<!-- Log Out Confirmation Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-200" id="logoutModal">
+<div class="bg-white rounded-2xl p-6 max-w-xs w-full shadow-xl transform scale-95 transition-transform duration-200 text-center">
+<div class="w-12 h-12 rounded-full bg-ayu-mint text-ayu-teal mx-auto flex items-center justify-center mb-3">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-base font-bold text-ayu-navy">Log out from all other devices?</h3>
+<p class="text-xs text-ayu-slate mt-1.5 mb-5 leading-relaxed">You will remain signed in on this device, but active sessions on other phones and web browsers will be ended.</p>
+<div class="flex space-x-2.5">
+<button class="flex-1 py-2.5 px-4 bg-gray-100 text-ayu-slate rounded-xl text-xs font-semibold active:bg-gray-200 transition-colors" id="cancelLogoutBtn" type="button">Cancel</button>
+<button class="flex-1 py-2.5 px-4 bg-ayu-teal text-white rounded-xl text-xs font-semibold active:bg-ayu-darkTeal transition-colors" id="confirmLogoutBtn" type="button">Log Out</button>
+</div>
+</div>
+</div>
+<!-- Delete Account Confirmation Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-200" id="deleteModal">
+<div class="bg-white rounded-2xl p-6 max-w-xs w-full shadow-xl transform scale-95 transition-transform duration-200 text-center">
+<div class="w-12 h-12 rounded-full bg-red-100 text-red-600 mx-auto flex items-center justify-center mb-3">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-base font-bold text-ayu-navy">Delete Account?</h3>
+<p class="text-xs text-ayu-slate mt-1.5 mb-5 leading-relaxed">This action is irreversible. All medical records, logs, and account credentials will be permanently erased.</p>
+<div class="flex space-x-2.5">
+<button class="flex-1 py-2.5 px-4 bg-gray-100 text-ayu-slate rounded-xl text-xs font-semibold active:bg-gray-200 transition-colors" id="cancelDeleteBtn" type="button">Cancel</button>
+<button class="flex-1 py-2.5 px-4 bg-red-600 text-white rounded-xl text-xs font-semibold active:bg-red-700 transition-colors" id="confirmDeleteBtn" type="button">Delete</button>
+</div>
+</div>
+</div>
+<!-- END: InteractiveModals -->
+<!-- BEGIN: InteractiveHandlers -->
+<script data-purpose="toggle-handler">
+    // Interactive Toggles Logic
+    document.querySelectorAll('.js-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const isChecked = toggle.getAttribute('aria-checked') === 'true';
+        const knob = toggle.querySelector('span');
+
+        if (isChecked) {
+          // Switch to OFF state
+          toggle.setAttribute('aria-checked', 'false');
+          toggle.classList.remove('bg-ayu-teal');
+          toggle.classList.add('bg-gray-300');
+          knob.classList.remove('translate-x-5');
+          knob.classList.add('translate-x-0');
+        } else {
+          // Switch to ON state
+          toggle.setAttribute('aria-checked', 'true');
+          toggle.classList.remove('bg-gray-300');
+          toggle.classList.add('bg-ayu-teal');
+          knob.classList.remove('translate-x-0');
+          knob.classList.add('translate-x-5');
+        }
+      });
+    });
+  </script>
+<script data-purpose="modal-handler">
+    // Log Out Modal Interactivity
+    const logoutModal = document.getElementById('logoutModal');
+    const logoutTriggerBtn = document.getElementById('logoutTriggerBtn');
+    const cancelLogoutBtn = document.getElementById('cancelLogoutBtn');
+    const confirmLogoutBtn = document.getElementById('confirmLogoutBtn');
+    const logoutStatus = document.getElementById('logoutDeviceStatus');
+
+    function openModal(modal) {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      const box = modal.querySelector('div');
+      box.classList.remove('scale-95');
+      box.classList.add('scale-100');
+    }
+
+    function closeModal(modal) {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      const box = modal.querySelector('div');
+      box.classList.remove('scale-100');
+      box.classList.add('scale-95');
+    }
+
+    logoutTriggerBtn.addEventListener('click', () => openModal(logoutModal));
+    cancelLogoutBtn.addEventListener('click', () => closeModal(logoutModal));
+    confirmLogoutBtn.addEventListener('click', () => {
+      closeModal(logoutModal);
+      logoutStatus.textContent = 'All other devices have been signed out.';
+      logoutStatus.classList.remove('text-ayu-slate');
+      logoutStatus.classList.add('text-ayu-teal', 'font-medium');
+    });
+
+    // Delete Account Modal Interactivity
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteAccountTriggerBtn = document.getElementById('deleteAccountTriggerBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+    deleteAccountTriggerBtn.addEventListener('click', () => openModal(deleteModal));
+    cancelDeleteBtn.addEventListener('click', () => closeModal(deleteModal));
+    confirmDeleteBtn.addEventListener('click', () => {
+      closeModal(deleteModal);
+      alert('Account deletion request initiated.');
+    });
+
+    // Dismiss modal on backdrop tap
+    [logoutModal, deleteModal].forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+  </script>
+<!-- END: InteractiveHandlers -->
+
+
+</body></html>

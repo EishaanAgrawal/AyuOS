@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Mummy's Health Data - AyuOS</title>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            appBg: '#F6F9F8',
+            primaryTeal: '#0F5C5E',
+            darkTeal: '#0B4547',
+            deepNavy: '#173042',
+            accentBlue: '#2F6F8F',
+            softMint: '#DCEFEB',
+            lightMint: '#EAF5F3',
+            slateMuted: '#60717A',
+            cardBorder: '#DCE5E7'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-utilities">
+    /* Hide scrollbars for clean mobile view */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#ECEEEF] flex justify-center min-h-screen text-deepNavy antialiased font-sans">
+<!-- Mobile Device Screen Container -->
+<div class="w-full max-w-[420px] bg-appBg min-h-screen flex flex-col relative shadow-xl overflow-hidden pb-[88px]">
+<!-- BEGIN: iOS Status Bar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center text-xs font-semibold tracking-tight text-deepNavy select-none z-30" data-purpose="status-bar">
+<!-- Time -->
+<span>9:41</span>
+<!-- Native Icons -->
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal -->
+<svg class="w-4 h-3 fill-current" viewBox="0 0 17 11">
+<path d="M1 9.5h1.5v-2H1v2zm4 0h1.5v-4H5v4zm4 0h1.5v-6H9v6zm4 0h1.5v-8H13v8z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
+<path d="M8 12.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-4.24-2.83a6.002 6.002 0 0 1 8.48 0l-.88.88a4.752 4.752 0 0 0-6.72 0l-.88-.88zm-2.12-2.12a9.003 9.003 0 0 1 12.72 0l-.88.88a7.753 7.753 0 0 0-10.96 0l-.88-.88z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-5 h-2.5 border border-deepNavy rounded-[3px] p-[1px] flex items-center">
+<div class="bg-deepNavy h-full w-[85%] rounded-[1.5px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Top Navigation Header -->
+<section class="px-5 pt-3 pb-2" data-purpose="page-header">
+<div class="flex items-center gap-3">
+<!-- Back Navigation Button -->
+<button aria-label="Go back" class="p-1 -ml-1 text-deepNavy active:opacity-60 transition-opacity" type="button">
+<svg class="w-6 h-6 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Main Screen Title -->
+<h1 class="text-xl font-bold text-deepNavy tracking-tight">Mummy's Health Data</h1>
+</div>
+<!-- Header Subtitle -->
+<p class="text-xs text-slateMuted mt-1 ml-8">View and manage Mummy’s health information.</p>
+</section>
+<!-- END: Top Navigation Header -->
+<!-- Scrollable Content Area -->
+<main class="flex-1 px-4 py-2 space-y-4 overflow-y-auto no-scrollbar">
+<!-- BEGIN: Mummy Profile Card -->
+<article class="bg-white border border-cardBorder rounded-2xl p-4 shadow-sm" data-purpose="profile-card">
+<div class="flex items-start justify-between gap-3">
+<!-- Mummy Avatar -->
+<div class="relative shrink-0">
+<img alt="Mummy profile photo" class="w-[74px] h-[74px] rounded-full object-cover object-top border border-cardBorder/60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt3e6tgG8rD1UWMNAQ7GxIR7UhHFKkBR-ZAOq6DpZdbj__8t2_M67LtBb6qKMjbePSa8L2JyjCsXYniJkPTev1lmtpsp3EY0JHYySiWydK-bTobxeCskFtD-jOl5l4ww42wOtYzscPCimTlmqNjPT49ZjqaKzm86Vo2t7rTVuG-OZab3yP5GwcCuALY5oHKECCcUTfxWM3rOCITrj0N30-XnfyC5kFMdnHTMsS3XsKtXl46WZxOAOh">
+</div>
+<!-- Middle Profile Details -->
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center gap-2">
+<h2 class="text-base font-bold text-deepNavy leading-none">Mummy</h2>
+</div>
+<!-- Status Badge -->
+<div class="mt-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-softMint text-primaryTeal">
+                Full Access
+              </span>
+</div>
+<!-- Profile Description -->
+<p class="text-[11px] text-slateMuted mt-2 leading-relaxed">
+              You are viewing Mummy’s health data. You can also add data for her.
+            </p>
+</div>
+<!-- Edit Profile Button -->
+<button class="shrink-0 flex items-center gap-1 border border-cardBorder rounded-lg px-2.5 py-1.5 text-deepNavy hover:bg-lightMint/50 transition-colors" type="button">
+<svg class="w-3.5 h-3.5 text-deepNavy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium leading-none">Edit Profile</span>
+</button>
+</div>
+</article>
+<!-- END: Mummy Profile Card -->
+<!-- BEGIN: Quick Action Cards Grid -->
+<section class="grid grid-cols-2 gap-3" data-purpose="quick-actions">
+<!-- Quick Action 1: Add Record -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 flex flex-col justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<!-- Plus Circular Icon -->
+<div class="w-9 h-9 rounded-full bg-softMint flex items-center justify-center text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M12 8v8m-4-4h8" stroke-linecap="round"></path>
+</svg>
+</div>
+<!-- Chevron Right -->
+<svg class="w-4 h-4 text-slateMuted/60 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">Add Record</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">Add lab reports, prescriptions and more.</p>
+</div>
+</div>
+<!-- Quick Action 2: View Summary -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 flex flex-col justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<!-- Summary Circular Icon -->
+<div class="w-9 h-9 rounded-full bg-softMint flex items-center justify-center text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Chevron Right -->
+<svg class="w-4 h-4 text-slateMuted/60 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">View Summary</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">See an AI-generated summary of Mummy's health.</p>
+</div>
+</div>
+</section>
+<!-- END: Quick Action Cards Grid -->
+<!-- BEGIN: Health Information Grid -->
+<section data-purpose="health-information-grid">
+<div class="flex items-center justify-between mb-2.5 px-0.5">
+<h2 class="text-[15px] font-bold text-deepNavy tracking-tight">Health Information</h2>
+<button class="text-xs font-semibold text-primaryTeal flex items-center gap-0.5 hover:underline" type="button">
+            View All
+            <svg class="w-3.5 h-3.5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- 2x2 Grid Section -->
+<div class="grid grid-cols-2 gap-3">
+<!-- 1. Lab Reports -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 shadow-sm relative cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-lightMint flex items-center justify-center text-primaryTeal">
+<!-- Lab Flask Icon -->
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.22a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-4 h-4 text-slateMuted/60 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">Lab Reports</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">View and add lab reports.</p>
+<div class="mt-2">
+<span class="inline-block px-2 py-0.5 bg-softMint text-primaryTeal text-[10.5px] font-semibold rounded-full">
+                  12 reports
+                </span>
+</div>
+</div>
+</div>
+<!-- 2. Prescriptions -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 shadow-sm relative cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-lightMint flex items-center justify-center text-primaryTeal">
+<!-- Rx Icon -->
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h4m-7 5h12a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-4 h-4 text-slateMuted/60 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">Prescriptions</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">View and add prescriptions.</p>
+<div class="mt-2">
+<span class="inline-block px-2 py-0.5 bg-softMint text-primaryTeal text-[10.5px] font-semibold rounded-full">
+                  8 prescriptions
+                </span>
+</div>
+</div>
+</div>
+<!-- 3. Medicines -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 shadow-sm relative cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-lightMint flex items-center justify-center text-primaryTeal">
+<!-- Capsule Pill Icon -->
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477M10.5 7.5l6 6M7.25 10.75l6 6a4.243 4.243 0 006-6l-6-6a4.243 4.243 0 00-6 6z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-4 h-4 text-slateMuted/60 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">Medicines</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">View current and past medicines.</p>
+<div class="mt-2">
+<span class="inline-block px-2 py-0.5 bg-softMint text-primaryTeal text-[10.5px] font-semibold rounded-full">
+                  6 medicines
+                </span>
+</div>
+</div>
+</div>
+<!-- 4. Appointments -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3 shadow-sm relative cursor-pointer hover:border-primaryTeal/40 active:scale-[0.98] transition-all">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-lightMint flex items-center justify-center text-primaryTeal">
+<!-- Calendar Icon -->
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<svg class="w-4 h-4 text-slateMuted/60 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-2.5">
+<h3 class="font-bold text-[13px] text-deepNavy leading-tight">Appointments</h3>
+<p class="text-[11px] text-slateMuted mt-0.5 leading-snug">View past and upcoming appointments.</p>
+<div class="mt-2">
+<span class="inline-block px-2 py-0.5 bg-softMint text-primaryTeal text-[10.5px] font-semibold rounded-full">
+                  4 appointments
+                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Health Information Grid -->
+<!-- BEGIN: Additional Health Information List -->
+<section class="space-y-2.5 pt-1" data-purpose="health-records-list">
+<!-- Row 1: Medical History -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:bg-lightMint/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-lightMint flex items-center justify-center shrink-0 text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-[13px] text-deepNavy leading-none">Medical History</h4>
+<p class="text-[11px] text-slateMuted mt-1 leading-tight">Past conditions, treatments and health summary.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slateMuted/70 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Row 2: Scan Reports -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:bg-lightMint/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-lightMint flex items-center justify-center shrink-0 text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-[13px] text-deepNavy leading-none">Scan Reports</h4>
+<p class="text-[11px] text-slateMuted mt-1 leading-tight">X-rays, MRI, CT scans and other imaging reports.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slateMuted/70 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Row 3: Doctor Notes -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:bg-lightMint/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-lightMint flex items-center justify-center shrink-0 text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-[13px] text-deepNavy leading-none">Doctor Notes</h4>
+<p class="text-[11px] text-slateMuted mt-1 leading-tight">Consultation notes from doctors.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slateMuted/70 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Row 4: Health Trends -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:bg-lightMint/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-lightMint flex items-center justify-center shrink-0 text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-[13px] text-deepNavy leading-none">Health Trends</h4>
+<p class="text-[11px] text-slateMuted mt-1 leading-tight">Track key health parameters over time.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slateMuted/70 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Row 5: Medical Bills -->
+<div class="bg-white border border-cardBorder rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-primaryTeal/40 active:bg-lightMint/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-lightMint flex items-center justify-center shrink-0 text-primaryTeal">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-[13px] text-deepNavy leading-none">Medical Bills</h4>
+<p class="text-[11px] text-slateMuted mt-1 leading-tight">Bills and invoices related to treatment.</p>
+</div>
+</div>
+<svg class="w-4 h-4 text-slateMuted/70 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</section>
+<!-- END: Additional Health Information List -->
+<!-- BEGIN: Bottom Primary Action Button -->
+<section class="pt-2 pb-3" data-purpose="primary-action-button">
+<button class="w-full bg-primaryTeal text-white font-medium py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm active:bg-darkTeal active:scale-[0.99] transition-all text-sm" type="button">
+<span>+ Add Health Data for Mummy</span>
+<svg class="w-4 h-4 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</section>
+<!-- END: Bottom Primary Action Button -->
+</main>
+<!-- BEGIN: AyuOS Bottom Navigation Bar -->
+<nav class="absolute bottom-0 inset-x-0 bg-white border-t border-cardBorder/80 pt-2 pb-6 px-4 z-40" data-purpose="bottom-tab-bar">
+<div class="grid grid-cols-5 items-center text-center">
+<!-- 1. Home -->
+<a class="flex flex-col items-center justify-center text-slateMuted hover:text-deepNavy transition-colors group" href="#home">
+<svg class="w-5 h-5 stroke-current stroke-[1.75] fill-none" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Home</span>
+</a>
+<!-- 2. Records -->
+<a class="flex flex-col items-center justify-center text-slateMuted hover:text-deepNavy transition-colors group" href="#records">
+<svg class="w-5 h-5 stroke-current stroke-[1.75] fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Records</span>
+</a>
+<!-- 3. Medicines -->
+<a class="flex flex-col items-center justify-center text-slateMuted hover:text-deepNavy transition-colors group" href="#medicines">
+<svg class="w-5 h-5 stroke-current stroke-[1.75] fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477M10.5 7.5l6 6M7.25 10.75l6 6a4.243 4.243 0 006-6l-6-6a4.243 4.243 0 00-6 6z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Medicines</span>
+</a>
+<!-- 4. Care -->
+<a class="flex flex-col items-center justify-center text-slateMuted hover:text-deepNavy transition-colors group" href="#care">
+<svg class="w-5 h-5 stroke-current stroke-[1.75] fill-none" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Care</span>
+</a>
+<!-- 5. More (Active Tab) -->
+<a class="flex flex-col items-center justify-center text-primaryTeal transition-colors group" href="#more">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+<span class="text-[10px] font-bold mt-1 text-primaryTeal">More</span>
+</a>
+</div>
+<!-- iOS Home Indicator -->
+<div class="w-32 h-1 bg-deepNavy/80 rounded-full mx-auto mt-3"></div>
+</nav>
+<!-- END: AyuOS Bottom Navigation Bar -->
+</div>
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>AyuOS - Continue with Google</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ayu: {
+              teal: '#0F5C5E',
+              'teal-dark': '#0B4748',
+              'teal-deep': '#0F383B',
+              slate: '#102A2E',
+              subtext: '#5A7578',
+              mint: '#4EBA97',
+              'mint-light': '#E1F6EE',
+              'mint-bg': '#EDF8F4',
+              'notice-bg': '#F1F4F9',
+              bg: '#F5F9F7'
+            }
+          },
+          boxShadow: {
+            'card': '0 20px 45px -15px rgba(15, 92, 94, 0.12), 0 8px 24px -8px rgba(0, 0, 0, 0.06)',
+            'btn': '0 8px 20px -4px rgba(15, 92, 94, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styling for botanical backdrop and iOS feel -->
+<style data-purpose="custom-decorations">
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    
+    /* Background leaf layers matching AyuOS brand aesthetic */
+    .leaf-bg-top-left {
+      position: absolute;
+      top: -60px;
+      left: -90px;
+      width: 320px;
+      height: 380px;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: radial-gradient(circle at 60% 50%, rgba(94, 186, 155, 0.55) 0%, rgba(55, 153, 126, 0.75) 100%);
+      transform: rotate(-15deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .leaf-accent-lines {
+      position: absolute;
+      top: 60px;
+      left: -30px;
+      width: 220px;
+      height: 220px;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .leaf-bg-top-right {
+      position: absolute;
+      top: 100px;
+      right: -80px;
+      width: 260px;
+      height: 300px;
+      border-radius: 65% 35% 55% 45% / 50% 60% 40% 50%;
+      background: linear-gradient(135deg, rgba(162, 222, 198, 0.45) 0%, rgba(96, 182, 153, 0.55) 100%);
+      transform: rotate(25deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .leaf-bg-bottom-left {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 240px;
+      height: 260px;
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      background: linear-gradient(45deg, rgba(78, 186, 151, 0.5) 0%, rgba(138, 209, 184, 0.4) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .leaf-bg-bottom-right {
+      position: absolute;
+      bottom: -80px;
+      right: -70px;
+      width: 280px;
+      height: 300px;
+      border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+      background: radial-gradient(circle at 40% 40%, rgba(94, 186, 155, 0.6) 0%, rgba(35, 128, 107, 0.7) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f7faf9] min-h-screen text-[#181c1c] flex justify-center items-start sm:py-6 overflow-x-hidden antialiased">
+<!-- BEGIN: MobileContainer -->
+<!-- Constrained container to match authentic mobile viewport exactly -->
+<div class="relative w-full max-w-[440px] min-h-screen sm:min-h-[896px] bg-[#f1f4f3] flex flex-col justify-between overflow-hidden sm:rounded-[44px] sm:shadow-2xl sm:border sm:border-[#d7dbda]/60">
+<!-- Organic Leaf Background Elements -->
+<div class="leaf-bg-top-left"></div>
+<div class="leaf-accent-lines"></div>
+<div class="leaf-bg-top-right"></div>
+<div class="leaf-bg-bottom-left"></div>
+<div class="leaf-bg-bottom-right"></div>
+<!-- BEGIN: TopBarAndBrand -->
+<header class="relative z-10 pt-4 px-6 pb-4"><!-- Back button navigation (iOS Style) -->
+<div class="flex items-center justify-between pt-1 pb-3">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center -ml-2 text-[#0f5c5e] hover:text-[#004345] transition-transform active:scale-90" id="backNavBtn">
+<svg class="w-6 h-6 stroke-[2.2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="w-10"></div> <!-- Balancing placeholder -->
+</div>
+<!-- Brand Logo Emblem and Slogan -->
+<div class="flex flex-col items-center text-center mt-1">
+<!-- Dual-leaf Organic Logo Mark -->
+<div class="relative w-14 h-14 mb-3 flex items-center justify-center" data-purpose="brand-logo">
+<svg class="w-13 h-13 drop-shadow-sm" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- Left soft teal leaf petal -->
+<path d="M28.5 12C28.5 12 18 20 18 34C18 45 27 50 34 50C34 50 29 42 29 32C29 22 28.5 12 28.5 12Z" fill="#90d2d4"></path>
+<!-- Right deep primary leaf petal -->
+<path d="M33.5 12C33.5 12 47 18 47 34C47 46 36 52 31 52C31 52 37 42 37 32C37 21 33.5 12 33.5 12Z" fill="#0f5c5e"></path>
+<!-- Soft overlapping core curve -->
+<path d="M30 22C32 28 32 38 28 46C30 42 33 34 32 26C31.5 24 30.5 22.8 30 22Z" fill="#21686a" opacity="0.5"></path>
+</svg>
+</div>
+<!-- Brand Name -->
+<h1 class="text-[34px] font-extrabold tracking-tight leading-none text-[#0f5c5e]">
+          AyuOS
+        </h1>
+<!-- Brand Slogan -->
+<p class="mt-2.5 text-[16px] font-semibold text-[#2e3f3c] leading-snug tracking-tight max-w-[240px]">
+          Your lifelong health,<br>organized together.
+        </p>
+</div></header>
+<!-- END: TopBarAndBrand -->
+<!-- BEGIN: MainContentCard -->
+<!-- Elevated White Rounded Card Container matching reference -->
+<main class="relative z-10 px-4 pb-4 flex-grow flex flex-col justify-end">
+<div class="bg-white rounded-[34px] shadow-card px-6 pt-7 pb-6 border border-white/80 flex flex-col justify-between" data-purpose="auth-card"><!-- Google Badge & Title Group -->
+<div class="flex flex-col items-center text-center">
+<!-- Google 'G' Circular Pill Badge -->
+<div class="w-[66px] h-[66px] rounded-full bg-[#f1f4f3] border border-[#e0e3e2] flex items-center justify-center mb-4" data-purpose="google-logo-badge">
+<svg class="w-8 h-8" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+</div>
+<!-- Headline -->
+<h2 class="text-[25px] font-bold text-[#181c1c] tracking-tight leading-tight">
+            Continue with Google
+          </h2>
+<!-- Subtitle -->
+<p class="mt-2 text-[14px] leading-relaxed text-[#3f4949] px-1 font-normal">
+            Sign in with your Google account to create your AyuOS account quickly and securely.
+          </p>
+</div>
+<!-- BEGIN: InformationSection (Value Props) -->
+<div class="mt-5 bg-[#f1f4f3] rounded-[22px] p-4 flex flex-col gap-4 border border-[#e0e3e2]" data-purpose="benefits-list">
+<!-- Item 1: Secure sign in -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#ffffff] border border-[#e0e3e2] flex-shrink-0 flex items-center justify-center text-[#0f5c5e] mt-0.5">
+<svg class="w-5 h-5 stroke-[2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left flex-1">
+<h3 class="text-[14.5px] font-semibold text-[#181c1c] leading-snug">Secure sign in</h3>
+<p class="text-[13px] text-[#3f4949] leading-snug mt-0.5">We use Google's secure authentication system.</p>
+</div>
+</div>
+<!-- Item 2: Quick and easy -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#ffffff] border border-[#e0e3e2] flex-shrink-0 flex items-center justify-center text-[#0f5c5e] mt-0.5">
+<svg class="w-5 h-5 stroke-[2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left flex-1">
+<h3 class="text-[14.5px] font-semibold text-[#181c1c] leading-snug">Quick and easy</h3>
+<p class="text-[13px] text-[#3f4949] leading-snug mt-0.5">Create your AyuOS account in just a few steps.</p>
+</div>
+</div>
+<!-- Item 3: Your data, your control -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-[#ffffff] border border-[#e0e3e2] flex-shrink-0 flex items-center justify-center text-[#0f5c5e] mt-0.5">
+<svg class="w-5 h-5 stroke-[2] stroke-current" fill="none" viewBox="0 0 24 24">
+<path d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-left flex-1">
+<h3 class="text-[14.5px] font-semibold text-[#181c1c] leading-snug">Your data, your control</h3>
+<p class="text-[13px] text-[#3f4949] leading-snug mt-0.5">You can manage your account and permissions anytime.</p>
+</div>
+</div>
+</div>
+<!-- END: InformationSection -->
+<!-- BEGIN: DataSharingNotice -->
+<div class="mt-3.5 bg-[#f1f4f3] rounded-[18px] p-3.5 flex items-start gap-2.5 text-left border border-[#e0e3e2]" data-purpose="privacy-disclosure">
+<!-- Info Circle Icon -->
+<div class="text-[#0f5c5e] flex-shrink-0 mt-0.5">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current" fill="none" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<line x1="12" x2="12" y1="10" y2="16"></line>
+<line stroke-linecap="round" stroke-width="2.2" x1="12" x2="12.01" y1="7" y2="7"></line>
+</svg>
+</div>
+<p class="text-[12.5px] text-[#3f4949] leading-[1.38]">
+            By continuing, you agree to share your name, email address and profile picture (if available) with AyuOS. We will use this information to create and manage your account.
+          </p>
+</div>
+<!-- END: DataSharingNotice -->
+<!-- BEGIN: ActionButtons -->
+<div class="mt-4 flex flex-col gap-2.5" data-purpose="auth-actions">
+<!-- Primary: Continue with Google -->
+<button class="w-full h-[52px] bg-[#0f5c5e] hover:bg-[#004345] active:scale-[0.985] text-white rounded-2xl flex items-center justify-center font-medium shadow-btn transition-all duration-150 gap-2.5 px-4" data-purpose="google-submit" id="googleAuthButton">
+<!-- Google colored icon badge -->
+<div class="w-6 h-6 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+<svg class="w-4 h-4" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+</div>
+<span class="text-[15.5px] font-semibold tracking-wide text-white">Continue with Google</span>
+<svg class="w-4 h-4 ml-0.5 stroke-[2.4] stroke-white" fill="none" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Secondary: Use email instead -->
+<button class="w-full h-[50px] bg-white hover:bg-[#f1f4f3] active:scale-[0.985] text-[#0f5c5e] border border-[#d7dbda] rounded-2xl flex items-center justify-center font-semibold text-[15px] transition-all duration-150" data-purpose="use-email-action" id="useEmailBtn">
+            Use email instead
+          </button>
+</div>
+<!-- END: ActionButtons -->
+<!-- BEGIN: LegalFooter -->
+<footer class="mt-4 pt-1 text-center" data-purpose="terms-and-privacy">
+<p class="text-[12px] text-[#3f4949] leading-relaxed">
+            By continuing, you agree to the 
+            <button class="font-semibold text-[#0f5c5e] hover:underline inline" id="openTermsLink">Terms of Service</button> 
+            and 
+            <button class="font-semibold text-[#0f5c5e] hover:underline inline" id="openPrivacyLink">Privacy Policy</button>.
+          </p>
+</footer>
+<!-- END: LegalFooter --></div>
+</main>
+<!-- END: MainContentCard -->
+</div>
+<!-- END: MobileContainer -->
+<!-- BEGIN: InteractiveModals -->
+<!-- Simulated Google OAuth Account Picker Modal -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity duration-200" id="googleAuthModal">
+<div class="bg-white w-full max-w-sm rounded-t-[28px] sm:rounded-2xl p-6 shadow-2xl animate-in slide-in-from-bottom duration-200">
+<div class="flex justify-between items-center pb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-semibold text-slate-700">Sign in with Google</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1 text-sm font-bold" id="closeGoogleModalBtn">✕</button>
+</div>
+<div class="py-4">
+<p class="text-xs text-slate-500 mb-3">Choose an account to continue to <span class="font-semibold text-slate-800">AyuOS</span></p>
+<!-- Mock Google Account 1 -->
+<button class="w-full flex items-center gap-3 p-2.5 hover:bg-slate-50 rounded-xl transition-colors text-left border border-slate-100 mb-2" onclick="handleSelectAccount('Sarah Jenkins', 'sarah.jenkins@gmail.com')">
+<div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-semibold flex items-center justify-center text-sm">
+            S
+          </div>
+<div class="flex-1 truncate">
+<p class="text-sm font-semibold text-slate-800 truncate">Sarah Jenkins</p>
+<p class="text-xs text-slate-500 truncate">sarah.jenkins@gmail.com</p>
+</div>
+</button>
+<!-- Mock Google Account 2 -->
+<button class="w-full flex items-center gap-3 p-2.5 hover:bg-slate-50 rounded-xl transition-colors text-left border border-slate-100" onclick="handleSelectAccount('Alex Rivera', 'alex.rivera.work@gmail.com')">
+<div class="w-9 h-9 rounded-full bg-teal-600 text-white font-semibold flex items-center justify-center text-sm">
+            A
+          </div>
+<div class="flex-1 truncate">
+<p class="text-sm font-semibold text-slate-800 truncate">Alex Rivera</p>
+<p class="text-xs text-slate-500 truncate">alex.rivera.work@gmail.com</p>
+</div>
+</button>
+</div>
+<div class="pt-2 text-center">
+<button class="text-xs text-slate-500 hover:text-slate-700 font-medium" id="cancelGoogleBtn">Cancel and return</button>
+</div>
+</div>
+</div>
+<!-- Simulated Policy / Info Sheet Modal -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="legalModal">
+<div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl text-left">
+<h3 class="text-lg font-bold text-slate-900 mb-2" id="legalModalTitle">Legal Information</h3>
+<div class="text-xs text-slate-600 leading-relaxed max-h-56 overflow-y-auto mb-4 pr-1" id="legalModalBody">
+<!-- Content inserted dynamically -->
+</div>
+<button class="w-full py-2.5 bg-ayu-teal text-white rounded-xl font-semibold text-sm hover:bg-ayu-teal-dark" id="closeLegalModalBtn">
+        I Understand
+      </button>
+</div>
+</div>
+<!-- END: InteractiveModals -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="auth-interactions">
+    // References
+    const googleAuthBtn = document.getElementById('googleAuthButton');
+    const googleModal = document.getElementById('googleAuthModal');
+    const closeGoogleModalBtn = document.getElementById('closeGoogleModalBtn');
+    const cancelGoogleBtn = document.getElementById('cancelGoogleBtn');
+    
+    const useEmailBtn = document.getElementById('useEmailBtn');
+    const backNavBtn = document.getElementById('backNavBtn');
+
+    const legalModal = document.getElementById('legalModal');
+    const legalModalTitle = document.getElementById('legalModalTitle');
+    const legalModalBody = document.getElementById('legalModalBody');
+    const closeLegalModalBtn = document.getElementById('closeLegalModalBtn');
+    const openTermsLink = document.getElementById('openTermsLink');
+    const openPrivacyLink = document.getElementById('openPrivacyLink');
+
+    // Trigger Google Auth Modal
+    googleAuthBtn.addEventListener('click', () => {
+      // Simulate button loading state
+      const originalText = googleAuthBtn.innerHTML;
+      googleAuthBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+        <span>Connecting to Google...</span>
+      `;
+      googleAuthBtn.disabled = true;
+
+      setTimeout(() => {
+        googleAuthBtn.innerHTML = originalText;
+        googleAuthBtn.disabled = false;
+        googleModal.classList.remove('hidden');
+      }, 450);
+    });
+
+    const hideGoogleModal = () => googleModal.classList.add('hidden');
+    closeGoogleModalBtn.addEventListener('click', hideGoogleModal);
+    cancelGoogleBtn.addEventListener('click', hideGoogleModal);
+
+    // Simulated Account Selection
+    window.handleSelectAccount = (name, email) => {
+      hideGoogleModal();
+      alert(`Welcome to AyuOS, ${name}! Your account has been authenticated with ${email}.`);
+    };
+
+    // Use Email Action
+    useEmailBtn.addEventListener('click', () => {
+      alert("Redirecting to email sign-up screen...");
+    });
+
+    // Back Navigation
+    backNavBtn.addEventListener('click', () => {
+      alert("Navigating back to welcome choices screen...");
+    });
+
+    // Terms & Privacy Modals
+    openTermsLink.addEventListener('click', () => {
+      legalModalTitle.innerText = "Terms of Service";
+      legalModalBody.innerHTML = `
+        <p class="mb-2">Welcome to <strong>AyuOS</strong>. By creating an account, you agree to our terms regarding lifelong digital health data aggregation.</p>
+        <p class="mb-2">• All health records remain 100% owned by you.</p>
+        <p class="mb-2">• Emergency access can be configured with verified contacts.</p>
+        <p>• Data exchange adheres to HIPAA & international healthcare security protocols.</p>
+      `;
+      legalModal.classList.remove('hidden');
+    });
+
+    openPrivacyLink.addEventListener('click', () => {
+      legalModalTitle.innerText = "Privacy Policy";
+      legalModalBody.innerHTML = `
+        <p class="mb-2">Your health privacy is our utmost priority at <strong>AyuOS</strong>:</p>
+        <p class="mb-2">• We do not sell your personal data or health telemetry to advertisers.</p>
+        <p class="mb-2">• OAuth permissions are strictly used to authenticate identity.</p>
+        <p>• End-to-end zero-knowledge encryption safeguards your records.</p>
+      `;
+      legalModal.classList.remove('hidden');
+    });
+
+    closeLegalModalBtn.addEventListener('click', () => {
+      legalModal.classList.add('hidden');
+    });
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+</body></html>

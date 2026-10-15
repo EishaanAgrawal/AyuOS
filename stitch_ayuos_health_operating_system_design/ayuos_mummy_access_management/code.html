@@ -1,0 +1,591 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Mummy — Access Management | AyuOS</title>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for AyuOS Theme -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ayuTeal: '#0F5C5E',
+            ayuTealDark: '#0B4547',
+            ayuNavy: '#173042',
+            ayuSlate: '#60717A',
+            ayuMint: '#DCEFEB',
+            ayuMintLight: '#F0F7F5',
+            ayuBg: '#F6F9F8',
+            ayuBorder: '#DCE5E7',
+            ayuBorderMint: '#D2E7E2',
+            ayuRed: '#E53E3E',
+            ayuRedBorder: '#FED7D7',
+            ayuRedBg: '#FFF5F5',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom styles for toggles and transitions -->
+<style data-purpose="custom-toggles">
+    /* iOS smooth tap highlight removal */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Toggle switch switch-knob animation */
+    .toggle-checkbox:checked {
+      right: 2px;
+      left: auto;
+      background-color: #ffffff;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #0F5C5E;
+    }
+    .toggle-label {
+      transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .toggle-thumb {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .toggle-active .toggle-thumb {
+      transform: translateX(18px);
+    }
+    .toggle-active {
+      background-color: #0F5C5E !important;
+    }
+    .toggle-inactive {
+      background-color: #CBD5E1 !important;
+    }
+  </style>
+</head>
+<body class="bg-[#EEF3F2] flex justify-center min-h-screen text-ayuNavy font-sans antialiased select-none">
+<!-- Mobile Frame Container -->
+<div class="w-full max-w-md bg-ayuBg min-h-screen shadow-xl relative flex flex-col justify-between overflow-x-hidden border-x border-ayuBorder">
+<!-- BEGIN: TopBarAndContent -->
+<div class="flex-1 pb-24">
+<!-- BEGIN: StatusBar -->
+<!-- iOS style clock and system symbols mock -->
+<div class="px-7 pt-3.5 pb-2 flex justify-between items-center text-xs font-semibold text-ayuNavy tracking-tight select-none">
+
+
+</div>
+<!-- END: StatusBar -->
+<!-- BEGIN: Header -->
+<header class="px-5 pt-1 pb-4 flex items-start space-x-3.5">
+<button aria-label="Go back" class="mt-1 p-1 -ml-1 text-ayuNavy hover:text-ayuTeal transition-colors" type="button">
+<svg class="w-6 h-6 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="flex-1">
+<h1 class="text-2xl font-bold text-ayuNavy tracking-tight leading-tight">Mummy</h1>
+<p class="text-sm text-ayuSlate font-normal mt-0.5">Manage what Mummy can access to your health data.</p>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: ProfileCard -->
+<section class="px-4 mb-4">
+<div class="bg-white rounded-2xl p-4 border border-ayuBorder shadow-xs relative">
+<div class="flex items-center space-x-4">
+<!-- Mummy Avatar Image -->
+<div class="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-ayuMint bg-slate-100 shadow-inner">
+<img alt="Mummy profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMstwJOr-976nCDj_urbn5ejbD8HNCSgTXclvk2y3mJZqJofL8fxuYrNB8fAA9kmBu414xjWGzrJIJ44GydOWWqwRDsgs4bSnaMhyDCnuspnOPBxEQlV3NX6xbPeLJHhtfCWvjD2UIsmSkqxW9W1j3lnkLkEig1L4Kjm2irq6GONb7KsuLp-m2LWjpyw8Nc_2AcAoNLUAFVtUHAyVqRcka2fGfGl2YySbDuPbvLyI">
+</div>
+<!-- Profile Info & Dropdown Trigger -->
+<div class="flex-1 relative">
+<h2 class="text-lg font-bold text-ayuNavy leading-snug">Mummy</h2>
+<!-- Interactive Access Dropdown Button -->
+<div class="mt-1.5 relative inline-block">
+<button aria-expanded="false" aria-haspopup="true" class="flex items-center space-x-1.5 px-3 py-1 bg-ayuMint hover:bg-[#D3E9E4] active:scale-95 transition-all text-ayuTeal font-semibold text-xs rounded-full cursor-pointer shadow-2xs" id="accessBadgeBtn" type="button">
+<span id="badgeCurrentLabel" class="">Limited Access</span>
+<svg class="w-3.5 h-3.5 stroke-current stroke-2 fill-none transition-transform duration-200" id="badgeChevron" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Floating Dropdown Menu -->
+<div class="absolute left-0 top-full mt-2 w-64 bg-white rounded-xl shadow-xl border border-ayuBorder py-1.5 z-40 transition-all duration-150 hidden" id="accessDropdownMenu" role="menu">
+<!-- Option: Full Access -->
+<button class="w-full text-left px-3.5 py-2.5 flex items-start justify-between hover:bg-slate-50 transition-colors group" id="optFullAccess" role="menuitem" type="button">
+<div>
+<div class="text-xs font-bold text-ayuNavy flex items-center">
+                        Full Access
+                      </div>
+<div class="text-[11px] text-ayuSlate mt-0.5 leading-tight">A–Z access to all health information</div>
+</div>
+<span class="text-ayuTeal ml-2 pt-0.5 font-bold hidden" id="fullAccessCheck">
+<svg class="w-4 h-4 stroke-current stroke-[2.5] fill-none" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</button>
+<div class="h-px bg-slate-100 mx-2 my-1"></div>
+<!-- Option: Limited Access -->
+<button class="w-full text-left px-3.5 py-2.5 flex items-start justify-between hover:bg-slate-50 transition-colors group" id="optLimitedAccess" role="menuitem" type="button">
+<div>
+<div class="text-xs font-bold text-ayuNavy flex items-center">
+                        Limited Access
+                      </div>
+<div class="text-[11px] text-ayuSlate mt-0.5 leading-tight">Selected data only</div>
+</div>
+<span class="text-ayuTeal ml-2 pt-0.5 font-bold" id="limitedAccessCheck">
+<svg class="w-4 h-4 stroke-current stroke-[2.5] fill-none" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProfileCard -->
+<!-- BEGIN: StateContainer -->
+<main class="px-4">
+<!-- ============================================== -->
+<!-- VIEW 1: FULL ACCESS STATE (Default View)      -->
+<!-- ============================================== -->
+<div class="space-y-4 hidden" id="stateFullAccess">
+<!-- Full Access Highlight Card -->
+<div class="bg-white rounded-2xl p-5 border border-ayuBorder shadow-xs">
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-12 h-12 rounded-full bg-ayuMint flex items-center justify-center text-ayuTeal shrink-0">
+<svg class="w-6 h-6 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-lg font-bold text-ayuNavy tracking-tight">Full Access</h3>
+<p class="text-xs text-ayuSlate font-normal">A–Z access to your health information.</p>
+</div>
+</div>
+<p class="text-[13px] text-slate-700 leading-relaxed mb-4">
+              Mummy can access all of your health information, including viewing and adding data.
+            </p>
+<!-- Information Callout -->
+<div class="bg-ayuMintLight border border-ayuBorderMint rounded-xl p-3.5 flex items-start space-x-2.5">
+<div class="w-4 h-4 rounded-full bg-ayuTeal text-white flex items-center justify-center text-[10px] font-bold mt-0.5 shrink-0">
+                i
+              </div>
+<p class="text-[12px] text-ayuTeal font-medium leading-normal">
+                With full access, Mummy can view and add all types of information in your health record.
+              </p>
+</div>
+</div>
+<!-- Action Buttons for Full Access -->
+<div class="space-y-3 pt-1">
+
+<button class="w-full py-3 px-4 bg-white hover:bg-rose-50 border border-ayuRedBorder active:scale-[0.99] text-ayuRed font-semibold text-sm rounded-xl flex items-center justify-center space-x-2 transition-all shadow-2xs" onclick="triggerRevokeModal()" type="button">
+<svg class="w-4 h-4 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Revoke Access</span>
+</button>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- VIEW 2: LIMITED ACCESS STATE (Toggles List)   -->
+<!-- ============================================== -->
+<div class="space-y-4" id="stateLimitedAccess">
+<!-- Limited Access Permissions Card -->
+<div class="bg-white rounded-2xl p-4 border border-ayuBorder shadow-xs">
+<div class="flex items-start space-x-3 pb-3 border-b border-slate-100">
+<div class="w-9 h-9 rounded-full bg-ayuMint flex items-center justify-center text-ayuTeal shrink-0 mt-0.5">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-base font-bold text-ayuNavy tracking-tight leading-snug">What Mummy Can Access</h3>
+<p class="text-xs text-ayuSlate font-normal mt-0.5">Choose which parts of your health information Mummy can view and add.</p>
+</div>
+</div>
+<!-- 12 Permission Item Rows -->
+<div class="divide-y divide-slate-100 text-sm">
+<!-- 1. Medical History (OFF) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Medical History</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full bg-slate-300 relative transition-colors duration-200 cursor-pointer p-0.5 toggle-inactive" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 2. Lab Reports (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 5H9L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Lab Reports</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 3. Scan Reports (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Scan Reports</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 4. Doctor Notes (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Doctor Notes</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 5. Prescriptions (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal font-serif font-bold text-sm leading-none pl-0.5">℞</span>
+<span class="text-xs font-medium text-ayuNavy">Prescriptions</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 6. Medicines (OFF) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 5H9L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="8" cy="8" r="4" stroke="currentColor" stroke-width="1.5"></circle>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Medicines</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-inactive" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 7. Appointments (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Appointments</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 8. Health Trends (OFF) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Health Trends</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-inactive" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 9. Medical Bills (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Medical Bills</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 10. Medical Expenses (OFF) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Medical Expenses</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-inactive" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 11. Treatment Costs (OFF) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Treatment Costs</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-inactive" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+<!-- 12. Insurance Details (ON) -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-3 text-slate-700">
+<span class="text-ayuTeal">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-xs font-medium text-ayuNavy">Insurance Details</span>
+</div>
+<button class="toggle-btn w-11 h-6 rounded-full relative transition-colors duration-200 cursor-pointer p-0.5 toggle-active" onclick="toggleSwitch(this)" type="button">
+<div class="toggle-thumb w-5 h-5 bg-white rounded-full shadow-md transform transition-transform"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Subtle Informational Callout -->
+<div class="bg-ayuMintLight border border-ayuBorderMint rounded-xl p-3 flex items-start space-x-2.5">
+<div class="w-4 h-4 rounded-full bg-ayuTeal text-white flex items-center justify-center text-[10px] font-bold mt-0.5 shrink-0">
+              i
+            </div>
+<p class="text-[11px] text-ayuTeal font-medium leading-relaxed">
+              Mummy can view and add information only in the categories you allow. These controls do not delete your data, and you will always be able to access all of your information.
+            </p>
+</div>
+<!-- Action Buttons for Limited Access -->
+<div class="space-y-3 pt-1">
+
+<button class="w-full py-3 px-4 bg-white hover:bg-rose-50 border border-ayuRedBorder active:scale-[0.99] text-ayuRed font-semibold text-sm rounded-xl flex items-center justify-center space-x-2 transition-all shadow-2xs" onclick="triggerRevokeModal()" type="button">
+<svg class="w-4 h-4 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Revoke Access</span>
+</button>
+</div>
+</div>
+</main>
+<!-- END: StateContainer -->
+</div>
+<!-- END: TopBarAndContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 max-w-md w-full bg-white border-t border-ayuBorder py-2 px-6 flex justify-between items-center z-30">
+<!-- Nav Item: Home -->
+<a class="flex flex-col items-center text-ayuSlate hover:text-ayuTeal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Home</span>
+</a>
+<!-- Nav Item: Records -->
+<a class="flex flex-col items-center text-ayuSlate hover:text-ayuTeal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Records</span>
+</a>
+<!-- Nav Item: Medicines -->
+<a class="flex flex-col items-center text-ayuSlate hover:text-ayuTeal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 5H9L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Medicines</span>
+</a>
+<!-- Nav Item: Care -->
+<a class="flex flex-col items-center text-ayuSlate hover:text-ayuTeal transition-colors" href="#">
+<svg class="w-5 h-5 stroke-current stroke-1.5 fill-none" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Care</span>
+</a>
+<!-- Nav Item: More (Active) -->
+<a class="flex flex-col items-center text-ayuTeal font-bold relative" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0z"></path>
+</svg>
+<span class="text-[10px] font-semibold mt-1">More</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+<!-- BEGIN: RevokeConfirmationModal -->
+<div class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden" id="revokeModal">
+<div class="bg-white rounded-2xl max-w-xs w-full p-5 shadow-2xl text-center border border-ayuBorder animate-in fade-in zoom-in-95 duration-150">
+<div class="w-12 h-12 rounded-full bg-rose-50 text-ayuRed flex items-center justify-center mx-auto mb-3">
+<svg class="w-6 h-6 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-base font-bold text-ayuNavy mb-1">Revoke Mummy's Access?</h3>
+<p class="text-xs text-ayuSlate mb-5 leading-normal">Mummy will immediately lose access to view and add to your health information. You can grant access again anytime.</p>
+<div class="space-y-2">
+<button class="w-full py-2.5 px-4 bg-ayuRed hover:bg-red-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors" onclick="confirmRevoke()" type="button">
+            Yes, Revoke Access
+          </button>
+<button class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-ayuNavy font-medium text-xs rounded-xl transition-colors" onclick="closeRevokeModal()" type="button">
+            Cancel
+          </button>
+</div>
+</div>
+</div>
+<!-- END: RevokeConfirmationModal -->
+<!-- BEGIN: FeedbackToast -->
+<div class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-ayuNavy text-white text-xs py-2 px-4 rounded-full shadow-lg transition-opacity duration-300 pointer-events-none z-50 whitespace-nowrap opacity-100" id="actionToast">Opening Health Record Creator...</div>
+<!-- END: FeedbackToast -->
+</div>
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="access-state-manager">
+    // State Tracker ('full' or 'limited')
+    let currentAccessState = 'full';
+
+    // DOM Elements
+    const badgeBtn = document.getElementById('accessBadgeBtn');
+    const badgeLabel = document.getElementById('badgeCurrentLabel');
+    const badgeChevron = document.getElementById('badgeChevron');
+    const dropdownMenu = document.getElementById('accessDropdownMenu');
+    
+    const optFull = document.getElementById('optFullAccess');
+    const optLimited = document.getElementById('optLimitedAccess');
+    const fullCheck = document.getElementById('fullAccessCheck');
+    const limitedCheck = document.getElementById('limitedAccessCheck');
+    
+    const stateFullSection = document.getElementById('stateFullAccess');
+    const stateLimitedSection = document.getElementById('stateLimitedAccess');
+    const toast = document.getElementById('actionToast');
+    const revokeModal = document.getElementById('revokeModal');
+
+    // Toggle Dropdown Menu visibility
+    badgeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = dropdownMenu.classList.contains('hidden');
+      if (isHidden) {
+        dropdownMenu.classList.remove('hidden');
+        badgeChevron.classList.add('rotate-180');
+      } else {
+        dropdownMenu.classList.add('hidden');
+        badgeChevron.classList.remove('rotate-180');
+      }
+    });
+
+    // Close Dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownMenu.contains(e.target) && !badgeBtn.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+        badgeChevron.classList.remove('rotate-180');
+      }
+    });
+
+    // Switch to Full Access State
+    optFull.addEventListener('click', () => {
+      setAccessState('full');
+    });
+
+    // Switch to Limited Access State
+    optLimited.addEventListener('click', () => {
+      setAccessState('limited');
+    });
+
+    // Function to handle switching states smoothly
+    function setAccessState(newState) {
+      currentAccessState = newState;
+      dropdownMenu.classList.add('hidden');
+      badgeChevron.classList.remove('rotate-180');
+
+      if (newState === 'full') {
+        badgeLabel.textContent = 'Full Access';
+        fullCheck.classList.remove('hidden');
+        limitedCheck.classList.add('hidden');
+
+        stateFullSection.classList.remove('hidden');
+        stateLimitedSection.classList.add('hidden');
+        showToast('Full access granted to Mummy');
+      } else {
+        badgeLabel.textContent = 'Limited Access';
+        fullCheck.classList.add('hidden');
+        limitedCheck.classList.remove('hidden');
+
+        stateFullSection.classList.add('hidden');
+        stateLimitedSection.classList.remove('hidden');
+        showToast('Switched to Limited Access mode');
+      }
+    }
+
+    // Toggle Switch handler for Limited Access Rows
+    function toggleSwitch(buttonEl) {
+      const isCurrentlyActive = buttonEl.classList.contains('toggle-active');
+      if (isCurrentlyActive) {
+        buttonEl.classList.remove('toggle-active');
+        buttonEl.classList.add('toggle-inactive');
+      } else {
+        buttonEl.classList.remove('toggle-inactive');
+        buttonEl.classList.add('toggle-active');
+      }
+      showToast('Preference updated');
+    }
+
+    // Show temporary floating toast notification
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2000);
+    }
+
+    // Revoke Access Handlers
+    function triggerRevokeModal() {
+      revokeModal.classList.remove('hidden');
+    }
+
+    function closeRevokeModal() {
+      revokeModal.classList.add('hidden');
+    }
+
+    function confirmRevoke() {
+      closeRevokeModal();
+      showToast('Mummy’s access has been revoked');
+    }
+
+    function handleAddDataAction() {
+      showToast('Opening Health Record Creator...');
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+
+
+
+
+</body></html>

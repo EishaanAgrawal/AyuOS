@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>AyuOS - Senior Mode</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0F5C5E',
+              darkTeal: '#0B4547',
+              mint: '#E8F5F2',
+              mintBorder: '#DCEFEB',
+              navy: '#173042',
+              slate: '#60717A',
+              cardBorder: '#DCE5E7',
+              bgLight: '#F7FAF9'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Mobile Shell and Toggles -->
+<style data-purpose="toggle-styling">
+    /* Custom Toggle Switch Styling */
+    .toggle-checkbox:checked {
+      right: 0;
+      background-color: #ffffff;
+      transform: translateX(1.25rem);
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #0F5C5E;
+    }
+    .toggle-checkbox {
+      transition: transform 0.25s ease-in-out;
+    }
+    .toggle-label {
+      transition: background-color 0.25s ease-in-out;
+    }
+
+    /* Hide scrollbars for slick mobile presentation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#E2E8F0] text-brand-navy flex justify-center items-center min-h-screen p-0 sm:p-4 font-sans antialiased selection:bg-[#0F5C5E] selection:text-white">
+<!-- BEGIN: MobileDeviceContainer -->
+<!-- Container mimicking native iOS device resolution & aspect ratio -->
+<div class="w-full sm:max-w-[420px] bg-brand-bgLight min-h-screen sm:min-h-[915px] sm:max-h-[920px] sm:rounded-[44px] shadow-2xl relative overflow-hidden flex flex-col border border-[#CBD5E1] sm:border-8 sm:border-slate-800">
+<!-- Top Notch / Status Bar Spacer -->
+<div class="h-6 w-full flex-shrink-0" data-purpose="status-bar-spacer"></div>
+<!-- BEGIN: HeaderSection -->
+<header class="px-5 pt-1 pb-4 flex-shrink-0" data-purpose="header">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="p-1 -ml-1 text-brand-teal hover:opacity-75 transition-opacity" type="button">
+<!-- Back Chevron Icon -->
+<svg class="w-6 h-6 stroke-current stroke-2 fill-none" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<h1 class="text-xl font-bold text-brand-navy tracking-tight">Senior Mode</h1>
+</div>
+<p class="text-xs text-brand-slate mt-1 pl-8">Make AyuOS easier to use for senior users.</p>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: ScrollableContent -->
+<main class="flex-1 overflow-y-auto px-4 pb-24 space-y-4 no-scrollbar" data-purpose="main-content">
+<!-- BEGIN: MasterToggleSection -->
+<section data-purpose="master-toggle">
+<div class="bg-white rounded-2xl p-4 border border-brand-cardBorder shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex items-center justify-between gap-3">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<!-- Senior Mode People / Accessibility Icon Badge -->
+<div class="w-12 h-12 rounded-full bg-brand-mint flex items-center justify-center flex-shrink-0 text-brand-teal">
+<svg class="w-6 h-6 fill-none stroke-current stroke-[2.2]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+</div>
+<div>
+<h2 class="text-[15px] font-bold text-brand-navy leading-tight">Senior Mode</h2>
+<p class="text-[11px] text-brand-slate leading-snug mt-0.5 max-w-[215px]">Larger text, bigger buttons and a simpler interface for easier use.</p>
+</div>
+</div>
+<!-- Master Switch -->
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="master-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="master-toggle"></label>
+</div>
+</div>
+</section>
+<!-- END: MasterToggleSection -->
+<!-- BEGIN: DisplaySettingsSection -->
+<section data-purpose="display-settings">
+<h3 class="text-[15px] font-bold text-brand-navy leading-snug">Display Settings</h3>
+<p class="text-[11px] text-brand-slate mb-2.5">Adjust the appearance to make the app easier to read and use.</p>
+<div class="bg-white rounded-2xl border border-brand-cardBorder shadow-[0_1px_3px_rgba(0,0,0,0.03)] divide-y divide-gray-100">
+<!-- Row 1: Text Size -->
+<div class="p-3.5 flex items-center justify-between cursor-pointer hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal font-semibold text-lg flex-shrink-0">
+<span>Tt</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">Text Size</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Use larger text throughout the app.</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-brand-slate pl-2">
+<span class="text-xs text-brand-slate font-medium">Large</span>
+<svg class="w-4 h-4 text-brand-slate stroke-current stroke-2 fill-none" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</div>
+</div>
+<!-- Row 2: High Contrast -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal flex-shrink-0">
+<!-- Half Moon / Contrast Icon -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">High Contrast</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Increase contrast for better visibility.</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="contrast-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="contrast-toggle"></label>
+</div>
+</div>
+<!-- Row 3: Brighter Interface -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal flex-shrink-0">
+<!-- Sun / Brightness Icon -->
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">Brighter Interface</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Use a brighter and clearer interface.</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="bright-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="bright-toggle"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DisplaySettingsSection -->
+<!-- BEGIN: NavigationSettingsSection -->
+<section data-purpose="navigation-settings">
+<h3 class="text-[15px] font-bold text-brand-navy leading-snug">Navigation Settings</h3>
+<p class="text-[11px] text-brand-slate mb-2.5">Simplify navigation for easier access to important features.</p>
+<div class="bg-white rounded-2xl border border-brand-cardBorder shadow-[0_1px_3px_rgba(0,0,0,0.03)] divide-y divide-gray-100">
+<!-- Row 1: Simplified Home Screen -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal flex-shrink-0">
+<!-- Home Icon -->
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">Simplified Home Screen</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Show only key features on the home screen.</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="nav-home-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="nav-home-toggle"></label>
+</div>
+</div>
+<!-- Row 2: Larger Buttons -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal flex-shrink-0">
+<!-- 4 Squares Grid Icon -->
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">Larger Buttons</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Use bigger buttons for easier tapping.</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="nav-buttons-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="nav-buttons-toggle"></label>
+</div>
+</div>
+<!-- Row 3: Simplified Navigation -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal flex-shrink-0">
+<!-- Compass Icon -->
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-brand-navy leading-tight">Simplified Navigation</h4>
+<p class="text-[11px] text-brand-slate mt-0.5">Show only essential tabs and options.</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-1 select-none flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-transparent appearance-none cursor-pointer left-0 top-0 transition-transform duration-200 z-10" id="nav-simplify-toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-teal cursor-pointer" for="nav-simplify-toggle"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NavigationSettingsSection -->
+<!-- BEGIN: PreviewSection -->
+<section data-purpose="preview-cards">
+<h3 class="text-[15px] font-bold text-brand-navy leading-snug">Preview</h3>
+<p class="text-[11px] text-brand-slate mb-2.5">See how the app will look in Senior Mode.</p>
+<!-- Split comparison container -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Normal Mode Miniature -->
+<div class="bg-[#F3F6F6] rounded-xl p-2 flex flex-col items-center border border-[#DFE7E6]">
+<span class="text-[11px] font-bold text-brand-teal mb-1.5">Normal Mode</span>
+<div class="w-full bg-white rounded-lg p-2 shadow-sm border border-slate-100 flex flex-col gap-2 min-h-[110px] justify-between">
+<!-- Top Mini Nav Items -->
+<div class="flex items-center justify-around border-b border-gray-100 pb-1.5 pt-0.5">
+<div class="flex flex-col items-center">
+<svg class="w-2.5 h-2.5 text-brand-teal stroke-current fill-none" viewbox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+<span class="text-[7px] text-brand-teal font-semibold scale-90">Home</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<svg class="w-2.5 h-2.5 text-slate-500 stroke-current fill-none" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+<span class="text-[7px] text-slate-500 scale-90">Records</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<svg class="w-2.5 h-2.5 text-slate-500 stroke-current fill-none" viewbox="0 0 24 24"><line x1="8" x2="16" y1="12" y2="12"></line></svg>
+<span class="text-[7px] text-slate-500 scale-90">Medicines</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<svg class="w-2.5 h-2.5 text-slate-500 stroke-current fill-none" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+<span class="text-[7px] text-slate-500 scale-90">Care</span>
+</div>
+</div>
+<!-- Greeting banner in Normal -->
+<div class="bg-slate-50/70 p-1.5 rounded flex items-center gap-1.5">
+<div class="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+<svg class="w-2 h-2 fill-red-500 text-red-500" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</div>
+<div>
+<div class="text-[8px] font-bold text-brand-navy leading-none">Good morning!</div>
+<div class="text-[6.5px] text-brand-slate leading-tight mt-0.5">How are you feeling today?</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Senior Mode Miniature -->
+<div class="bg-[#EDF6F3] rounded-xl p-2 flex flex-col items-center border border-[#CFE4DC]">
+<span class="text-[11px] font-bold text-brand-teal mb-1.5">Senior Mode (Preview)</span>
+<div class="w-full bg-white rounded-lg p-2 shadow-sm border border-emerald-100/50 flex flex-col gap-2 min-h-[110px] justify-between">
+<!-- Big Greeting Card -->
+<div class="bg-brand-bgLight p-1.5 rounded-lg flex items-center gap-2 border border-slate-100">
+<div class="w-6 h-6 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5 fill-brand-teal text-brand-teal" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</div>
+<div>
+<div class="text-[10px] font-black text-brand-navy leading-none">Good morning!</div>
+<div class="text-[7.5px] text-brand-slate leading-tight mt-0.5 font-medium">How are you feeling today?</div>
+</div>
+</div>
+<!-- Enchanced Legible Nav items -->
+<div class="flex items-center justify-around border-t border-slate-100 pt-1">
+<div class="flex flex-col items-center text-brand-teal">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+<span class="text-[8px] font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center text-slate-600">
+<svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+<span class="text-[8px] font-bold">Records</span>
+</div>
+<div class="flex flex-col items-center text-slate-600">
+<svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewbox="0 0 24 24"><rect height="6" rx="3" width="18" x="3" y="10"></rect></svg>
+<span class="text-[8px] font-bold">Medicines</span>
+</div>
+<div class="flex flex-col items-center text-slate-600">
+<svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+<span class="text-[8px] font-bold">Care</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PreviewSection -->
+<!-- BEGIN: InfoCalloutSection -->
+<section class="pt-0.5" data-purpose="info-callout">
+<div class="bg-brand-mint border border-brand-mintBorder rounded-2xl p-3.5 flex items-start gap-3">
+<!-- Information Badge -->
+<div class="w-6 h-6 rounded-full bg-brand-teal text-white flex items-center justify-center flex-shrink-0 mt-0.5 font-serif font-bold text-xs italic">
+<span>i</span>
+</div>
+<div>
+<h5 class="text-xs font-bold text-brand-navy leading-tight">Senior Mode can be turned on or off at any time.</h5>
+<p class="text-[11px] text-brand-slate leading-normal mt-0.5">You can also adjust individual settings based on your preference.</p>
+</div>
+</div>
+</section>
+<!-- END: InfoCalloutSection -->
+</main>
+<!-- END: ScrollableContent -->
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#E5ECEB] px-3 pt-2.5 pb-5 flex justify-between items-center z-30" data-purpose="bottom-navigation">
+<!-- Nav Item: Home -->
+<a class="flex flex-col items-center flex-1 text-brand-slate hover:text-brand-teal transition-colors" href="#">
+<svg class="w-5 h-5 fill-none stroke-current stroke-[2]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+<span class="text-[11px] font-medium mt-1">Home</span>
+</a>
+<!-- Nav Item: Records -->
+<a class="flex flex-col items-center flex-1 text-brand-slate hover:text-brand-teal transition-colors" href="#">
+<svg class="w-5 h-5 fill-none stroke-current stroke-[2]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+<span class="text-[11px] font-medium mt-1">Records</span>
+</a>
+<!-- Nav Item: Medicines -->
+<a class="flex flex-col items-center flex-1 text-brand-slate hover:text-brand-teal transition-colors" href="#">
+<svg class="w-5 h-5 fill-none stroke-current stroke-[2]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"></path>
+<line x1="8.5" x2="15.5" y1="8.5" y2="15.5"></line>
+</svg>
+<span class="text-[11px] font-medium mt-1">Medicines</span>
+</a>
+<!-- Nav Item: Care -->
+<a class="flex flex-col items-center flex-1 text-brand-slate hover:text-brand-teal transition-colors" href="#">
+<svg class="w-5 h-5 fill-none stroke-current stroke-[2]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+</svg>
+<span class="text-[11px] font-medium mt-1">Care</span>
+</a>
+<!-- Nav Item: More (Active) -->
+<a class="flex flex-col items-center flex-1 text-brand-teal font-semibold" href="#">
+<!-- 3 Dots Icon -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+<span class="text-[11px] font-bold mt-1">More</span>
+</a>
+</nav>
+<!-- END: BottomNavigationBar -->
+</div>
+<!-- END: MobileDeviceContainer -->
+<!-- BEGIN: InteractiveToggleHandler -->
+<script data-purpose="toggle-interactions">
+    document.addEventListener('DOMContentLoaded', () => {
+      const masterToggle = document.getElementById('master-toggle');
+      const subToggles = [
+        document.getElementById('contrast-toggle'),
+        document.getElementById('bright-toggle'),
+        document.getElementById('nav-home-toggle'),
+        document.getElementById('nav-buttons-toggle'),
+        document.getElementById('nav-simplify-toggle')
+      ];
+
+      // When Master Toggle changes, switch all subordinate toggles
+      if (masterToggle) {
+        masterToggle.addEventListener('change', (e) => {
+          const isChecked = e.target.checked;
+          subToggles.forEach(toggle => {
+            if (toggle) {
+              toggle.checked = isChecked;
+            }
+          });
+        });
+      }
+
+      // Check if any subToggle is changed to keep Master toggle consistent
+      subToggles.forEach(toggle => {
+        if (toggle) {
+          toggle.addEventListener('change', () => {
+            const anyChecked = subToggles.some(t => t && t.checked);
+            if (masterToggle && masterToggle.checked !== anyChecked && !anyChecked) {
+              masterToggle.checked = false;
+            } else if (masterToggle && !masterToggle.checked && anyChecked) {
+              masterToggle.checked = true;
+            }
+          });
+        }
+      });
+    });
+  </script>
+<!-- END: InteractiveToggleHandler -->
+</body></html>

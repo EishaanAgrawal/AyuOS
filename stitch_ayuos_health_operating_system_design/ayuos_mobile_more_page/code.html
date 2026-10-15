@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>AyuOS - More</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            appBg: '#F6F9F8',
+            deepTeal: '#0F5C5E',
+            darkTeal: '#0B4547',
+            deepNavy: '#173042',
+            healthBlue: '#2F6F8F',
+            slateText: '#60717A',
+            softMint: '#EAF4F2',
+            softBorder: '#E2E8E7',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 2px 6px -1px rgba(23, 48, 66, 0.04), 0 1px 3px -1px rgba(23, 48, 66, 0.02)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-styling">
+    /* Disable default touch tap highlights for iOS feel */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    body {
+      background-color: #E2E8E7;
+    }
+    /* Hide scrollbars while preserving full scrollability */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4 text-deepNavy antialiased font-sans">
+<!-- BEGIN: PhoneFrame -->
+<main class="w-full max-w-[400px] h-[100dvh] max-h-[880px] bg-appBg flex flex-col relative overflow-hidden shadow-2xl sm:rounded-[44px] border border-[#DCE5E7]">
+<!-- BEGIN: iOSStatusBar -->
+
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: MainContentArea -->
+<section class="flex-1 overflow-y-auto no-scrollbar px-5 pt-3 pb-24 flex flex-col space-y-3.5">
+<!-- BEGIN: HeaderSection -->
+<div class="flex items-center space-x-3.5 mb-2 mt-1" data-purpose="screen-header">
+<!-- User Profile Avatar -->
+<div class="relative">
+<img alt="User profile portrait" class="w-13 h-13 w-[52px] h-[52px] rounded-full object-cover ring-2 ring-white shadow-sm border border-softBorder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiKb1yuQguw04PoNpF5TcYOJnh5joQ3HEMv7ASfCAo3_ihh0FR-CGcpLyvgTgJXxmlc65VDVMgK_ZMaFIRW1QX041FPtW5cfIRrBFOwMeeNGJndRDzLS3zhmvRgMOGh47CRS1Ua7sZZp78XQemVUbXbiSeZd_d4uN-ImcdZ8PjqPeKsr6uWorS8Lj8tb-mhQP3A5w-0vAWJIeHG7b2RuMGa-kTivSRFi1B_PbYmEo">
+</div>
+<!-- Title & Profile Selector Dropdown -->
+<div class="flex flex-col items-start">
+<h1 class="text-2xl font-bold tracking-tight text-deepNavy leading-tight">More</h1>
+<!-- Context Switcher Pill Button -->
+<button aria-expanded="false" aria-haspopup="true" class="mt-1 flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-softMint hover:bg-[#dceeed] text-deepTeal active:scale-95 transition-all duration-150" id="profileSwitcherBtn" onclick="toggleSwitcherDropdown()" type="button">
+<span class="text-xs font-semibold tracking-normal" id="selectedContextLabel">My Health</span>
+<svg class="w-3.5 h-3.5 text-deepTeal transition-transform duration-200" fill="none" id="switcherChevron" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- END: HeaderSection -->
+<!-- Dropdown Context Menu (Hidden by default) -->
+<div class="bg-white border border-softBorder shadow-lg rounded-2xl p-2 mb-2 space-y-1 transition-all hidden" id="contextDropdown">
+<button class="w-full text-left px-3 py-2 text-xs font-medium text-deepNavy hover:bg-softMint rounded-xl transition-colors" onclick="selectContext('My Health')">
+          ✓ My Health (Self)
+        </button>
+<button class="w-full text-left px-3 py-2 text-xs font-medium text-slateText hover:bg-softMint rounded-xl transition-colors" onclick="selectContext('Family: Mother')">
+          Family: Mother
+        </button>
+<button class="w-full text-left px-3 py-2 text-xs font-medium text-slateText hover:bg-softMint rounded-xl transition-colors" onclick="selectContext('Family: Father')">
+          Family: Father
+        </button>
+</div>
+<!-- BEGIN: NavigationCardsList -->
+<div class="flex flex-col space-y-3" data-purpose="navigation-menu-list">
+<!-- 1. Family Care -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Family Care')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-13 h-13 w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Family Care</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Manage health information for people you care for.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- 2. Healthcare Finance -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Healthcare Finance')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Healthcare Finance</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Medical expenses, bills, treatment costs and insurance.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- 3. Emergency -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Emergency')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+<path d="M12 9v6m-3-3h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Emergency</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Manage your emergency health information.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- 4. Notifications -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Notifications')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Notifications</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Manage alerts and reminders.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- 5. Privacy & Permissions -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Privacy &amp; Permissions')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+<rect height="4" rx="1" stroke-width="1.8" width="5" x="9.5" y="10"></rect>
+<path d="M10.5 10V8.5a1.5 1.5 0 013 0V10" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Privacy &amp; Permissions</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Control access to your health information.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- 6. Profile & Settings -->
+<div class="bg-white border border-softBorder rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#CAD7D5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Profile &amp; Settings')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-softMint flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-deepTeal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-deepNavy tracking-tight leading-tight">Profile &amp; Settings</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Account, security, preferences and accessibility.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div><!-- 7. Delete My Account -->
+<div class="bg-white border border-[#FEE2E2] rounded-[20px] p-4 flex items-center justify-between shadow-card hover:border-[#FCA5A5] active:scale-[0.99] transition-all duration-150 cursor-pointer" onclick="handleNavClick('Delete My Account')" role="button" tabindex="0">
+<div class="flex items-center space-x-3.5 pr-2">
+<!-- Icon Container -->
+<div class="w-[52px] h-[52px] rounded-full bg-red-50 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path>
+</svg>
+</div>
+<!-- Labels -->
+<div class="flex flex-col">
+<h2 class="text-[16px] font-semibold text-red-600 tracking-tight leading-tight">Delete My Account</h2>
+<p class="text-[13px] text-slateText font-normal mt-0.5 leading-snug">Permanently delete your account and all data.</p>
+</div>
+</div>
+<!-- Right Chevron -->
+<svg class="w-5 h-5 text-[#94A3B8] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- END: NavigationCardsList -->
+</section>
+<!-- END: MainContentArea -->
+<!-- BEGIN: FloatingToastNotification -->
+<div class="fixed sm:absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-deepNavy text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide shadow-lg pointer-events-none transition-opacity duration-300 z-50 flex items-center space-x-1.5 opacity-0" id="actionToast">
+<span id="toastMessage" class="">Switching to Care</span>
+</div>
+<!-- END: FloatingToastNotification -->
+<!-- BEGIN: FixedBottomNavigation -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-softBorder pt-2.5 pb-6 px-4 z-40 flex justify-between items-center select-none" data-purpose="bottom-tab-bar">
+<!-- 1. Home Tab -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slateText hover:text-deepTeal transition-colors group" href="javascript:void(0)" onclick="selectTab('Home')">
+<svg class="w-6 h-6 stroke-current fill-none" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1">Home</span>
+</a>
+<!-- 2. Records Tab -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slateText hover:text-deepTeal transition-colors group" href="javascript:void(0)" onclick="selectTab('Records')">
+<svg class="w-6 h-6 stroke-current fill-none" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1">Records</span>
+</a>
+<!-- 3. Medicines Tab -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slateText hover:text-deepTeal transition-colors group" href="javascript:void(0)" onclick="selectTab('Medicines')">
+<svg class="w-6 h-6 stroke-current fill-none rotate-45" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="20" rx="5" width="10" x="7" y="2"></rect>
+<line stroke-linecap="round" x1="7" x2="17" y1="12" y2="12"></line>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1">Medicines</span>
+</a>
+<!-- 4. Care Tab -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slateText hover:text-deepTeal transition-colors group" href="javascript:void(0)" onclick="selectTab('Care')">
+<svg class="w-6 h-6 stroke-current fill-none" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M9 12h2l1-2 2 4 1-2h2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-medium tracking-tight mt-1">Care</span>
+</a>
+<!-- 5. More Tab (Active) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-deepTeal cursor-default" href="javascript:void(0)">
+<div class="flex items-center justify-center space-x-1 w-6 h-6">
+<span class="w-1.5 h-1.5 rounded-full bg-deepTeal"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-deepTeal"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-deepTeal"></span>
+</div>
+<span class="text-[11px] font-bold tracking-tight mt-1 text-deepTeal">More</span>
+</a>
+</nav>
+<!-- END: FixedBottomNavigation -->
+<!-- BEGIN: iOSHomeIndicator -->
+<div class="absolute bottom-1 inset-x-0 flex justify-center z-50 pointer-events-none" data-purpose="ios-home-indicator">
+<div class="w-36 h-1 bg-[#173042]/70 rounded-full"></div>
+</div>
+<!-- END: iOSHomeIndicator -->
+</main>
+<!-- END: PhoneFrame -->
+<!-- BEGIN: InteractiveHandlersScript -->
+<script data-purpose="ui-interactions">
+    let toastTimeout = null;
+
+    // Toast notification utility
+    function showToast(message) {
+      const toast = document.getElementById('actionToast');
+      const toastMessage = document.getElementById('toastMessage');
+      
+      toastMessage.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 1600);
+    }
+
+    // Navigation item card clicked
+    function handleNavClick(destination) {
+      showToast(`Navigating to ${destination}`);
+    }
+
+    // Bottom tab switch interaction
+    function selectTab(tabName) {
+      showToast(`Switching to ${tabName}`);
+    }
+
+    // Toggle dropdown context menu
+    function toggleSwitcherDropdown() {
+      const dropdown = document.getElementById('contextDropdown');
+      const chevron = document.getElementById('switcherChevron');
+      const isHidden = dropdown.classList.contains('hidden');
+
+      if (isHidden) {
+        dropdown.classList.remove('hidden');
+        chevron.classList.add('rotate-180');
+      } else {
+        dropdown.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+      }
+    }
+
+    // Select profile context
+    function selectContext(label) {
+      document.getElementById('selectedContextLabel').textContent = label.replace('✓ ', '');
+      toggleSwitcherDropdown();
+      showToast(`Viewing: ${label.replace('✓ ', '')}`);
+    }
+  </script>
+<!-- END: InteractiveHandlersScript -->
+
+
+
+
+</body></html>
