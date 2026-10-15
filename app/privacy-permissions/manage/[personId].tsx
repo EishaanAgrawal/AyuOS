@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -34,7 +34,6 @@ const CATEGORIES: { title: string; description: string; icon: IconName; initial:
 ];
 
 export default function ManagePersonAccessScreen() {
-  const router = useRouter();
   const { personId } = useLocalSearchParams<{ personId: string }>();
   const person = PEOPLE[personId] ?? { name: 'Family Member', initials: '?' };
 

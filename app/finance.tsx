@@ -11,7 +11,7 @@ type IconName = keyof typeof Ionicons.glyphMap;
 /** Fictional demo finance data — not real spending. */
 const CATEGORIES = [
   { name: 'Medicines', amount: 7160, color: '#004345', icon: 'medkit-outline' as IconName },
-  { name: 'Consultations', amount: 5370, color: '#226584', icon: 'stethoscope-outline' as IconName },
+  { name: 'Consultations', amount: 5370, color: '#226584', icon: 'pulse-outline' as IconName },
   { name: 'Lab Tests', amount: 3580, color: '#b7791f', icon: 'flask-outline' as IconName },
   { name: 'Insurance', amount: 1790, color: '#6d5a7e', icon: 'shield-checkmark-outline' as IconName },
 ];

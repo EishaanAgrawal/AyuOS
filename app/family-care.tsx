@@ -10,8 +10,6 @@ import { Card } from '../components/Card';
 import { PageHeader } from '../components/PageHeader';
 import { Tabs } from '../components/Tabs';
 
-type IconName = keyof typeof Ionicons.glyphMap;
-
 /** Fictional demo people — not real individuals. */
 const PEOPLE = [
   {
@@ -134,8 +132,7 @@ function CareTasks() {
   );
 }
 
-const TAB_IDS = ['overview', 'people', 'tasks'] as const;
-type TabId = (typeof TAB_IDS)[number];
+type TabId = 'overview' | 'people' | 'tasks';
 
 export default function FamilyCareScreen() {
   const router = useRouter();

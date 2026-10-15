@@ -67,7 +67,7 @@ export default function FamilyMemberHealthScreen() {
                 />
               </View>
               <Text className="mt-1.5 text-sm text-onSurfaceVariant">
-                You are viewing {person.name}'s health data. You can also add data for them.
+                You are viewing {person.name}&apos;s health data. You can also add data for them.
               </Text>
             </View>
             <Pressable
@@ -116,7 +116,7 @@ export default function FamilyMemberHealthScreen() {
             </View>
             <Text className="mt-3 text-base font-semibold text-onSurface">View Summary</Text>
             <Text className="mt-0.5 text-sm text-onSurfaceVariant">
-              See an AI-generated summary of {person.name}'s health.
+              See an AI-generated summary of {person.name}&apos;s health.
             </Text>
           </Pressable>
         </View>

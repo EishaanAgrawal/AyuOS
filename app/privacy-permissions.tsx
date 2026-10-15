@@ -8,8 +8,6 @@ import { Badge } from '../components/Badge';
 import { Card } from '../components/Card';
 import { PageHeader } from '../components/PageHeader';
 
-type IconName = keyof typeof Ionicons.glyphMap;
-
 /** Fictional demo people — not real individuals. */
 const I_HAVE_ACCESS = [
   { id: 'mummy', name: 'Mummy', access: 'Full Access' as const, initials: 'M' },

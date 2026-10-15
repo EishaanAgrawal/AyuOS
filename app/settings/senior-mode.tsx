@@ -32,7 +32,7 @@ export default function SeniorModeScreen() {
             </View>
             <View className="flex-1">
               <Text className={seniorMode ? 'text-2xl font-bold text-onSurface' : 'text-lg font-semibold text-onSurface'}>
-                Today's medicines
+                Today&apos;s medicines
               </Text>
               <Text className={seniorMode ? 'mt-1 text-xl text-onSurfaceVariant' : 'mt-0.5 text-sm text-onSurfaceVariant'}>
                 2 of 3 doses taken

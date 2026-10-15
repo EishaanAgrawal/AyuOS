@@ -182,7 +182,7 @@ export default function HomeScreen() {
                   </Text>
                 </View>
                 <Text className="mt-2 text-sm text-onSurfaceVariant">
-                  {subject.name}'s refill · May run out in{' '}
+                  {subject.name}&apos;s refill · May run out in{' '}
                   <Text className="font-bold text-mutedCoral">10 days</Text>
                 </Text>
               </View>
@@ -279,7 +279,7 @@ export default function HomeScreen() {
           <Card className="flex-1 p-4" onPress={() => router.push('/medicines')}>
             <Text className="text-sm font-bold text-onSurface">Medicines</Text>
             <Text className="mt-1.5 text-xs text-onSurfaceVariant">
-              {demoMedicines.length} active · {subject.name}'s list
+              {demoMedicines.length} active · {subject.name}&apos;s list
             </Text>
             <View className="mt-2 flex-row items-center gap-1.5">
               <Ionicons name="alert-circle" size={14} color="#c65d5d" />

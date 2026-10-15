@@ -23,7 +23,7 @@ const ACCENTS = [
 type ThemeId = (typeof THEMES)[number]['id'];
 type AccentId = (typeof ACCENTS)[number]['id'];
 
-function RadioRow<T extends string>({
+function RadioRow({
   label,
   icon,
   iconColor,
