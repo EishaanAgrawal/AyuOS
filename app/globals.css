@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   AyuOS design tokens
+   Authoritative source: stitch_ayuos_health_operating_system_design/ayuos/DESIGN.md
+   Primary is #004345 (the #0F5C5E variant from some mockups is NOT used).
+   Calm clinical aesthetic: no gradients, no neon, no glassmorphism.
+   ========================================================================== */
+
+:root {
+  /* ---- Tonal surface ramp (DESIGN.md colors block, exact values) ---- */
+  --color-surface: #f7faf9;
+  --color-surface-dim: #d7dbda;
+  --color-surface-bright: #f7faf9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f4f3;
+  --color-surface-container: #ebeeed;
+  --color-surface-container-high: #e6e9e8;
+  --color-surface-container-highest: #e0e3e2;
+  --color-on-surface: #181c1c;
+  --color-on-surface-variant: #3f4949;
+  --color-inverse-surface: #2d3131;
+  --color-inverse-on-surface: #eef1f0;
+  --color-outline: #6f7979;
+  --color-outline-variant: #bfc8c8;
+  --color-surface-tint: #21686a;
+  --color-surface-variant: #e0e3e2;
+
+  /* ---- Primary: deep medical teal (authoritative: #004345) ---- */
+  --color-primary: #004345;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0f5c5e;
+  --color-on-primary-container: #90d2d4;
+  --color-inverse-primary: #90d2d4;
+  --color-primary-dark: #0b4547; /* hover/active partner (DESIGN.md prose) */
+
+  /* ---- Secondary: healthcare blue ---- */
+  --color-secondary: #226584;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #9dd9fd;
+  --color-on-secondary-container: #1b607f;
+
+  /* ---- Tertiary ---- */
+  --color-tertiary: #2e3f3c;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #455653;
+  --color-on-tertiary-container: #b8cac7;
+
+  /* ---- Error ---- */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* ---- Fixed accent ramps ---- */
+  --color-primary-fixed: #aceef0;
+  --color-primary-fixed-dim: #90d2d4;
+  --color-on-primary-fixed: #002021;
+  --color-on-primary-fixed-variant: #004f51;
+  --color-secondary-fixed: #c4e7ff;
+  --color-secondary-fixed-dim: #92cef2;
+  --color-on-secondary-fixed: #001e2c;
+  --color-on-secondary-fixed-variant: #004c69;
+  --color-tertiary-fixed: #d4e6e3;
+  --color-tertiary-fixed-dim: #b8cac7;
+  --color-on-tertiary-fixed: #0e1e1c;
+  --color-on-tertiary-fixed-variant: #394a47;
+
+  /* ---- Background ---- */
+  --color-background: #f7faf9;
+  --color-on-background: #181c1c;
+
+  /* ---- Semantic accents, deliberately de-saturated (DESIGN.md prose) ---- */
+  --color-calm-green: #3e8068; /* stable / verified */
+  --color-warm-amber: #c58a35; /* pending / dues */
+  --color-muted-coral: #c65d5d; /* critical / emergency */
+
+  /* ---- Structural tones (DESIGN.md prose) ---- */
+  --color-deep-navy: #173042; /* primary text anchor */
+  --color-hairline: #dce5e7; /* dividers, card borders */
+  --color-mint: #dcefeb; /* restorative tint for active pills / selections */
+}
+
+@theme {
+  /* Tailwind v4 utility mappings — same exact values as above.
+     Generates bg-*, text-*, border-* etc. (e.g. bg-primary, text-on-surface). */
+  --color-surface: #f7faf9;
+  --color-surface-dim: #d7dbda;
+  --color-surface-bright: #f7faf9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f4f3;
+  --color-surface-container: #ebeeed;
+  --color-surface-container-high: #e6e9e8;
+  --color-surface-container-highest: #e0e3e2;
+  --color-on-surface: #181c1c;
+  --color-on-surface-variant: #3f4949;
+  --color-inverse-surface: #2d3131;
+  --color-inverse-on-surface: #eef1f0;
+  --color-outline: #6f7979;
+  --color-outline-variant: #bfc8c8;
+  --color-surface-tint: #21686a;
+  --color-surface-variant: #e0e3e2;
+
+  --color-primary: #004345;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0f5c5e;
+  --color-on-primary-container: #90d2d4;
+  --color-inverse-primary: #90d2d4;
+  --color-primary-dark: #0b4547;
+
+  --color-secondary: #226584;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #9dd9fd;
+  --color-on-secondary-container: #1b607f;
+
+  --color-tertiary: #2e3f3c;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #455653;
+  --color-on-tertiary-container: #b8cac7;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-primary-fixed: #aceef0;
+  --color-primary-fixed-dim: #90d2d4;
+  --color-on-primary-fixed: #002021;
+  --color-on-primary-fixed-variant: #004f51;
+  --color-secondary-fixed: #c4e7ff;
+  --color-secondary-fixed-dim: #92cef2;
+  --color-on-secondary-fixed: #001e2c;
+  --color-on-secondary-fixed-variant: #004c69;
+  --color-tertiary-fixed: #d4e6e3;
+  --color-tertiary-fixed-dim: #b8cac7;
+  --color-on-tertiary-fixed: #0e1e1c;
+  --color-on-tertiary-fixed-variant: #394a47;
+
+  --color-background: #f7faf9;
+  --color-on-background: #181c1c;
+
+  --color-calm-green: #3e8068;
+  --color-warm-amber: #c58a35;
+  --color-muted-coral: #c65d5d;
+
+  --color-deep-navy: #173042;
+  --color-hairline: #dce5e7;
+  --color-mint: #dcefeb;
+
+  /* ---- Typefaces (wired to next/font variables in app/layout.tsx) ---- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Roundedness architecture (DESIGN.md shapes, exact values) ---- */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem; /* DEFAULT — buttons, inputs */
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem; /* content cards */
+  --radius-xl: 1.5rem; /* emergency cards, overlays */
+  --radius-full: 9999px; /* pills, badges, avatars */
+
+  /* ---- Elevation: tonal ambient shadows, no hard drop shadows ---- */
+  --shadow-lifted: 0 8px 24px -4px rgb(15 92 94 / 0.08); /* Level 2 */
+  --shadow-overlay: 0 20px 32px -8px rgb(23 48 66 / 0.12), 0 4px 12px -2px rgb(15 92 94 / 0.04); /* Level 3 */
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-on-background;
+    font-feature-settings: "ss01";
+  }
+
+  ::selection {
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+}
+
+/* Tabular numerals for metric readouts (DESIGN.md: Inter with tabular numerals) */
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
