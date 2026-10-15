@@ -1,0 +1,7 @@
+import React from 'react';
+
+import { StubScreen } from '../components/StubScreen';
+
+export default function HealthExplorerStub() {
+  return <StubScreen title="Health Explorer" />;
+}
